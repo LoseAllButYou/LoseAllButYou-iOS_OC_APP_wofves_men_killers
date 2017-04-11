@@ -1,0 +1,406 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1900510C1E98E21F00D5415A /* VCBegain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1900510A1E98E21F00D5415A /* VCBegain.m */; };
+		194946281E9D229E00D4D984 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 194946271E9D229E00D4D984 /* icon.png */; };
+		1949462C1E9D241A00D4D984 /* welcome1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1949462B1E9D241A00D4D984 /* welcome1.jpg */; };
+		1953DA3D1E9CE74A0097D40F /* VCMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */; };
+		1953DA411E9CF8070097D40F /* VCPrepare.m in Sources */ = {isa = PBXBuildFile; fileRef = 1953DA401E9CF8070097D40F /* VCPrepare.m */; };
+		1953DA431E9CF91D0097D40F /* Prepare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA421E9CF91D0097D40F /* Prepare.storyboard */; };
+		199E02F01E98F93900F07F30 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 199E02EF1E98F93900F07F30 /* login.storyboard */; };
+		19F2F7A31E98C56000936FCF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F7A21E98C56000936FCF /* main.m */; };
+		19F2F7A61E98C56000936FCF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F7A51E98C56000936FCF /* AppDelegate.m */; };
+		19F2F7AE1E98C56000936FCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19F2F7AD1E98C56000936FCF /* Assets.xcassets */; };
+		19F2F7B11E98C56000936FCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2F7AF1E98C56000936FCF /* LaunchScreen.storyboard */; };
+		19F5CFFB1E991C4F00B15A67 /* VCLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F5CFFA1E991C4F00B15A67 /* VCLogin.m */; };
+		19F5CFFE1E99244B00B15A67 /* VCRegist.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F5CFFD1E99244B00B15A67 /* VCRegist.m */; };
+		19F5D0101E9A432C00B15A67 /* VCMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F5D00F1E9A432C00B15A67 /* VCMain.m */; };
+		19F5D0191E9A464100B15A67 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F5D0161E9A464100B15A67 /* MBProgressHUD.m */; };
+		19F5D01A1E9A464100B15A67 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F5D0181E9A464100B15A67 /* MBProgressHUD+MJ.m */; };
+		19F5D0201E9A64D400B15A67 /* CIDoorwaySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F5D01F1E9A64D400B15A67 /* CIDoorwaySegue.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		190051091E98E21F00D5415A /* VCBegain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCBegain.h; sourceTree = "<group>"; };
+		1900510A1E98E21F00D5415A /* VCBegain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCBegain.m; sourceTree = "<group>"; };
+		194946271E9D229E00D4D984 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = wolfmen_killers/Assets.xcassets/icon.png; sourceTree = "<group>"; };
+		1949462B1E9D241A00D4D984 /* welcome1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = welcome1.jpg; path = wolfmen_killers/Assets.xcassets/welcome1.imageset/welcome1.jpg; sourceTree = "<group>"; };
+		1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VCMain.storyboard; sourceTree = "<group>"; };
+		1953DA3F1E9CF8070097D40F /* VCPrepare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPrepare.h; sourceTree = "<group>"; };
+		1953DA401E9CF8070097D40F /* VCPrepare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPrepare.m; sourceTree = "<group>"; };
+		1953DA421E9CF91D0097D40F /* Prepare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Prepare.storyboard; path = wolfmen_killers/Prepare.storyboard; sourceTree = "<group>"; };
+		199E02EF1E98F93900F07F30 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = login.storyboard; path = wolfmen_killers/login.storyboard; sourceTree = "<group>"; };
+		19F2F79E1E98C56000936FCF /* wolfmen_killers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wolfmen_killers.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		19F2F7A21E98C56000936FCF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		19F2F7A41E98C56000936FCF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		19F2F7A51E98C56000936FCF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		19F2F7AD1E98C56000936FCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		19F2F7B01E98C56000936FCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		19F2F7B21E98C56000936FCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		19F5CFF91E991C4F00B15A67 /* VCLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCLogin.h; sourceTree = "<group>"; };
+		19F5CFFA1E991C4F00B15A67 /* VCLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLogin.m; sourceTree = "<group>"; };
+		19F5CFFC1E99244B00B15A67 /* VCRegist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRegist.h; path = wolfmen_killers/VCRegist.h; sourceTree = "<group>"; };
+		19F5CFFD1E99244B00B15A67 /* VCRegist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRegist.m; path = wolfmen_killers/VCRegist.m; sourceTree = "<group>"; };
+		19F5D00E1E9A432C00B15A67 /* VCMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCMain.h; sourceTree = "<group>"; };
+		19F5D00F1E9A432C00B15A67 /* VCMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCMain.m; sourceTree = "<group>"; };
+		19F5D0151E9A464100B15A67 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		19F5D0161E9A464100B15A67 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		19F5D0171E9A464100B15A67 /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
+		19F5D0181E9A464100B15A67 /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
+		19F5D01E1E9A64CD00B15A67 /* CIDoorwaySegue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CIDoorwaySegue.h; sourceTree = "<group>"; };
+		19F5D01F1E9A64D400B15A67 /* CIDoorwaySegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIDoorwaySegue.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		19F2F79B1E98C56000936FCF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		190051031E98D5AB00D5415A /* 界面 */ = {
+			isa = PBXGroup;
+			children = (
+				1953DA3F1E9CF8070097D40F /* VCPrepare.h */,
+				1953DA401E9CF8070097D40F /* VCPrepare.m */,
+				19F5D00E1E9A432C00B15A67 /* VCMain.h */,
+				19F5D00F1E9A432C00B15A67 /* VCMain.m */,
+				19F5CFF91E991C4F00B15A67 /* VCLogin.h */,
+				19F5CFFA1E991C4F00B15A67 /* VCLogin.m */,
+				19F5CFFC1E99244B00B15A67 /* VCRegist.h */,
+				19F5CFFD1E99244B00B15A67 /* VCRegist.m */,
+				190051091E98E21F00D5415A /* VCBegain.h */,
+				1900510A1E98E21F00D5415A /* VCBegain.m */,
+			);
+			name = "界面";
+			sourceTree = "<group>";
+		};
+		1953DA3E1E9CEA950097D40F /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				199E02EF1E98F93900F07F30 /* login.storyboard */,
+				1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */,
+				19F2F7AF1E98C56000936FCF /* LaunchScreen.storyboard */,
+				1953DA421E9CF91D0097D40F /* Prepare.storyboard */,
+			);
+			name = storyboard;
+			sourceTree = "<group>";
+		};
+		19F2F7951E98C56000936FCF = {
+			isa = PBXGroup;
+			children = (
+				1949462B1E9D241A00D4D984 /* welcome1.jpg */,
+				194946271E9D229E00D4D984 /* icon.png */,
+				1953DA3E1E9CEA950097D40F /* storyboard */,
+				19F5D01D1E9A645B00B15A67 /* Animation */,
+				19F5D0141E9A454600B15A67 /* MBHud库 */,
+				190051031E98D5AB00D5415A /* 界面 */,
+				19F2F7A01E98C56000936FCF /* wolfmen_killers */,
+				19F2F79F1E98C56000936FCF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		19F2F79F1E98C56000936FCF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				19F2F79E1E98C56000936FCF /* wolfmen_killers.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		19F2F7A01E98C56000936FCF /* wolfmen_killers */ = {
+			isa = PBXGroup;
+			children = (
+				19F2F7A41E98C56000936FCF /* AppDelegate.h */,
+				19F2F7A51E98C56000936FCF /* AppDelegate.m */,
+				19F2F7AD1E98C56000936FCF /* Assets.xcassets */,
+				19F2F7B21E98C56000936FCF /* Info.plist */,
+				19F2F7A11E98C56000936FCF /* Supporting Files */,
+			);
+			path = wolfmen_killers;
+			sourceTree = "<group>";
+		};
+		19F2F7A11E98C56000936FCF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				19F2F7A21E98C56000936FCF /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		19F5D0141E9A454600B15A67 /* MBHud库 */ = {
+			isa = PBXGroup;
+			children = (
+				19F5D0151E9A464100B15A67 /* MBProgressHUD.h */,
+				19F5D0161E9A464100B15A67 /* MBProgressHUD.m */,
+				19F5D0171E9A464100B15A67 /* MBProgressHUD+MJ.h */,
+				19F5D0181E9A464100B15A67 /* MBProgressHUD+MJ.m */,
+			);
+			name = "MBHud库";
+			sourceTree = "<group>";
+		};
+		19F5D01D1E9A645B00B15A67 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				19F5D01F1E9A64D400B15A67 /* CIDoorwaySegue.m */,
+				19F5D01E1E9A64CD00B15A67 /* CIDoorwaySegue.h */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		19F2F79D1E98C56000936FCF /* wolfmen_killers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19F2F7B51E98C56000936FCF /* Build configuration list for PBXNativeTarget "wolfmen_killers" */;
+			buildPhases = (
+				19F2F79A1E98C56000936FCF /* Sources */,
+				19F2F79B1E98C56000936FCF /* Frameworks */,
+				19F2F79C1E98C56000936FCF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = wolfmen_killers;
+			productName = wolfmen_killers;
+			productReference = 19F2F79E1E98C56000936FCF /* wolfmen_killers.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		19F2F7961E98C56000936FCF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "裴培华";
+				TargetAttributes = {
+					19F2F79D1E98C56000936FCF = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 3762MX53AP;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 19F2F7991E98C56000936FCF /* Build configuration list for PBXProject "wolfmen_killers" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 19F2F7951E98C56000936FCF;
+			productRefGroup = 19F2F79F1E98C56000936FCF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				19F2F79D1E98C56000936FCF /* wolfmen_killers */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		19F2F79C1E98C56000936FCF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1949462C1E9D241A00D4D984 /* welcome1.jpg in Resources */,
+				199E02F01E98F93900F07F30 /* login.storyboard in Resources */,
+				1953DA431E9CF91D0097D40F /* Prepare.storyboard in Resources */,
+				194946281E9D229E00D4D984 /* icon.png in Resources */,
+				19F2F7B11E98C56000936FCF /* LaunchScreen.storyboard in Resources */,
+				1953DA3D1E9CE74A0097D40F /* VCMain.storyboard in Resources */,
+				19F2F7AE1E98C56000936FCF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		19F2F79A1E98C56000936FCF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19F5CFFE1E99244B00B15A67 /* VCRegist.m in Sources */,
+				1900510C1E98E21F00D5415A /* VCBegain.m in Sources */,
+				1953DA411E9CF8070097D40F /* VCPrepare.m in Sources */,
+				19F2F7A61E98C56000936FCF /* AppDelegate.m in Sources */,
+				19F5D0101E9A432C00B15A67 /* VCMain.m in Sources */,
+				19F5D01A1E9A464100B15A67 /* MBProgressHUD+MJ.m in Sources */,
+				19F2F7A31E98C56000936FCF /* main.m in Sources */,
+				19F5CFFB1E991C4F00B15A67 /* VCLogin.m in Sources */,
+				19F5D0191E9A464100B15A67 /* MBProgressHUD.m in Sources */,
+				19F5D0201E9A64D400B15A67 /* CIDoorwaySegue.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		19F2F7AF1E98C56000936FCF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				19F2F7B01E98C56000936FCF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			path = wolfmen_killers;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		19F2F7B31E98C56000936FCF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		19F2F7B41E98C56000936FCF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		19F2F7B61E98C56000936FCF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 3762MX53AP;
+				INFOPLIST_FILE = wolfmen_killers/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "o1.wolfmen-killers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		19F2F7B71E98C56000936FCF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 3762MX53AP;
+				INFOPLIST_FILE = wolfmen_killers/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "o1.wolfmen-killers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		19F2F7991E98C56000936FCF /* Build configuration list for PBXProject "wolfmen_killers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19F2F7B31E98C56000936FCF /* Debug */,
+				19F2F7B41E98C56000936FCF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		19F2F7B51E98C56000936FCF /* Build configuration list for PBXNativeTarget "wolfmen_killers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				19F2F7B61E98C56000936FCF /* Debug */,
+				19F2F7B71E98C56000936FCF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 19F2F7961E98C56000936FCF /* Project object */;
+}
