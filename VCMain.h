@@ -10,6 +10,6 @@
 
 @interface VCMain : UIViewController
 
-@property (strong, nonatomic) NSString *loginName;
+@property (assign, nonatomic) NSString *loginName;
 
 @end

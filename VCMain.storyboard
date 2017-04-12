@@ -36,15 +36,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="userInfoBack" highlightedImage="userInfoBack" translatesAutoresizingMaskIntoConstraints="NO" id="VBM-Xd-Vgw">
-                                <rect key="frame" x="16" y="149" width="335" height="535"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rha-8h-rh7">
-                                <rect key="frame" x="60" y="199" width="245" height="426"/>
+                                <rect key="frame" x="60" y="199" width="259" height="426"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.96999999999999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <imageView hidden="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="userInfoBack" highlightedImage="userInfoBack" translatesAutoresizingMaskIntoConstraints="NO" id="VBM-Xd-Vgw">
+                                <rect key="frame" x="16" y="152" width="343" height="528"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -92,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xW2-Ai-v4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2087.1999999999998" y="-175.86206896551727"/>
+            <point key="canvasLocation" x="-2029.5999999999999" y="-184.85757121439281"/>
         </scene>
         <!--login-->
         <scene sceneID="w2u-F7-n7F">

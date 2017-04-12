@@ -11,7 +11,7 @@
 @interface VCMain ()
 @property (weak, nonatomic) IBOutlet UIButton *crearButton;
 @property (weak, nonatomic) IBOutlet UIImageView *Img_headImg;
-@property (weak, nonatomic) IBOutlet UILabel *Label_userName;
+@property (assign, nonatomic) IBOutlet UILabel *Label_userName;
 @property (weak, nonatomic) IBOutlet UIView *View_userInfo;
 @property (weak, nonatomic) IBOutlet UIImageView *Img_userInfoBackground;
 
@@ -21,18 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-   // self.navigationController.navigationBarHidden = YES;
-//    UIButton *button = [[UIButton alloc] init];
-//    
-//    [button setTitle:@"adhfkj" forState:UIControlStateNormal];
-//
-//    [button setImage:[UIImage imageNamed:@"new-window"] forState:UIControlStateNormal];
-//    [button sizeToFit];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+
     self.crearButton.titleLabel.numberOfLines = 0;
-     _loginName=nil;
-     _Label_userName.text=self.loginName;
+     self.loginName=nil;
+     //_Label_userName.text=self.loginName;
 }
 
 - (void)didReceiveMemoryWarning {

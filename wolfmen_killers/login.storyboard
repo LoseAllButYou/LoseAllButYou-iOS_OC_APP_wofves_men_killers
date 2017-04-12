@@ -54,6 +54,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="登陆" backgroundImage="ui-button-default"/>
+                                <connections>
+                                    <action selector="pressLogin:" destination="5pN-8V-Urd" eventType="touchUpInside" id="BzP-ov-ym6"/>
+                                    <segue destination="tBu-fS-NdH" kind="show" identifier="mainVC" customClass="CIDoorwaySegue" id="z4Y-t8-rvk"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gw4-Q9-dCm">
                                 <rect key="frame" x="229" y="478" width="75" height="52"/>
@@ -61,7 +65,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="注册" backgroundImage="ui-button-default"/>
                                 <connections>
-                                    <segue destination="kDy-wF-Ak8" kind="presentation" identifier="" customClass="CIDoorwaySegue" id="XSJ-hD-t8p"/>
+                                    <action selector="pressRegist:" destination="5pN-8V-Urd" eventType="touchUpInside" id="5gi-ah-bgy"/>
+                                    <segue destination="kDy-wF-Ak8" kind="presentation" identifier="registVC" customClass="CIDoorwaySegue" id="XSJ-hD-t8p"/>
                                 </connections>
                             </button>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="密    码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLx-Bp-dQr">
@@ -154,7 +159,6 @@
                         <outlet property="Text_loginName" destination="agY-pp-GEC" id="71w-zr-Akb"/>
                         <outlet property="Text_passWord" destination="GRp-IA-ShT" id="2dS-wk-p3Q"/>
                         <outlet property="Text_waring" destination="RZF-oV-b6c" id="EOY-LG-cWc"/>
-                        <segue destination="tBu-fS-NdH" kind="show" identifier="mainVC" customClass="CIDoorwaySegue" id="Uii-hr-cqE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oRZ-Ya-hcZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
