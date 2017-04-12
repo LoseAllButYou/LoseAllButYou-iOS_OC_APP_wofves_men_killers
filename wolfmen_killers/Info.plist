@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
-	<key>CFBundleIconFile</key>
-	<string>icon.png</string>
 	<key>CFBundleDisplayName</key>
 	<string>逗比狼人杀</string>
 	<key>CFBundleExecutable</key>

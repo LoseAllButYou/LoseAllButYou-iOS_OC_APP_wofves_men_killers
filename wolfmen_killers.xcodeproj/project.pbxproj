@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1900510C1E98E21F00D5415A /* VCBegain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1900510A1E98E21F00D5415A /* VCBegain.m */; };
-		194946281E9D229E00D4D984 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 194946271E9D229E00D4D984 /* icon.png */; };
-		1949462C1E9D241A00D4D984 /* welcome1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1949462B1E9D241A00D4D984 /* welcome1.jpg */; };
 		1953DA3D1E9CE74A0097D40F /* VCMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */; };
 		1953DA411E9CF8070097D40F /* VCPrepare.m in Sources */ = {isa = PBXBuildFile; fileRef = 1953DA401E9CF8070097D40F /* VCPrepare.m */; };
 		1953DA431E9CF91D0097D40F /* Prepare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA421E9CF91D0097D40F /* Prepare.storyboard */; };
@@ -29,8 +27,6 @@
 /* Begin PBXFileReference section */
 		190051091E98E21F00D5415A /* VCBegain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCBegain.h; sourceTree = "<group>"; };
 		1900510A1E98E21F00D5415A /* VCBegain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCBegain.m; sourceTree = "<group>"; };
-		194946271E9D229E00D4D984 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = wolfmen_killers/Assets.xcassets/icon.png; sourceTree = "<group>"; };
-		1949462B1E9D241A00D4D984 /* welcome1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = welcome1.jpg; path = wolfmen_killers/Assets.xcassets/welcome1.imageset/welcome1.jpg; sourceTree = "<group>"; };
 		1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VCMain.storyboard; sourceTree = "<group>"; };
 		1953DA3F1E9CF8070097D40F /* VCPrepare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPrepare.h; sourceTree = "<group>"; };
 		1953DA401E9CF8070097D40F /* VCPrepare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPrepare.m; sourceTree = "<group>"; };
@@ -99,8 +95,6 @@
 		19F2F7951E98C56000936FCF = {
 			isa = PBXGroup;
 			children = (
-				1949462B1E9D241A00D4D984 /* welcome1.jpg */,
-				194946271E9D229E00D4D984 /* icon.png */,
 				1953DA3E1E9CEA950097D40F /* storyboard */,
 				19F5D01D1E9A645B00B15A67 /* Animation */,
 				19F5D0141E9A454600B15A67 /* MBHud库 */,
@@ -217,10 +211,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1949462C1E9D241A00D4D984 /* welcome1.jpg in Resources */,
 				199E02F01E98F93900F07F30 /* login.storyboard in Resources */,
 				1953DA431E9CF91D0097D40F /* Prepare.storyboard in Resources */,
-				194946281E9D229E00D4D984 /* icon.png in Resources */,
 				19F2F7B11E98C56000936FCF /* LaunchScreen.storyboard in Resources */,
 				1953DA3D1E9CE74A0097D40F /* VCMain.storyboard in Resources */,
 				19F2F7AE1E98C56000936FCF /* Assets.xcassets in Resources */,
