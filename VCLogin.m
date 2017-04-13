@@ -62,7 +62,7 @@
           dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                //移除提示框遮盖
                [MBProgressHUD hideHUD];
-               [self performSegueWithIdentifier:@"mainVC" sender:nil];
+//               [self performSegueWithIdentifier:@"mainVC" sender:nil];
           });
      }
      else
@@ -138,13 +138,21 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-     
+    
+    //多个按钮需要 判断 准备前 segue.identifier 值
      //nextVC.Label_userName.text=_Text_loginName.text;
-     if([segue.identifier compare:@"mainVC"]==YES)
+//     if([segue.identifier compare:@"mainVC"]==YES)
+    
+        if ([segue.identifier isEqualToString:@"mainVC"])
      {
-          VCMain* nextVC=segue.destinationViewController;
-          
-          nextVC.loginName=[NSString stringWithFormat:@"%@",_Text_loginName.text];
+         UINavigationController *nav = segue.destinationViewController;
+         VCMain* nextVC = (VCMain *)nav.topViewController;
+         
+         if ([nextVC isKindOfClass:[VCMain class]]) {
+             
+             nextVC.loginName=[NSString stringWithFormat:@"%@",_Text_loginName.text];
+         }
+         
      }
      
 }

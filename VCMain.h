@@ -11,5 +11,5 @@
 @interface VCMain : UIViewController
 
 @property (assign, nonatomic) NSString *loginName;
-
+@property (weak,nonatomic) UIPopoverPresentationController* userInfoVC;
 @end

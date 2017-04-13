@@ -9,11 +9,10 @@
 #import "VCMain.h"
 
 @interface VCMain ()
+
 @property (weak, nonatomic) IBOutlet UIButton *crearButton;
 @property (weak, nonatomic) IBOutlet UIImageView *Img_headImg;
 @property (assign, nonatomic) IBOutlet UILabel *Label_userName;
-@property (weak, nonatomic) IBOutlet UIView *View_userInfo;
-@property (weak, nonatomic) IBOutlet UIImageView *Img_userInfoBackground;
 
 @end
 
@@ -23,23 +22,39 @@
     [super viewDidLoad];
 
     self.crearButton.titleLabel.numberOfLines = 0;
-     self.loginName=nil;
-     //_Label_userName.text=self.loginName;
+    //界面载入时 通过上层界面传入的loginName值 读数据库取用户名
+    //未shixian
+     _Label_userName.text=self.loginName;
 }
-
+- (IBAction)tapHeadImg:(id)sender {
+    
+    [self showInfo:(_Label_userName.text)];
+}
+- (IBAction)tapMainBackground:(id)sender {
+    
+}
+//查询 玩家信息
+-(void)showInfo:(NSString*)userName
+{
+    //查询服务器数据库
+    //UIPopoverPresentationController* userInfo=[[UIPopoverPresentationController alloc]initWithPresentedViewController: presentingViewController:self];
+    
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
 }
-*/
+
 
 @end

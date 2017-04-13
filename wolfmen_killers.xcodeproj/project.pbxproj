@@ -36,7 +36,7 @@
 		199E02EF1E98F93900F07F30 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = login.storyboard; path = wolfmen_killers/login.storyboard; sourceTree = "<group>"; };
 		19F2F79E1E98C56000936FCF /* wolfmen_killers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wolfmen_killers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F2F7A21E98C56000936FCF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		19F2F7A41E98C56000936FCF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		19F2F7A41E98C56000936FCF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = wolfmen_killers/AppDelegate.h; sourceTree = "<group>"; };
 		19F2F7A51E98C56000936FCF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		19F2F7AD1E98C56000936FCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19F2F7B01E98C56000936FCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -103,6 +103,7 @@
 				19F5D0141E9A454600B15A67 /* MBHud库 */,
 				190051031E98D5AB00D5415A /* 界面 */,
 				19F2F7A01E98C56000936FCF /* wolfmen_killers */,
+				19F2F7A41E98C56000936FCF /* AppDelegate.h */,
 				19F2F79F1E98C56000936FCF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -118,7 +119,6 @@
 		19F2F7A01E98C56000936FCF /* wolfmen_killers */ = {
 			isa = PBXGroup;
 			children = (
-				19F2F7A41E98C56000936FCF /* AppDelegate.h */,
 				19F2F7A51E98C56000936FCF /* AppDelegate.m */,
 				19F2F7AD1E98C56000936FCF /* Assets.xcassets */,
 				19F2F7B21E98C56000936FCF /* Info.plist */,
