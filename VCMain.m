@@ -7,7 +7,7 @@
 //
 
 #import "VCMain.h"
-
+#import "VCUserInfo.h"
 @interface VCMain ()
 
 @property (weak, nonatomic) IBOutlet UIButton *crearButton;
@@ -29,6 +29,7 @@
 - (IBAction)tapHeadImg:(id)sender {
     
     [self showInfo:(_Label_userName.text)];
+     
 }
 - (IBAction)tapMainBackground:(id)sender {
     
@@ -53,8 +54,16 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
+     if ([segue.identifier  isEqual: @"userInfoWin"]) {
+          VCUserInfo* userInfo = segue.destinationViewController ;
+          userInfo .modalPresentationStyle = UIModalPresentationPopover;
+          userInfo .popoverPresentationController.delegate = self;
+          //[self.view addSubview:userInfo.view];
+     }
 }
-
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
+{
+     return UIModalPresentationNone;
+}
 
 @end

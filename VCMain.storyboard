@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SPq-al-q6k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SPq-al-q6k">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -12,14 +12,13 @@
         <!--游戏准备-->
         <scene sceneID="ySH-fl-nvU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xW2-Ai-v4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wnw-oN-n6z" customClass="VCMain" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OR2-2n-Av0"/>
                         <viewControllerLayoutGuide type="bottom" id="Em3-3v-dLM"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Pmh-3M-ovn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="prepare_back" translatesAutoresizingMaskIntoConstraints="NO" id="dHo-DA-e0a">
@@ -30,12 +29,12 @@
                                     <outletCollection property="gestureRecognizers" destination="puJ-iG-HUH" appends="YES" id="75m-AR-eDB"/>
                                 </connections>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="headImage" translatesAutoresizingMaskIntoConstraints="NO" id="wxS-cJ-XQn">
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="headImage" translatesAutoresizingMaskIntoConstraints="NO" id="wxS-cJ-XQn">
                                 <rect key="frame" x="7" y="82" width="67" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="79X-oR-6OR" appends="YES" id="WZn-74-oPA"/>
+                                    <outletCollection property="gestureRecognizers" destination="79X-oR-6OR" appends="YES" id="tsq-Ws-mdI"/>
                                 </connections>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqs-QL-t3m">
@@ -45,11 +44,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pD5-7o-CQN">
-                                <rect key="frame" x="213" y="264" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -57,7 +51,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="游戏准备" id="WEe-ZN-OIj">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="WGg-EE-Ybl">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YOw-nD-RVg">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YOw-nD-RVg">
                                 <rect key="frame" x="16" y="-2" width="90" height="48"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="注销" image="login_out48">
@@ -70,7 +64,7 @@
                             <color key="tintColor" red="0.081078551710000002" green="0.34183835979999999" blue="0.16827276350000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" id="IaD-eX-xew">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ykD-9P-4K0">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ykD-9P-4K0">
                                 <rect key="frame" x="311" y="-2" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -86,24 +80,25 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="Img_headImg" destination="wxS-cJ-XQn" id="38h-cS-twA"/>
                         <outlet property="Label_userName" destination="Sqs-QL-t3m" id="0sl-lY-GC4"/>
                         <outlet property="crearButton" destination="ykD-9P-4K0" id="zLP-xg-D0u"/>
                     </connections>
                 </viewController>
-                <tapGestureRecognizer id="79X-oR-6OR" userLabel="Tap Head Img">
-                    <connections>
-                        <action selector="tapHeadImg:" destination="Wnw-oN-n6z" id="myP-Qi-eeU"/>
-                        <segue destination="zcE-d0-dfW" kind="popoverPresentation" identifier="userInfoWin" popoverAnchorView="dHo-DA-e0a" id="jgQ-Lk-tOL">
-                            <popoverArrowDirection key="popoverArrowDirection"/>
-                        </segue>
-                    </connections>
-                </tapGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xW2-Ai-v4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="puJ-iG-HUH" userLabel="Tap Main Background">
                     <connections>
                         <action selector="tapMainBackground:" destination="Wnw-oN-n6z" id="kuT-bO-Jm2"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="79X-oR-6OR" userLabel="Tap Head Img">
+                    <connections>
+                        <action selector="tapHeadImg:" destination="Wnw-oN-n6z" id="myP-Qi-eeU"/>
+                        <segue destination="s8G-za-acW" kind="popoverPresentation" identifier="userInfoWin" popoverAnchorView="wxS-cJ-XQn" id="W7x-XN-B9s">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
+                        </segue>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -117,6 +112,31 @@
             </objects>
             <point key="canvasLocation" x="-1509" y="-496"/>
         </scene>
+        <!--User Info-->
+        <scene sceneID="fLG-oz-ugE">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pSH-HJ-4fb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController modalPresentationStyle="currentContext" id="s8G-za-acW" customClass="VCUserInfo" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bO1-RQ-U8l"/>
+                        <viewControllerLayoutGuide type="bottom" id="uCZ-1d-Q9O"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="bottom" id="vHa-vs-vgY">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.81757038831710815" green="0.98252612352371216" blue="0.0057536945678293705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" none="YES"/>
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="400"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="-1253" y="-179"/>
+        </scene>
         <!--Prepare-->
         <scene sceneID="kwm-Pt-bfc">
             <objects>
@@ -126,35 +146,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zVy-Ky-Puv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1413" y="74"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="QPZ-PD-T8q">
-            <objects>
-                <viewController id="zcE-d0-dfW" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fno-ab-17u"/>
-                        <viewControllerLayoutGuide type="bottom" id="QwJ-Me-aY9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="siP-fF-9ru">
-                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GfP-Ke-KAu">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="wocao " id="kEW-OF-XZ3"/>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="100" height="100"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VoL-YL-X4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1071" y="-165"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Up-gX-dv8">
@@ -181,4 +172,5 @@
         <image name="new-window" width="128" height="128"/>
         <image name="prepare_back" width="1024" height="819"/>
     </resources>
+    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

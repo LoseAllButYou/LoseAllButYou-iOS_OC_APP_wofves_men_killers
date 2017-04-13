@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1900510C1E98E21F00D5415A /* VCBegain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1900510A1E98E21F00D5415A /* VCBegain.m */; };
 		191924191E9E64F500F8B759 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 191924181E9E64F500F8B759 /* icon.png */; };
+		1919241C1E9FB2F200F8B759 /* VCUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1919241B1E9FB2F200F8B759 /* VCUserInfo.m */; };
 		1953DA3D1E9CE74A0097D40F /* VCMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */; };
 		1953DA411E9CF8070097D40F /* VCPrepare.m in Sources */ = {isa = PBXBuildFile; fileRef = 1953DA401E9CF8070097D40F /* VCPrepare.m */; };
 		1953DA431E9CF91D0097D40F /* Prepare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA421E9CF91D0097D40F /* Prepare.storyboard */; };
@@ -29,6 +30,8 @@
 		190051091E98E21F00D5415A /* VCBegain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCBegain.h; sourceTree = "<group>"; };
 		1900510A1E98E21F00D5415A /* VCBegain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCBegain.m; sourceTree = "<group>"; };
 		191924181E9E64F500F8B759 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = wolfmen_killers/Assets.xcassets/icon.png; sourceTree = "<group>"; };
+		1919241A1E9FB2F200F8B759 /* VCUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCUserInfo.h; sourceTree = "<group>"; };
+		1919241B1E9FB2F200F8B759 /* VCUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCUserInfo.m; sourceTree = "<group>"; };
 		1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VCMain.storyboard; sourceTree = "<group>"; };
 		1953DA3F1E9CF8070097D40F /* VCPrepare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPrepare.h; sourceTree = "<group>"; };
 		1953DA401E9CF8070097D40F /* VCPrepare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPrepare.m; sourceTree = "<group>"; };
@@ -73,6 +76,8 @@
 				1953DA401E9CF8070097D40F /* VCPrepare.m */,
 				19F5D00E1E9A432C00B15A67 /* VCMain.h */,
 				19F5D00F1E9A432C00B15A67 /* VCMain.m */,
+				1919241A1E9FB2F200F8B759 /* VCUserInfo.h */,
+				1919241B1E9FB2F200F8B759 /* VCUserInfo.m */,
 				19F5CFF91E991C4F00B15A67 /* VCLogin.h */,
 				19F5CFFA1E991C4F00B15A67 /* VCLogin.m */,
 				19F5CFFC1E99244B00B15A67 /* VCRegist.h */,
@@ -237,6 +242,7 @@
 				19F5D0101E9A432C00B15A67 /* VCMain.m in Sources */,
 				19F5D01A1E9A464100B15A67 /* MBProgressHUD+MJ.m in Sources */,
 				19F2F7A31E98C56000936FCF /* main.m in Sources */,
+				1919241C1E9FB2F200F8B759 /* VCUserInfo.m in Sources */,
 				19F5CFFB1E991C4F00B15A67 /* VCLogin.m in Sources */,
 				19F5D0191E9A464100B15A67 /* MBProgressHUD.m in Sources */,
 				19F5D0201E9A64D400B15A67 /* CIDoorwaySegue.m in Sources */,
