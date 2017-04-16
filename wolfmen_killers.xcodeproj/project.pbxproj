@@ -10,13 +10,22 @@
 		1900510C1E98E21F00D5415A /* VCBegain.m in Sources */ = {isa = PBXBuildFile; fileRef = 1900510A1E98E21F00D5415A /* VCBegain.m */; };
 		191924191E9E64F500F8B759 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 191924181E9E64F500F8B759 /* icon.png */; };
 		1919241C1E9FB2F200F8B759 /* VCUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1919241B1E9FB2F200F8B759 /* VCUserInfo.m */; };
+		1919241E1EA1EA6900F8B759 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1919241D1EA1EA6900F8B759 /* Assets.xcassets */; };
+		1919242A1EA217FB00F8B759 /* VCFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 191924291EA217FB00F8B759 /* VCFriend.m */; };
+		1919242D1EA220F900F8B759 /* VCPrepare.m in Sources */ = {isa = PBXBuildFile; fileRef = 1919242C1EA220F900F8B759 /* VCPrepare.m */; };
+		191924301EA25D3100F8B759 /* gameElementDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1919242E1EA25D3100F8B759 /* gameElementDB.xcdatamodeld */; };
+		191924341EA3597A00F8B759 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 191924331EA3597A00F8B759 /* libsqlite3.tbd */; };
+		191924371EA35EE400F8B759 /* 123.sql in Resources */ = {isa = PBXBuildFile; fileRef = 191924361EA35EE400F8B759 /* 123.sql */; };
+		1919243A1EA3624500F8B759 /* VCHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 191924391EA3624500F8B759 /* VCHistory.m */; };
+		1919243C1EA3627200F8B759 /* history.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1919243B1EA3627200F8B759 /* history.storyboard */; };
+		1919243E1EA362DF00F8B759 /* friend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1919243D1EA362DF00F8B759 /* friend.storyboard */; };
+		191924401EA3636D00F8B759 /* help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1919243F1EA3636D00F8B759 /* help.storyboard */; };
+		191924431EA3638A00F8B759 /* VCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 191924421EA3638A00F8B759 /* VCHelp.m */; };
 		1953DA3D1E9CE74A0097D40F /* VCMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */; };
-		1953DA411E9CF8070097D40F /* VCPrepare.m in Sources */ = {isa = PBXBuildFile; fileRef = 1953DA401E9CF8070097D40F /* VCPrepare.m */; };
 		1953DA431E9CF91D0097D40F /* Prepare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA421E9CF91D0097D40F /* Prepare.storyboard */; };
 		199E02F01E98F93900F07F30 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 199E02EF1E98F93900F07F30 /* login.storyboard */; };
 		19F2F7A31E98C56000936FCF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F7A21E98C56000936FCF /* main.m */; };
 		19F2F7A61E98C56000936FCF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F7A51E98C56000936FCF /* AppDelegate.m */; };
-		19F2F7AE1E98C56000936FCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 19F2F7AD1E98C56000936FCF /* Assets.xcassets */; };
 		19F2F7B11E98C56000936FCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19F2F7AF1E98C56000936FCF /* LaunchScreen.storyboard */; };
 		19F5CFFB1E991C4F00B15A67 /* VCLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F5CFFA1E991C4F00B15A67 /* VCLogin.m */; };
 		19F5CFFE1E99244B00B15A67 /* VCRegist.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F5CFFD1E99244B00B15A67 /* VCRegist.m */; };
@@ -32,16 +41,28 @@
 		191924181E9E64F500F8B759 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = wolfmen_killers/Assets.xcassets/icon.png; sourceTree = "<group>"; };
 		1919241A1E9FB2F200F8B759 /* VCUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCUserInfo.h; sourceTree = "<group>"; };
 		1919241B1E9FB2F200F8B759 /* VCUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCUserInfo.m; sourceTree = "<group>"; };
+		1919241D1EA1EA6900F8B759 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		191924281EA217FB00F8B759 /* VCFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCFriend.h; sourceTree = "<group>"; };
+		191924291EA217FB00F8B759 /* VCFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFriend.m; sourceTree = "<group>"; };
+		1919242B1EA220F900F8B759 /* VCPrepare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPrepare.h; sourceTree = "<group>"; };
+		1919242C1EA220F900F8B759 /* VCPrepare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPrepare.m; sourceTree = "<group>"; };
+		1919242F1EA25D3100F8B759 /* gameElementDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = gameElementDB.xcdatamodel; sourceTree = "<group>"; };
+		191924331EA3597A00F8B759 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		191924361EA35EE400F8B759 /* 123.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 123.sql; sourceTree = "<group>"; };
+		191924381EA3624500F8B759 /* VCHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHistory.h; sourceTree = "<group>"; };
+		191924391EA3624500F8B759 /* VCHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHistory.m; sourceTree = "<group>"; };
+		1919243B1EA3627200F8B759 /* history.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = history.storyboard; sourceTree = "<group>"; };
+		1919243D1EA362DF00F8B759 /* friend.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = friend.storyboard; sourceTree = "<group>"; };
+		1919243F1EA3636D00F8B759 /* help.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = help.storyboard; sourceTree = "<group>"; };
+		191924411EA3638A00F8B759 /* VCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHelp.h; sourceTree = "<group>"; };
+		191924421EA3638A00F8B759 /* VCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHelp.m; sourceTree = "<group>"; };
 		1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VCMain.storyboard; sourceTree = "<group>"; };
-		1953DA3F1E9CF8070097D40F /* VCPrepare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPrepare.h; sourceTree = "<group>"; };
-		1953DA401E9CF8070097D40F /* VCPrepare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPrepare.m; sourceTree = "<group>"; };
 		1953DA421E9CF91D0097D40F /* Prepare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Prepare.storyboard; path = wolfmen_killers/Prepare.storyboard; sourceTree = "<group>"; };
 		199E02EF1E98F93900F07F30 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = login.storyboard; path = wolfmen_killers/login.storyboard; sourceTree = "<group>"; };
 		19F2F79E1E98C56000936FCF /* wolfmen_killers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wolfmen_killers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F2F7A21E98C56000936FCF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		19F2F7A41E98C56000936FCF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = wolfmen_killers/AppDelegate.h; sourceTree = "<group>"; };
 		19F2F7A51E98C56000936FCF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		19F2F7AD1E98C56000936FCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19F2F7B01E98C56000936FCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19F2F7B21E98C56000936FCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		19F5CFF91E991C4F00B15A67 /* VCLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCLogin.h; sourceTree = "<group>"; };
@@ -63,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				191924341EA3597A00F8B759 /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,8 +94,14 @@
 		190051031E98D5AB00D5415A /* 界面 */ = {
 			isa = PBXGroup;
 			children = (
-				1953DA3F1E9CF8070097D40F /* VCPrepare.h */,
-				1953DA401E9CF8070097D40F /* VCPrepare.m */,
+				191924411EA3638A00F8B759 /* VCHelp.h */,
+				191924421EA3638A00F8B759 /* VCHelp.m */,
+				191924381EA3624500F8B759 /* VCHistory.h */,
+				191924391EA3624500F8B759 /* VCHistory.m */,
+				1919242B1EA220F900F8B759 /* VCPrepare.h */,
+				1919242C1EA220F900F8B759 /* VCPrepare.m */,
+				191924281EA217FB00F8B759 /* VCFriend.h */,
+				191924291EA217FB00F8B759 /* VCFriend.m */,
 				19F5D00E1E9A432C00B15A67 /* VCMain.h */,
 				19F5D00F1E9A432C00B15A67 /* VCMain.m */,
 				1919241A1E9FB2F200F8B759 /* VCUserInfo.h */,
@@ -88,11 +116,30 @@
 			name = "界面";
 			sourceTree = "<group>";
 		};
+		191924311EA25D6B00F8B759 /* coreData */ = {
+			isa = PBXGroup;
+			children = (
+				1919242E1EA25D3100F8B759 /* gameElementDB.xcdatamodeld */,
+			);
+			name = coreData;
+			sourceTree = "<group>";
+		};
+		191924321EA3597A00F8B759 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				191924331EA3597A00F8B759 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1953DA3E1E9CEA950097D40F /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
 				199E02EF1E98F93900F07F30 /* login.storyboard */,
 				1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */,
+				1919243F1EA3636D00F8B759 /* help.storyboard */,
+				1919243D1EA362DF00F8B759 /* friend.storyboard */,
+				1919243B1EA3627200F8B759 /* history.storyboard */,
 				19F2F7AF1E98C56000936FCF /* LaunchScreen.storyboard */,
 				1953DA421E9CF91D0097D40F /* Prepare.storyboard */,
 			);
@@ -102,6 +149,8 @@
 		19F2F7951E98C56000936FCF = {
 			isa = PBXGroup;
 			children = (
+				191924361EA35EE400F8B759 /* 123.sql */,
+				191924311EA25D6B00F8B759 /* coreData */,
 				191924181E9E64F500F8B759 /* icon.png */,
 				1953DA3E1E9CEA950097D40F /* storyboard */,
 				19F5D01D1E9A645B00B15A67 /* Animation */,
@@ -110,6 +159,7 @@
 				19F2F7A01E98C56000936FCF /* wolfmen_killers */,
 				19F2F7A41E98C56000936FCF /* AppDelegate.h */,
 				19F2F79F1E98C56000936FCF /* Products */,
+				191924321EA3597A00F8B759 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,8 +175,8 @@
 			isa = PBXGroup;
 			children = (
 				19F2F7A51E98C56000936FCF /* AppDelegate.m */,
-				19F2F7AD1E98C56000936FCF /* Assets.xcassets */,
 				19F2F7B21E98C56000936FCF /* Info.plist */,
+				1919241D1EA1EA6900F8B759 /* Assets.xcassets */,
 				19F2F7A11E98C56000936FCF /* Supporting Files */,
 			);
 			path = wolfmen_killers;
@@ -220,11 +270,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				199E02F01E98F93900F07F30 /* login.storyboard in Resources */,
+				1919243E1EA362DF00F8B759 /* friend.storyboard in Resources */,
 				1953DA431E9CF91D0097D40F /* Prepare.storyboard in Resources */,
 				191924191E9E64F500F8B759 /* icon.png in Resources */,
+				1919243C1EA3627200F8B759 /* history.storyboard in Resources */,
+				191924401EA3636D00F8B759 /* help.storyboard in Resources */,
 				19F2F7B11E98C56000936FCF /* LaunchScreen.storyboard in Resources */,
+				1919241E1EA1EA6900F8B759 /* Assets.xcassets in Resources */,
 				1953DA3D1E9CE74A0097D40F /* VCMain.storyboard in Resources */,
-				19F2F7AE1E98C56000936FCF /* Assets.xcassets in Resources */,
+				191924371EA35EE400F8B759 /* 123.sql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,15 +290,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				19F5CFFE1E99244B00B15A67 /* VCRegist.m in Sources */,
+				1919243A1EA3624500F8B759 /* VCHistory.m in Sources */,
 				1900510C1E98E21F00D5415A /* VCBegain.m in Sources */,
-				1953DA411E9CF8070097D40F /* VCPrepare.m in Sources */,
 				19F2F7A61E98C56000936FCF /* AppDelegate.m in Sources */,
 				19F5D0101E9A432C00B15A67 /* VCMain.m in Sources */,
 				19F5D01A1E9A464100B15A67 /* MBProgressHUD+MJ.m in Sources */,
+				191924301EA25D3100F8B759 /* gameElementDB.xcdatamodeld in Sources */,
+				1919242A1EA217FB00F8B759 /* VCFriend.m in Sources */,
 				19F2F7A31E98C56000936FCF /* main.m in Sources */,
 				1919241C1E9FB2F200F8B759 /* VCUserInfo.m in Sources */,
+				191924431EA3638A00F8B759 /* VCHelp.m in Sources */,
 				19F5CFFB1E991C4F00B15A67 /* VCLogin.m in Sources */,
 				19F5D0191E9A464100B15A67 /* MBProgressHUD.m in Sources */,
+				1919242D1EA220F900F8B759 /* VCPrepare.m in Sources */,
 				19F5D0201E9A64D400B15A67 /* CIDoorwaySegue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,6 +461,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1919242E1EA25D3100F8B759 /* gameElementDB.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1919242F1EA25D3100F8B759 /* gameElementDB.xcdatamodel */,
+			);
+			currentVersion = 1919242F1EA25D3100F8B759 /* gameElementDB.xcdatamodel */;
+			name = gameElementDB.xcdatamodeld;
+			path = coreData/gameElementDB.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 19F2F7961E98C56000936FCF /* Project object */;
 }

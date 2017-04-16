@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UkE-Hu-YyL">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--游戏帮助(流程简介)-->
+        <scene sceneID="Yl5-44-gZv">
+            <objects>
+                <viewController id="R0q-2X-A2t" customClass="VCHelp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TEe-qa-dW4"/>
+                        <viewControllerLayoutGuide type="bottom" id="gU6-5B-Gbw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lrv-kT-vG8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_back" translatesAutoresizingMaskIntoConstraints="NO" id="UBM-gR-vQ4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" minimumZoomScale="0.0" maximumZoomScale="0.0" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Ra5-Hd-nUn">
+                                <rect key="frame" x="0.0" y="49" width="375" height="574"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" maximumZoomScale="0.0" keyboardDismissMode="onDrag" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pd-kx-WPs">
+                                        <rect key="frame" x="0.0" y="15" width="375" height="551"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <mutableString key="text">狼人 The Werewolves of Millers Hollow 
+游戏人数：8-18 
+玩家們像是演員一般扮演著自己的身份，尤其是狼人更加要在眾多人類當中求生存，因為他們的強大能力只有在夜晚才能生成邪惡的化身，白天的時候必須在其他村民行動或是話語之中找尋漏洞，在接下來的夜晚繼續屠殺所有活人！！！ 
+共24张身份牌，包括： 
+4张狼人(Werewolves) 
+除了狼人之外，其余身份都是村人(Townsfolk)，村人又分为八种 
+13张村民(Ordinary Townsfolk/villager) 
+1张先知(Fortune Teller/Seer) 
+1张小偷(Thief) 
+1张猎人(Hunter) 
+1张丘比特(Cupido) 
+1张女巫(Witch) 
+1张小女孩(Little Girl) 
+1张村长(Sheriff) 
+
+村民的目标：杀死所有的狼人 
+狼人的目标：杀死所有的村民 
+
+各种人物的能力： 
+狼人：天黑时可以睁眼，杀一个人。 
+
+村民：没有任何特殊能力，天黑时始终闭着眼睛。 
+
+先知：天黑时可以睁眼，查看一名玩家的身份。 
+
+猎人：如果猎人死掉，他可以进行报复。猎人临死前可以进行射击，指定任意一个活着的玩家，该玩家立即死掉（出局）。 
+
+丘比特：在游戏的第一个晚上，指定两名玩家，这两人立即“坠入爱河”，成为两名情侣。丘比特可以指定自己为两名情侣之一。两名情侣中的一个死去时，另一名也立即死去。投票时，一名情侣不得把票投给另一名情侣。 
+如果两名情侣，一个是狼人，另一个是村人，这两名玩家游戏的目标就改变了，他们要把其余所有玩家都杀死（包括狼人和村人）。 
+
+女巫：有两种药剂，一种是解药，可以救人，让天黑时被狼人杀死的人活过来；另一种是毒药，在天黑时可以杀死一个人。在整个游戏过程中，每一种药剂只能使用一次。(我们玩时都是只能有一种解药，要不救人，要不杀人，另外如果女巫自己被杀不能自己救自己，但女巫可以自杀。) 
+
+小女孩：在夜晚，狼人睁眼的时候，小女孩可以悄悄睁眼，看谁是狼人。如果在夜晚，狼人发现了小女孩，小女孩立即死亡，那个晚上，狼人就不能杀其他人，只把小女孩杀死。当然狼人也可以选择不杀死小女孩，那样会很危险。 
+
+村长：村长的身份不是通过发牌得到的，而是由村人投票选举出来的。白天投票时，村长的一票以2票来计算。如果村长被杀，则村长临死时可以指定一名活着的玩家作为他的继任者，担任村长。 
+选村长的时机大家可以自己定，我们是在第一天大家各自发表意见之后，先选举村长。 
+
+小偷：如果使用小偷，则在游戏开始时，多加入两张村民卡。这样玩家拿取身份牌后，会多出两张牌，牌面向下放在桌子中央。在第一个晚上，小偷观看这两张牌，可以把自己的身份牌和其中一张交换，此后小偷就扮演交换过来的身份，当然也可以不交换，不交换的话，接下来小偷就和普通村民没区别。但是，如果这两张牌都是狼人，则小偷必须把自己的身份牌和其中一张交换，也就是小偷必须扮演狼人。 
+
+游戏中，狼人、先知、村民是必须要使用的，其余角色根据游戏人数可适当加入（增加其余角色，下表中村民数量相应减少）。 
+基本配置： 
+玩家人数 狼人数量 先知数量 村民数量 
+8 2 1 5 
+9 2 1 6 
+10 2 1 7 
+11 2 1 8 
+12 3 1 8 
+13 3 1 9 
+14 3 1 10 
+15 3 1 11 
+16 3 1 12 
+17 3 1 13 
+18 4 1 13 
+
+游戏进程： 
+玩家选出一名法官（随机、投票或者以其它方式选出），法官必须熟悉游戏规则。 
+法官只负责游戏的进行，并不参与游戏，亦不属于狼人或村人。 
+法官根据玩家人数以及使用的身份牌的情况，拿出一定数量的身份牌，牌面向下，分发给各个玩家，每人一张。每个玩家看了自己的身份牌后，将身份牌牌面向下置于自己面前。 
+如果使用村长，则玩家要投票选出一名村长。被选作村长的玩家就有了2张身份牌，一张牌面向下放在自己面前（法官发的），另一张是村长牌（玩家选出来的），村长身份公开，投票时1票当作2票计算。 
+法官宣布“天黑请闭眼”，此时所有玩家都闭眼，进入天黑（夜晚）阶段。 
+1 法官宣布小偷请睁眼，小偷睁眼，看桌子中央多出来的两张牌，小偷可以交换身份或者不交换（见小偷能力的说明）。结束后，法官宣布小偷请闭眼，小偷闭眼。 
+2 法官宣丘比特请睁眼，丘比特睁眼并指定两名玩家成为情侣。随后法官宣布丘比特闭眼，丘比特闭上眼睛。法官悄悄走到两名情侣身边，推一下每一名情侣的肩膀， 
+3 法官宣布相爱的人请睁眼，此时两名情侣睁眼，互相认识，但并不知道对方身份。接着法官宣布情侣请闭眼。 
+第1-3步只有在第一个夜晚才会出现。如果没有使用小偷或丘比特，则上面相应的阶段就直接跳过。（我们玩时是完全按顺序执行的，即使没有人，除非该名角色死了之后，才跳过步骤。） 
+4 法官宣布先知请睁眼，先知睁眼指定一名玩家，法官把该玩家的身份牌给先知看，看完后身份牌放回原处，牌面向下。随后法官宣布先知闭眼。 
+5 法官宣布狼人睁眼，狼人睁眼指定一名玩家，该玩家在天亮时会死去。如果使用了小女孩，则小女孩可以偷看（见小女孩能力的说明）。随后法官宣布狼人闭眼。 
+6 法官宣布女巫睁眼，法官用手势告诉女巫刚才狼人杀死的是谁。女巫可以使用药剂，也可以不使用。如果女巫要使用药剂，则拇指向上表示用解药，救刚才被狼人杀死的人；拇指向下表示使用毒药，并且用手势告诉法官，要在哪位玩家身上使用毒药。被使用了毒药的玩家，天亮时死去。随后法官宣布女巫闭眼。 
+7 法官宣布“天亮了，所有人睁眼”。此时进入白天阶段。玩家睁眼后，法官宣布昨晚死去的人是谁（也可能没有人死去）。 
+如果猎人被杀，则猎人立即进行报复，指定一名玩家，该玩家立即死去。 
+如果爱人中的一个被杀，则另一名爱人立即死去。 
+死去的玩家，都要将身份牌翻开，然后出局，退出游戏，此后不得与其他玩家有任何交流。
+8 场上活着的玩家进行讨论，决定白天要处死谁。 
+9 讨论结束，开始投票。所有玩家都伸出手，法官一声令下，玩家同时把手指向自己心目中要处死的目标，被指得最多的玩家（村长的1票算作2票）被投票出局。出局玩家翻开自己的身份牌，退出游戏，此后不得与其他玩家有任何交流。如果投票出现平局，则没有人出局。 
+10 法官宣布“天黑请闭眼”，所有人闭上眼睛。接着游戏跳回到前面的第4步（先知睁眼阶段），并按照这个顺序循环往复进行，直到游戏结束。 
+
+游戏结束： 
+A 村人杀死所有狼人，村人获胜。 
+B 狼人杀死所有村人，狼人获胜。 
+C 如果两名爱人，一个是狼人，一个是村人，则当他们成为最后活着的两名玩家，其余玩家都死去时，爱人获胜。 
+
+变体规则： 
+每当有玩家出局，不得翻开身份牌。 
+第4步，先知不能看其他玩家的身份牌，而是指定一名玩家，法官用手势告诉先知，该玩家是不是狼人（拇指向上表示是狼人，拇指向下表示不是狼人）。 
+狼人取胜的条件为：场上活着的狼人数量和活着的村人数量相等。 
+第8步，玩家进行讨论，可以从刚才天黑时被杀的玩家左手边的玩家开始，按照顺时针方向，轮流发言，玩家之间不得对话，一名玩家发言时，其余玩家不得说话。 
+第9步，白天投票时，可以从刚才天黑时被杀的玩家左手边的玩家开始，同意处死该玩家的人举手，然后再按照顺时针方向，一个一个玩家轮过来，得票最多的玩家出局。每名玩家只能举手一次，也可不举手，算弃权。平局时，得票数相同的玩家要再次发言，轮流发言一次，随后便再次投票。 
+第9步，白天投票时，法官询问每位玩家，决定把票投给谁（要处死谁）。询问的顺序是从上一个被杀的玩家的左手边的玩家开始，按照顺时针顺序。某位玩家一旦得票，法官就在该玩家面前放一张“愤怒的暴民”卡。最高票（得到最多张“愤怒的暴民”卡）的两位（如果平手则可能是两位以上）玩家成为“候选人”，候选人可以再次发言，为自己辩解。发言完毕，法官收回卡片，其他未成为候选人的玩家再次进行表决（用同样的方法）。得到最多票的玩家被处死；如果还是平手，则投票过程必须重复。若连续出现平局，法官可以随机选择一个人处死。 
+
+
+新月扩展中有五个新角色，要剪下来贴在狼人基本版的普通村民身份牌中央。 
+
+Village Idiot 白痴：如果有村民投票给白痴，则白痴翻开他的身份牌。在此之后，白痴继续游戏，但不能再投票。 
+狼人可以杀掉白痴，猎人也可以射杀白痴。 
+如果白痴是村长，则当白痴失去投票资格之后，村长就没有实际作用了。 
+
+Elder 长者：有两条命。狼人第一次杀长者时，长者不会死，此时法官不得翻开长者的身份牌。只有当狼人第二次杀长者时，他才会死。 
+女巫的毒药、猎人的射击，都只需要一次就可以让长者死去。白天长者也可以被投票处死，也只需要一次。如果上面这三种情况之一（女巫、猎人、投票杀死长者）发生，则所有村人失去他们的特殊能力，一直到游戏结束。 
+如果长者被女巫的解药救过来，则长者只剩下一条命。 
+变体规则：女巫、猎人、投票杀死长者发生时，如果白痴的身份牌已经翻开了，则白痴将同长者一起死去。 
+
+Scapegoat 替罪羊：白天投票如果出现平局，则长者将会死去，得票平手的玩家不会死。因此长者要避免出现平票的局面。长者死之前，可以指定下一天投票，哪些玩家可以投票，哪些玩家不得投票。 
+如果长者死前只指定了一名玩家，让他可以在下一天投票，则该玩家很可能在接下来的晚上被狼人杀死，于是下一天就没有人能够投票了。 
+
+Defender 守护者：每个晚上，守护者在狼人之前被唤醒。守护者指定一名玩家，该玩家在那个晚上受到保护，不会死。如果接下来狼人刚好选择了守护者要保护的玩家，则那个玩家不会死。 
+守护者可以保护自己。守护者不得连续保护同一个人两次。如果守护者保护的人是小女孩，则保护不会生效。 
+
+Piper 乐师：每个晚上，乐师被唤醒，指定两名玩家。法官把这两名玩家的肩膀碰一下，这两名玩家已经被施了魔法。随后乐师闭眼。接着法官让所有被乐师施过魔法的人（不论是当晚的还是之前的）睁眼，他们可以知道哪些人已经被乐师施了魔法，接着他们闭眼。 
+场上活着的玩家，如果全都被乐师施过魔法，则乐师获胜，其余玩家都输掉。这种情况可能会在某次投票之后发生，或者狼人杀了人之后。 
+乐师不得对自己施魔法。被施了魔法的玩家仍然扮演他们的角色，仍然具有角色的特殊能力。魔法不会在两名爱人之间传播。 
+
+
+夜晚法官唤醒人物的顺序 
+1 小偷（仅第一晚） 
+2 丘比特（仅第一晚） 
+3 情侣（仅第一晚） 
+4 守护者 
+5 先知 
+6 狼人/小女孩 
+7 女巫 
+8 乐师 
+
+新月中最大的变化就是加入了事件卡，在每天开始之前先翻开一张，按事件卡上的说明来执行，比如： 
+
+“在第一个晚上，所有人闭眼，然后游戏中第一个死去的玩家睁眼，指定一名非狼人的玩家，该玩家睁眼，法官秘密指出狼人是谁。这名玩家成为狼人的同盟者。狼人的同盟者在接下来的游戏中仍然扮演原来的角色，不和狼人一起在夜晚睁眼，但他站在狼人一边，若狼人获胜，该玩家也获胜。”
+</mutableString>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="流程简介" image="text_page" badgeValue="new" id="vPq-sE-Cmc"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="游戏帮助(流程简介)" id="Xb0-cd-zed">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="1D1-ZP-sb9"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ENH-xM-Ryt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-492" y="-58.020989505247378"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Jtj-kt-1cg">
+            <objects>
+                <tabBarController id="UkE-Hu-YyL" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="rrB-Zb-VuI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="R0q-2X-A2t" kind="relationship" relationship="viewControllers" id="L2K-to-P92"/>
+                        <segue destination="3On-2J-EKW" kind="relationship" relationship="viewControllers" id="2p0-Rt-bju"/>
+                        <segue destination="GmH-OC-rkw" kind="relationship" relationship="viewControllers" id="qFd-RB-8Ey"/>
+                        <segue destination="608-or-RyY" kind="relationship" relationship="viewControllers" id="VyE-yO-KLZ"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LIo-Cg-dVi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1457" y="-47"/>
+        </scene>
+        <!--身份介绍-->
+        <scene sceneID="Rdw-10-BMB">
+            <objects>
+                <viewController id="3On-2J-EKW" customClass="VCHelp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aXd-Pj-4Vy"/>
+                        <viewControllerLayoutGuide type="bottom" id="7bP-1q-ZfF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t48-xy-iNf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_back" translatesAutoresizingMaskIntoConstraints="NO" id="8Su-CY-iPp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" minimumZoomScale="0.0" maximumZoomScale="0.0" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="WRP-J0-acN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7pi-8U-yPa">
+                                        <rect key="frame" x="0.0" y="64" width="375" height="555"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <mutableString key="text">游戏角色说明
+
+　　1、狼人(简称LR)：每晚可以杀死一位玩家。
+
+　　2、村民(简称CM)：没有任何特殊功能。
+
+　　3、先知(简称XZ)：每晚可以确认一位玩家的真实身份，但是他死了并不代表狼人赢。（注：第一天晚上验人，在对方表演比你高的情况下有可能验不出来。此时，系统提示：6号玩家的身份[没验出来]，验不出来对方身份的概率=对方的表演-你的表演%，最高50%的概率验不出对方身份）。
+
+　　4、女巫(简称NW)：有两种药（解药和毒药）。解药可以救人，让天黑被杀死的人复活。毒药可以在天黑时毒死一人。在整个游戏过程中每种药只能使用一次。且同一个晚上不能同时使用2种药。 如果女巫在白天被投票死或者村长被票死，那么解药和毒药都不能使用。女巫每天晚上可以看到谁被指杀，需要根据逻辑分析选择用药。
+
+　　5、爱神(简称AS)：在游戏开始第一晚指定任意两个人（包括自己）建立情侣关系。爱神只能在第一天晚上的前25秒可以连情侣。如果其中一人被票死、杀死或者毒死，另一个人则自动殉情。如果情侣中一个是村民，一个是狼人，他们被称作人狼情侣（简称：人狼）。必须消灭除他俩之外的所有游戏者才能获胜。如果人狼情侣获胜，狼也会得到积分， 所以狼人都选择帮助人狼情侣。
+
+　　6、守护（简称SH）：每天晚上可以守护一位玩家（包括自己），被守护的玩家不会被狼杀死，但可以被女巫毒死。守护不能连续两天守护同一个人，要隔一天才能守护。
+
+　　7、猎人（简称LR）：当他被狼人杀掉或者被投票出局后，他可以选择枪毙一个活着的人跟他一起死。
+
+　　8、村长（简称CZ）：村长有2条命。狼人要杀两次才能将村长杀死，但毒死、票死或猎人带走只需要一次。 如果这3种情况任一一种发生， 则所有身份失去技能（比如：先知不能验人，女巫不能用药，猎人不能带人，守护不能守人等等）。特殊情况：如果村长被狼人杀，但是被女巫救的话，那么村长只有一条命；如果村长有两条命时，被守护守了，依然有两条命；如果村长被票出去，但是回魂了，只有一条命，身份依然没有技能。
+
+　　9、白痴（简称BC）：平时与村民无异，但当他被票死的时候，他可以在别人发言时任意插嘴。其他死法（如：猎人带走、狼人杀死、女巫毒死）没有这个技能。
+	10、混血儿（简称HX或者HH）：混血儿可以在游戏第一晚选择支持某位玩家，当选择之后不可更改。如不选择，系统将自动支持1号玩家。当支持的人所在的阵营胜利，混血也胜利，反之他就失败。 整个游戏过程中，只有他自己知道支持的是谁。但是他不知道他支持的人的身份。需要靠自己判断自己支持的是好人还是狼人。混血儿没有任何特殊的能力，身份显示混血儿，能力如同普通村民。他也不能在游戏中和任何人团队频道沟通（混血有情侣除外）。如果自己出局了，而他支持的人胜利的话，他依然胜利。如果他支持的人死了，只要他支持的人所在的阵营胜利的话，他依然胜利。
+
+　　混血情侣补充：爱神连了混血与任何一位玩家（包括狼在内）为情侣，那么爱神和混血情侣都属于第三方。同时爱神和混血会收到第三方的提示。混血儿的情侣无论是好人还是狼人，都属于第三方，必须除掉除爱神外的所有好人和狼人。混血情侣获胜，除爱神之外的好人和狼人都输。无论混血儿的情侣是被UFO还是狼人选择了投降，情侣都算自动分手，分手混血的支持者自动变成爱神，情侣分手第三方就不存在了。此时的爱神是好人，所以好人赢了，混血儿也获胜，反之则败。如果混血和好人情侣，那么混血可以在第二天晚上杀人，被混血杀死的玩家天亮后系统将告知所有人是被混血儿杀害。
+
+　　11、盗贼：盗贼版房间，没有混血儿，盗贼用来替代混血儿。人数在12人及12人以上才有盗贼。游戏开始后，首先准备好12张游戏身份牌，随机选出一个玩家作为盗贼；将12张游戏身份牌发给其他11个玩家；剩下一张底牌牌加上一张村民牌和一张狼人牌，给盗贼玩家盲选身份。盗贼选好了身份牌后，就以自己选择的游戏身份进行游戏。游戏开始后，前面有15秒，给盗贼选身份牌。盗贼可以选3张牌，盲选方式，盗贼并不知道这3张牌的真实身份是什么。如果底牌是狼人，那么，无论盗贼选择哪一张牌，都将成为狼人，保证不会少狼。如果盗贼选了狼人，那么游戏中可能多一个狼人。盗贼不知道他没有选择的牌的具体身份是什么。网杀中的盗贼和面杀的盗贼是有一定区别的，请仔细查看盗贼说明，不要和面杀的盗贼混淆。
+
+　　12、吹笛者：吹笛者版房间，没有混血儿。吹笛者用来替代混血儿。人数在12人以及12人以上才有吹笛者。吹笛者如果单身，那么就是一个人作为第三方，如果场上活着的玩家都被吹笛者施法过，而且吹笛者依然活着，那么吹笛者获得胜利，其他玩家都输。由于吹笛者一个人孤军奋战，所以被吹笛者施法的玩家并不知道自己和其他人是否被施法，否则，吹笛者太容易被排出。吹笛者每晚可以对两个玩家进行“施法”操作，这要求吹笛者分析出谁时最不可能被狼杀或者被票的人，然后对其施法。并且还要捣乱局势，引导其他玩家对付没被自己施法过的玩家。如果吹笛者不幸被爱神连了情侣，那么吹笛者就不能进行“施法”操作了，就相当于一个普通的村民了。
+
+　　13、情痴：每局游戏可以在任意一个晚上爱慕一个人并且只能爱慕一个人。如果爱慕的人被票死或者被杀死，那么情痴替爱慕的人死，其他情况，比如爱慕的人被毒死、猎人枪毙等，情痴不会替死。此角色存在于屠城版。
+
+　　14、高僧：当投票出现平票的情况，高僧自动死去，并且可以指定一个玩家担任警长。此角色存在于屠城版。
+
+　　15、梦中人：当梦中人被投票出局，天黑时所有异性玩家（无论好人身份还是狼人）均不能活动。但可以被别人操作。此角色存在于屠城版。
+
+　　16、白眼狼：一个人的第三方，杀光狼和身份或者狼和村民（当中任何一种都算赢），此角色存在于屠城版。
+
+　　补充：
+
+　　1警长（简称JZ）：警长比其他玩家多0.5票。 白天投票时，如果出现平票，以警长的投票为准（即使警长只有一票）。如果警长被杀，则警长死后可以指定一名活着的玩家担任警长。
+
+　　2金水（简称JS）: 先知验的好人。
+
+　　3查杀（简称CS）: 先知验的狼人。
+
+　　4单身村民（简称DM）: 没有情侣的村民。
+
+　　5单身（简称DS）: 没有情侣。
+
+　　6情侣在以下几种情况会分手：A、情侣之一被新月UFO, B、情侣之一被天雷劈死，C、情侣之一托管淹死， D、情侣之一是狼人选择投降，F、在新月房出现分手事件。 分手之后，每个人都将回归原来的身份。
+
+　　7人狼情侣：人狼情侣在没有分手的情况下被杀死、票死、毒死、或被猎人带走，无论谁赢，情侣都算输，但是如果狼投降了，人狼自动分手，人狼里的好人获得胜利。
+</mutableString>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="身份介绍" image="text_page" id="wsc-9P-StM"/>
+                    <navigationItem key="navigationItem" title="身份介绍" id="H8P-MB-9hW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gbo-YV-XlT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2300" y="-47.226386806596707"/>
+        </scene>
+        <!--游戏帮助(基本规则)-->
+        <scene sceneID="5Ll-fE-WC4">
+            <objects>
+                <viewController id="GmH-OC-rkw" customClass="VCHelp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c88-N7-GS2"/>
+                        <viewControllerLayoutGuide type="bottom" id="22u-84-NyU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FNk-W9-eF9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_back" translatesAutoresizingMaskIntoConstraints="NO" id="EA6-Le-EUe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" minimumZoomScale="0.0" maximumZoomScale="0.0" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="QXC-1o-TxA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" maximumZoomScale="0.0" keyboardDismissMode="onDrag" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oL8-uS-nqN">
+                                        <rect key="frame" x="0.0" y="60" width="375" height="562"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <mutableString key="text">游戏规则（应情况而变）
+1
+首先依据不同的人数来确定相应的角色：
+始终不变的抽出一人当法官。
+剩余7-9人：3个狼人，1个女巫，1个预言家，2-4个普村。
+10-11个人：4个狼人，1个女巫，1个预言家，1个猎人，3-5个普村
+12-13个人：5个狼人，1个女巫，1个预言家，1个猎人，1个守卫，3-4个人普村。
+2
+下面区分一下对立的两方：
+坏人方：全体狼人。
+好人方：除狼人人之外的所有人。
+胜负的判断准则：狼人赢：好人全部死了，狼人有活口。
+                         好人赢：狼人全部被杀死，好人有活口。
+3
+法官：主持整个游戏的人。
+不参与到具体的游戏之中。
+口令：总体：天黑请闭眼。
+         指挥狼人：狼人请睁眼。（第一次要加上去：狼人请相互确认身份）
+                         狼人请杀人。（狼人请统一意见）
+                         狼人请闭眼。
+        指挥女巫：女巫请睁眼。
+                        女巫，你有一瓶毒药与一瓶解药，今天晚上他(她)死了，你要救他吗？
+                        你有一瓶毒药，你要毒死谁吗？
+                        女巫请闭眼。
+       指挥预言家：预言家请睁眼。
+                          预言家，今天晚上你要验谁的身份？（预言家指人）
+                          如果这个是好人，这个是坏人，那他是这个。（大拇指朝上为好人，朝下为坏人。）
+                          预言家请闭眼。
+         指挥守卫：守卫请睁眼。
+                         守卫今天晚上你要守谁？
+                         守卫请闭眼。
+         一轮结束死人的话：天亮了，昨天晚上他死了，（可能情况，他也死了）。
+         一轮结束没人死的话：天亮了，昨天晚上是个风平浪静的夜晚。
+经典桌游：狼人游戏的规则玩法以及高级技巧
+4
+游戏步骤：法官的口令结束后，指出昨天晚上的伤亡情况，然后再进行一轮对话，之后就公投一个最具嫌疑的人，再开始下一轮的游戏。
+第一轮结束的时候：所有活着的人有两轮对话。
+                              而死去的人有遗言，被女巫毒死的人例外。
+第二轮结束：所有活着的人有一轮对话。
+                              而死去的人有遗言，被女巫毒死的人例外。
+第三轮结束：所有活着的人有一轮对话。
+                              而死去的人有遗言，被女巫毒死的人例外。
+第四轮结束：（7-8人）所有活着的人有一轮对话。
+                              而死去的人都没有遗言。
+                     （9-12人）所有活着的人有一轮对话。
+                              而死去的人有遗言，被女巫毒死的人例外。
+第五轮结束：所有活着的人有一轮对话。
+                    而死去的人都没有遗言。
+第六轮第七轮跟第五轮一样。
+5
+狼人：在天黑的时候负责杀人。不同的轮数可以杀同一个人，但狼人之间一般不可以自相残杀，于情于理不科学。
+经典桌游：狼人游戏的规则玩法以及高级技巧
+6
+女巫：在整个游戏环节里边只有一瓶毒药，一瓶解药。
+         在前一轮用了的药，后面几轮都没有的用了。
+         也就是说女巫在整场游戏中，只能救一个人，  毒死一个人。
+         在一轮游戏里可以什么都不做。
+经典桌游：狼人游戏的规则玩法以及高级技巧
+7
+预言家：在每一轮的环节里，都能验明一个人的身份。
+经典桌游：狼人游戏的规则玩法以及高级技巧
+8
+守卫：在每一轮中都能守护一个人，但是同一个人不能守第二次。也可以选择不守卫。
+9
+普通村民：没有任何功能的好人。
+10
+猎人：被杀死之后可以拖死一个人。
+经典桌游：狼人游戏的规则玩法以及高级技巧
+END
+游戏技巧
+1
+狼人：
+尽量把自己置身于好人队伍的说法，而用一些比较有说服力的说辞，怀疑一些其实是好人的人。
+身份暴露技巧：尽量掩饰自己的身份，不要说自己是具体哪个功能的好人，可以说自己是普通村民或者是某个有功能的好人，但有的时候反其道而行之，可以大胆地说自己的身份，但这个非常冒险，基本上被公投投死。
+2
+普村：实在是没什么技巧可言，普村即使被投死了也死而无憾，所以普村的作用就是尽快地在游戏中提供自己觉得比较准确的推理。
+身份暴露技巧：普村可以大胆地暴露自己的身份。
+但是是不是被人信服那就是另一回事了。
+3
+女巫：女巫手里拥有至少两次决定生命的权力。
+建议女巫的解药不能马上使用，第一轮除非是觉得在本场游戏中非常重要的人物被狼人杀死，或者自己被狼人杀死就可以考虑使用解药。
+毒药也需要在比较确定是狼人的基础上使用。
+所以毒药和解药尽量在后期使用。
+身份暴露技巧：女巫尽量隐藏自己的身份，静观其变。
+4
+预言家：预言家是非常重要的一个角色，他能够检验一些人的好坏，从而区分出狼人。
+身份暴露技巧：预言家在前几轮可以尽量隐藏自己的身份，静观其变。但是到了后面就需要勇敢地指出好人和坏人了。
+5
+猎人：被人杀死之后可以拖死一个人。
+身份暴露技巧：在前面几轮尽量隐藏自己的身份，静观其变。后边也可以勇敢地暴露自己的身份。
+也可以一开始就暴露自己的身份。
+6
+守卫：守护一个人不被狼人杀死。
+身份暴露技巧：尽量不要暴露自己的身份，除非到了不得已的地步。
+被杀死之后如果有遗言，要勇敢地说出自己的身份，以及一些比较可行的信息。
+7
+法官：最好在第三轮的时候不要出现“狼人请统一意见这样的话。”
+          问女巫和预言家的时候，每一次的停顿间隔要一致。
+          法官就是以一个非常公平的角色来主持整个游戏，不能使两方中的任何一方处于不利的地位。
+END
+狼人一方获胜技巧
+1
+天黑杀人环节：在一场游戏中，总有几个特别会玩，或者是推理能力，洞察能力特别强的人。
+可以考虑先把这些人给杀死。
+也可以通过狼人的判断，把一些有功能的好人给杀死。
+2
+投票的时候：狼人如果发现自己的狼人队友被很多人指中，也要顺应变化，把票义无返顾地投给狼人，这个就是置之死地而复生的策略。能够使人产生一种错觉，也可以混淆视听。
+3
+狼人在论述的时候：尽量把心态放得跟普通村民一样，不能显得紧张。这个是非常重要的一点，请勿出现这样的情况：
+在前面几轮，还没怎么看出端倪的时候，抱着一根柱子或者手紧紧地抓着衣服说：“我真的不是狼人。打死我也不是狼人。”巴拉巴拉的话。
+此地无银三百两的嫌疑太重了。
+4
+每一轮游戏中，总有一些扮演好人的人不太会论述自己，使其看起来比较可疑。这个时候就轮到狼人们用自己的“推理”来顺水推舟一步一步地混淆视听了。
+5
+千万不要说自己是预言家，是女巫，是猎人，或者守卫，这样至少有一个人知道你极有可能是狼人。
+6
+狼人可以假惺惺地说，“现在情况比较危机，请预言家尽快跳出来指正以便于我不怀疑你，巴拉巴拉的。”
+也可以以一些客观的事实来做一些无关紧要的分析，“第一轮是一个风平浪静的夜晚，说明女巫使用了解药，女巫可能觉得在本场游戏中非常重要的人物被狼人杀死，或者自己被狼人杀死了。（人比较多的话，有守卫的话，还可以说，也有可能是守卫守对了人巴拉巴拉。）”
+END
+好人一方获胜技巧
+预言家，女巫不得轻易暴露身份。
+ 
+预言家尽量需要验证一些玩游戏水平比较高的人的身份，并且在第二轮以后，要尽快验证对于一些自己觉得比较可疑，但又无法下定论的人的身份。
+预言家在第三轮之后要尽快地暴露自己的身份，发挥自己的作用。
+女巫最好能配合预言家的话来使用毒药。如果在前面就被杀了，就要靠自己的推理以及直觉毒死一个人。
+普村的语气尽量平静，是别人觉得你是货真价实的普村，同时也要提供一些有价值的有可信度，说服力的说辞。普村被狼人杀死之后就要大胆地说出自己是普村。
+5
+守卫可以试着守护一些觉得比较靠谱的好人，在预言家或者女巫暴露身份的时候，千万要在下一轮保住他们，尤其是预言家。</mutableString>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="基本规则" image="text_page" id="AGA-ia-YP4"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="游戏帮助(基本规则)" id="qJ1-NA-7wL"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4ra-fa-Pdl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1294" y="838"/>
+        </scene>
+        <!--游戏帮助(大神进阶)-->
+        <scene sceneID="MSi-nZ-bja">
+            <objects>
+                <viewController id="608-or-RyY" customClass="VCHelp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cEw-4O-RKg"/>
+                        <viewControllerLayoutGuide type="bottom" id="Cns-sE-jHq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jBz-HQ-VgU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_back" translatesAutoresizingMaskIntoConstraints="NO" id="kbz-i1-F7i">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" minimumZoomScale="0.0" maximumZoomScale="0.0" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Aoh-9I-PP7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" maximumZoomScale="0.0" keyboardDismissMode="onDrag" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z92-BD-Jlm">
+                                        <rect key="frame" x="0.0" y="63" width="376" height="557"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <webView clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wQQ-8D-H4C">
+                                        <rect key="frame" x="0.0" y="115" width="375" height="504"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="608-or-RyY" id="uuB-rF-61K"/>
+                                        </connections>
+                                    </webView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUO-mf-rh1">
+                                        <rect key="frame" x="112" y="84" width="46" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="press:" destination="608-or-RyY" eventType="touchUpInside" id="zlp-xX-4lu"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="大神进阶" image="text_page" selectedImage="text_page" id="E6Q-eY-yB4">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="游戏帮助(大神进阶)" id="QuZ-SJ-cYg"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="Web_helpPage" destination="wQQ-8D-H4C" id="Vev-d9-e3G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QfX-75-qMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="lSC-eU-97p"/>
+            </objects>
+            <point key="canvasLocation" x="-1178.4000000000001" y="-702.09895052473769"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="help_back" width="756" height="959"/>
+        <image name="text_page" width="32" height="32"/>
+    </resources>
+</document>

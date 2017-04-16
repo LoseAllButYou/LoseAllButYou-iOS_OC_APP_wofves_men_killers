@@ -1,23 +1,30 @@
 //
-//  VCUserInfo.m
+//  VCHelp.m
 //  wolfmen_killers
 //
-//  Created by 裴培华 on 17/4/13.
+//  Created by 裴培华 on 17/4/16.
 //  Copyright © 2017年 裴培华. All rights reserved.
 //
 
-#import "VCUserInfo.h"
+#import "VCHelp.h"
 
-@interface VCUserInfo ()
+@interface VCHelp ()
+@property (weak, nonatomic) IBOutlet UIWebView *Web_helpPage;
 
 @end
 
-@implementation VCUserInfo
+@implementation VCHelp
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
+}
+- (IBAction)press:(id)sender {
+     NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
+     NSURLRequest *req = [NSURLRequest requestWithURL:url];
+     [_Web_helpPage loadRequest:req];
+
 }
 
 - (void)didReceiveMemoryWarning {

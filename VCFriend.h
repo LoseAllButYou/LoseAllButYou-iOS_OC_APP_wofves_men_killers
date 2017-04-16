@@ -1,5 +1,5 @@
 //
-//  VCPrepare.h
+//  VCFriend.h
 //  wolfmen_killers
 //
 //  Created by 裴培华 on 17/4/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VCPrepare : UIViewController
+@interface VCFriend : UIViewController
 
 @end

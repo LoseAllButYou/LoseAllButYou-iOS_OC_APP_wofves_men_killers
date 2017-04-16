@@ -1,24 +1,25 @@
 //
-//  VCUserInfo.m
+//  VCFriend.m
 //  wolfmen_killers
 //
-//  Created by 裴培华 on 17/4/13.
+//  Created by 裴培华 on 17/4/15.
 //  Copyright © 2017年 裴培华. All rights reserved.
 //
 
-#import "VCUserInfo.h"
+#import "VCFriend.h"
+#import "VCMain.h"
+@interface VCFriend ()
 
-@interface VCUserInfo ()
 
 @end
 
-@implementation VCUserInfo
+@implementation VCFriend
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -35,4 +36,6 @@
 }
 */
 
+- (IBAction)pressStop:(id)sender {
+}
 @end

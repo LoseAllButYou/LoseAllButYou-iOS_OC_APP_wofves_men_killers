@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--游戏准备-->
+        <!--主页-->
         <scene sceneID="ySH-fl-nvU">
             <objects>
                 <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wnw-oN-n6z" customClass="VCMain" sceneMemberID="viewController">
@@ -22,69 +22,88 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="prepare_back" translatesAutoresizingMaskIntoConstraints="NO" id="dHo-DA-e0a">
-                                <rect key="frame" x="-21" y="36" width="515" height="697"/>
+                                <rect key="frame" x="-11" y="20" width="515" height="697"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="puJ-iG-HUH" appends="YES" id="75m-AR-eDB"/>
                                 </connections>
                             </imageView>
+                            <switch hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ihM-BT-dkY">
+                                <rect key="frame" x="31" y="151" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqs-QL-t3m">
+                                <rect key="frame" x="92" y="118" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="headImg_back" translatesAutoresizingMaskIntoConstraints="NO" id="ObN-Y3-g2Z">
+                                <rect key="frame" x="0.0" y="38" width="88" height="113"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="headImage" translatesAutoresizingMaskIntoConstraints="NO" id="wxS-cJ-XQn">
-                                <rect key="frame" x="7" y="82" width="67" height="69"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="11" y="77" width="67" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="79X-oR-6OR" appends="YES" id="tsq-Ws-mdI"/>
                                 </connections>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqs-QL-t3m">
-                                <rect key="frame" x="82" y="106" width="66" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OKk-FV-hTB">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" red="0.062745098039215685" green="0.078431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <barButtonItem title="history" image="friend" id="JoL-lY-X2w" userLabel="friend">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="OOo-eY-Ddf" kind="show" id="Y6X-iA-gpa"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="fM9-C3-tyK"/>
+                                    <barButtonItem title="history" image="history" id="62m-K2-luK">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="WZ8-D3-c9g" kind="show" id="RvB-ah-P1B"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jyz-z5-qXG"/>
+                                    <barButtonItem title="help" image="help" id="yl5-IT-vZb">
+                                        <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="iQ1-tx-pXO" kind="show" id="VJZ-uk-Ygx"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="Wnw-oN-n6z" id="CsE-gF-GHh"/>
+                                </connections>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="游戏准备" id="WEe-ZN-OIj">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="WGg-EE-Ybl">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="YOw-nD-RVg">
-                                <rect key="frame" x="16" y="-2" width="90" height="48"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="注销" image="login_out48">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="f8o-T3-xRf" kind="showDetail" id="SIT-AZ-vDa"/>
-                                </connections>
-                            </button>
-                            <color key="tintColor" red="0.081078551710000002" green="0.34183835979999999" blue="0.16827276350000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <navigationItem key="navigationItem" title="主页" id="WEe-ZN-OIj">
+                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="t6V-fr-UXg">
+                            <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="f8o-T3-xRf" kind="presentation" id="HeC-d1-XEn"/>
+                            </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" id="IaD-eX-xew">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ykD-9P-4K0">
-                                <rect key="frame" x="311" y="-2" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <inset key="titleEdgeInsets" minX="-200" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" image="new-window">
-                                    <string key="title">创建
-游戏</string>
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="6Th-Jp-dp7" kind="show" id="1bT-fj-Nnq"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="7eF-cY-vXd">
+                            <connections>
+                                <segue destination="6Th-Jp-dp7" kind="show" id="Pf0-Ch-uDP"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="Img_headImg" destination="wxS-cJ-XQn" id="38h-cS-twA"/>
                         <outlet property="Label_userName" destination="Sqs-QL-t3m" id="0sl-lY-GC4"/>
-                        <outlet property="crearButton" destination="ykD-9P-4K0" id="zLP-xg-D0u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xW2-Ai-v4J" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -96,13 +115,13 @@
                 <tapGestureRecognizer id="79X-oR-6OR" userLabel="Tap Head Img">
                     <connections>
                         <action selector="tapHeadImg:" destination="Wnw-oN-n6z" id="myP-Qi-eeU"/>
-                        <segue destination="s8G-za-acW" kind="popoverPresentation" identifier="userInfoWin" popoverAnchorView="wxS-cJ-XQn" id="W7x-XN-B9s">
+                        <segue destination="s8G-za-acW" kind="popoverPresentation" identifier="userInfoWin" popoverAnchorView="ihM-BT-dkY" id="W7x-XN-B9s">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES"/>
                         </segue>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1959" y="-185"/>
+            <point key="canvasLocation" x="-1959.2" y="-185.75712143928038"/>
         </scene>
         <!--login-->
         <scene sceneID="w2u-F7-n7F">
@@ -110,12 +129,11 @@
                 <viewControllerPlaceholder storyboardName="login" id="f8o-T3-xRf" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sCg-Im-9SU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1509" y="-496"/>
+            <point key="canvasLocation" x="-1414" y="-473"/>
         </scene>
         <!--User Info-->
         <scene sceneID="fLG-oz-ugE">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pSH-HJ-4fb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController modalPresentationStyle="currentContext" id="s8G-za-acW" customClass="VCUserInfo" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bO1-RQ-U8l"/>
@@ -131,11 +149,13 @@
                         </accessibility>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="400"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pSH-HJ-4fb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1253" y="-179"/>
+            <point key="canvasLocation" x="-1158" y="-186"/>
         </scene>
         <!--Prepare-->
         <scene sceneID="kwm-Pt-bfc">
@@ -145,7 +165,31 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zVy-Ky-Puv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1413" y="74"/>
+            <point key="canvasLocation" x="-1371" y="62"/>
+        </scene>
+        <!--friend-->
+        <scene sceneID="uUy-d9-aRP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="friend" id="OOo-eY-Ddf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SpV-qJ-nuV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2129" y="255"/>
+        </scene>
+        <!--history-->
+        <scene sceneID="Dnl-Ua-TRd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="history" id="WZ8-D3-c9g" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oFX-8o-MWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1815" y="255"/>
+        </scene>
+        <!--help-->
+        <scene sceneID="CiS-Y1-ZUI">
+            <objects>
+                <viewControllerPlaceholder storyboardName="help" id="iQ1-tx-pXO" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s1h-AD-APh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1959" y="255"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Up-gX-dv8">
@@ -157,6 +201,11 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8ud-cJ-iRV">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Wnw-oN-n6z" kind="relationship" relationship="rootViewController" id="91f-zt-T0u"/>
                     </connections>
@@ -167,9 +216,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="friend" width="32" height="32"/>
         <image name="headImage" width="300" height="300"/>
-        <image name="login_out48" width="48" height="48"/>
-        <image name="new-window" width="128" height="128"/>
+        <image name="headImg_back" width="563" height="507"/>
+        <image name="help" width="32" height="32"/>
+        <image name="history" width="32" height="32"/>
         <image name="prepare_back" width="1024" height="819"/>
     </resources>
     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

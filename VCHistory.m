@@ -1,23 +1,22 @@
 //
-//  VCUserInfo.m
+//  VCHistory.m
 //  wolfmen_killers
 //
-//  Created by 裴培华 on 17/4/13.
+//  Created by 裴培华 on 17/4/16.
 //  Copyright © 2017年 裴培华. All rights reserved.
 //
 
-#import "VCUserInfo.h"
+#import "VCHistory.h"
 
-@interface VCUserInfo ()
+@interface VCHistory ()
 
 @end
 
-@implementation VCUserInfo
+@implementation VCHistory
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
 }
 
 - (void)didReceiveMemoryWarning {
