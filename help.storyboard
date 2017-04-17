@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UkE-Hu-YyL">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UkE-Hu-YyL">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,21 +18,21 @@
                         <viewControllerLayoutGuide type="bottom" id="gU6-5B-Gbw"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Lrv-kT-vG8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_back" translatesAutoresizingMaskIntoConstraints="NO" id="UBM-gR-vQ4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" minimumZoomScale="0.0" maximumZoomScale="0.0" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Ra5-Hd-nUn">
-                                <rect key="frame" x="0.0" y="49" width="375" height="574"/>
+                                <rect key="frame" x="0.0" y="54" width="414" height="633"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" maximumZoomScale="0.0" keyboardDismissMode="onDrag" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7pd-kx-WPs">
-                                        <rect key="frame" x="0.0" y="15" width="375" height="551"/>
+                                        <rect key="frame" x="0.0" y="17" width="414" height="608"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <mutableString key="text">狼人 The Werewolves of Millers Hollow 
+                                        <string key="text">狼人 The Werewolves of Millers Hollow 
 游戏人数：8-18 
 玩家們像是演員一般扮演著自己的身份，尤其是狼人更加要在眾多人類當中求生存，因為他們的強大能力只有在夜晚才能生成邪惡的化身，白天的時候必須在其他村民行動或是話語之中找尋漏洞，在接下來的夜晚繼續屠殺所有活人！！！ 
 共24张身份牌，包括： 
@@ -156,7 +156,7 @@ Piper 乐师：每个晚上，乐师被唤醒，指定两名玩家。法官把�
 新月中最大的变化就是加入了事件卡，在每天开始之前先翻开一张，按事件卡上的说明来执行，比如： 
 
 “在第一个晚上，所有人闭眼，然后游戏中第一个死去的玩家睁眼，指定一名非狼人的玩家，该玩家睁眼，法官秘密指出狼人是谁。这名玩家成为狼人的同盟者。狼人的同盟者在接下来的游戏中仍然扮演原来的角色，不和狼人一起在夜晚睁眼，但他站在狼人一边，若狼人获胜，该玩家也获胜。”
-</mutableString>
+</string>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -209,21 +209,21 @@ Piper 乐师：每个晚上，乐师被唤醒，指定两名玩家。法官把�
                         <viewControllerLayoutGuide type="bottom" id="7bP-1q-ZfF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="t48-xy-iNf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_back" translatesAutoresizingMaskIntoConstraints="NO" id="8Su-CY-iPp">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" minimumZoomScale="0.0" maximumZoomScale="0.0" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="WRP-J0-acN">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7pi-8U-yPa">
                                         <rect key="frame" x="0.0" y="64" width="375" height="555"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <mutableString key="text">游戏角色说明
+                                        <string key="text">游戏角色说明
 
 　　1、狼人(简称LR)：每晚可以杀死一位玩家。
 
@@ -273,7 +273,7 @@ Piper 乐师：每个晚上，乐师被唤醒，指定两名玩家。法官把�
 　　6情侣在以下几种情况会分手：A、情侣之一被新月UFO, B、情侣之一被天雷劈死，C、情侣之一托管淹死， D、情侣之一是狼人选择投降，F、在新月房出现分手事件。 分手之后，每个人都将回归原来的身份。
 
 　　7人狼情侣：人狼情侣在没有分手的情况下被杀死、票死、毒死、或被猎人带走，无论谁赢，情侣都算输，但是如果狼投降了，人狼自动分手，人狼里的好人获得胜利。
-</mutableString>
+</string>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -299,21 +299,21 @@ Piper 乐师：每个晚上，乐师被唤醒，指定两名玩家。法官把�
                         <viewControllerLayoutGuide type="bottom" id="22u-84-NyU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FNk-W9-eF9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_back" translatesAutoresizingMaskIntoConstraints="NO" id="EA6-Le-EUe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" minimumZoomScale="0.0" maximumZoomScale="0.0" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="QXC-1o-TxA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" maximumZoomScale="0.0" keyboardDismissMode="onDrag" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oL8-uS-nqN">
-                                        <rect key="frame" x="0.0" y="60" width="375" height="562"/>
+                                        <rect key="frame" x="0.0" y="66" width="414" height="620"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <mutableString key="text">游戏规则（应情况而变）
+                                        <string key="text">游戏规则（应情况而变）
 1
 首先依据不同的人数来确定相应的角色：
 始终不变的抽出一人当法官。
@@ -440,7 +440,7 @@ END
 女巫最好能配合预言家的话来使用毒药。如果在前面就被杀了，就要靠自己的推理以及直觉毒死一个人。
 普村的语气尽量平静，是别人觉得你是货真价实的普村，同时也要提供一些有价值的有可信度，说服力的说辞。普村被狼人杀死之后就要大胆地说出自己是普村。
 5
-守卫可以试着守护一些觉得比较靠谱的好人，在预言家或者女巫暴露身份的时候，千万要在下一轮保住他们，尤其是预言家。</mutableString>
+守卫可以试着守护一些觉得比较靠谱的好人，在预言家或者女巫暴露身份的时候，千万要在下一轮保住他们，尤其是预言家。</string>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -469,42 +469,36 @@ END
                         <viewControllerLayoutGuide type="bottom" id="Cns-sE-jHq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jBz-HQ-VgU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="help_back" translatesAutoresizingMaskIntoConstraints="NO" id="kbz-i1-F7i">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="white" minimumZoomScale="0.0" maximumZoomScale="0.0" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Aoh-9I-PP7">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <webView clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wQQ-8D-H4C">
+                                <rect key="frame" x="0.0" y="127" width="414" height="560"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <textView clipsSubviews="YES" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" maximumZoomScale="0.0" keyboardDismissMode="onDrag" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z92-BD-Jlm">
-                                        <rect key="frame" x="0.0" y="63" width="376" height="557"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <webView clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wQQ-8D-H4C">
-                                        <rect key="frame" x="0.0" y="115" width="375" height="504"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="608-or-RyY" id="uuB-rF-61K"/>
-                                        </connections>
-                                    </webView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUO-mf-rh1">
-                                        <rect key="frame" x="112" y="84" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="press:" destination="608-or-RyY" eventType="touchUpInside" id="zlp-xX-4lu"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </scrollView>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="608-or-RyY" id="uuB-rF-61K"/>
+                                </connections>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUO-mf-rh1">
+                                <rect key="frame" x="333" y="89" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="跳转"/>
+                                <connections>
+                                    <action selector="press:" destination="608-or-RyY" eventType="touchUpInside" id="wKE-ir-ckM"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="www.baidu.com" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" background="userInfoBack" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="c1v-5U-v4A">
+                                <rect key="frame" x="20" y="90" width="290" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="URL" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -514,17 +508,19 @@ END
                     <navigationItem key="navigationItem" title="游戏帮助(大神进阶)" id="QuZ-SJ-cYg"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="Text_url" destination="c1v-5U-v4A" id="FgN-0H-Jje"/>
                         <outlet property="Web_helpPage" destination="wQQ-8D-H4C" id="Vev-d9-e3G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QfX-75-qMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="lSC-eU-97p"/>
             </objects>
-            <point key="canvasLocation" x="-1178.4000000000001" y="-702.09895052473769"/>
+            <point key="canvasLocation" x="-1179.7101449275362" y="-702.71739130434787"/>
         </scene>
     </scenes>
     <resources>
         <image name="help_back" width="756" height="959"/>
         <image name="text_page" width="32" height="32"/>
+        <image name="userInfoBack" width="800" height="800"/>
     </resources>
 </document>
