@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="URL-TI-VsW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="URL-TI-VsW">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -45,7 +45,7 @@
                                 <state key="normal" title="添加角色" image="add_game"/>
                                 <connections>
                                     <action selector="pressAddCharactor:" destination="URL-TI-VsW" eventType="touchUpInside" id="gOy-jG-s8L"/>
-                                    <segue destination="AGD-Ap-nih" kind="show" id="sXY-Wl-82l"/>
+                                    <segue destination="b34-dO-HUS" kind="show" id="kgC-LN-5XU"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W3H-sq-4Ak">
@@ -69,47 +69,82 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSU-9H-H8G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-72.799999999999997" y="-846.9265367316342"/>
+            <point key="canvasLocation" x="-282" y="-891"/>
         </scene>
-        <!--特殊角色选择-->
-        <scene sceneID="iOL-bu-Td7">
+        <!--Charactor-->
+        <scene sceneID="aov-hU-tNF">
             <objects>
-                <viewController id="AGD-Ap-nih" customClass="VCPrepare" sceneMemberID="viewController">
+                <viewController id="b34-dO-HUS" customClass="VCCharactor" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="OIH-Id-Nw9"/>
-                        <viewControllerLayoutGuide type="bottom" id="g0s-Bl-kYC"/>
+                        <viewControllerLayoutGuide type="top" id="NQz-jU-nOf"/>
+                        <viewControllerLayoutGuide type="bottom" id="I90-w4-e5Y"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Myu-x1-bDE">
+                    <view key="view" contentMode="scaleToFill" id="QRd-Md-cbx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="newgame_back" translatesAutoresizingMaskIntoConstraints="NO" id="Y0U-dS-Jif">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wZo-Hd-1PJ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" delaysContentTouches="NO" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="36k-8U-KfB">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <collectionViewLayout key="collectionViewLayout" id="v4I-80-W0l"/>
-                                <cells/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5b0-tS-2lr">
+                                    <size key="itemSize" width="167" height="190"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <imageView key="backgroundView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="newgame_back" id="l5u-le-ofi">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="c1" id="Fld-Wv-DDH" customClass="Vcell">
+                                        <rect key="frame" x="0.0" y="0.0" width="167" height="190"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="167" height="190"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="button_green" translatesAutoresizingMaskIntoConstraints="NO" id="slA-TQ-7sB">
+                                                    <rect key="frame" x="0.0" y="0.0" width="167" height="150"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3wJ-bL-oc3">
+                                                    <rect key="frame" x="0.0" y="149" width="167" height="41"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <size key="customSize" width="167" height="190"/>
+                                        <connections>
+                                            <outlet property="Cell_img" destination="slA-TQ-7sB" id="liC-9P-j3O"/>
+                                            <outlet property="Cell_label" destination="3wJ-bL-oc3" id="1pW-is-AZw"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="b34-dO-HUS" id="p68-Uu-eoj"/>
+                                    <outlet property="delegate" destination="b34-dO-HUS" id="07S-fG-1As"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="特殊角色选择" id="XfK-6G-gwr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="brq-a6-XLd"/>
-                    </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="Coll_charactorList" destination="36k-8U-KfB" id="JPX-4o-NU6"/>
+                        <outlet property="Coll_charactorList" destination="wZo-Hd-1PJ" id="NNi-9T-ExV"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gc4-h3-VYq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LIR-hx-8M2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="589.60000000000002" y="-846.02698650674665"/>
+            <point key="canvasLocation" x="576.79999999999995" y="-851.42428785607206"/>
         </scene>
     </scenes>
     <resources>
         <image name="add_game" width="128" height="128"/>
+        <image name="button_green" width="120" height="60"/>
         <image name="newgame_back" width="640" height="1136"/>
     </resources>
 </document>

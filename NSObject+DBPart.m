@@ -8,6 +8,7 @@
 
 #import "NSObject+DBPart.h"
 #import "sqlite3.h"
+#import "FMDatabase.h"
 @implementation DBPart:NSObject
 
 -(BOOL)openOrCreatDB:(NSString*)path
@@ -26,9 +27,7 @@
         return YES;
     else if([db lastErrorCode]==14)
     {
-       
         return [db open];
-     
     }
     else
         return NO;
@@ -50,7 +49,11 @@
 
 -(FMResultSet*)selectAllFromDB:(NSString*)sqlQuery
 {
-    return [db executeQuery:sqlQuery];
+     
+     FMResultSet* ret=[db executeQuery:sqlQuery];
+     NSLog(@"%@",ret);
+     NSLog(@"ret num=%d",ret.columnCount);
+    return ret;
 }
 
 @end

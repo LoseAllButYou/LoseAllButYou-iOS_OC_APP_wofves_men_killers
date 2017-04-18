@@ -27,6 +27,8 @@
 		1919243E1EA362DF00F8B759 /* friend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1919243D1EA362DF00F8B759 /* friend.storyboard */; };
 		191924401EA3636D00F8B759 /* help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1919243F1EA3636D00F8B759 /* help.storyboard */; };
 		191924431EA3638A00F8B759 /* VCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 191924421EA3638A00F8B759 /* VCHelp.m */; };
+		192CBD7C1EA65047002E48F7 /* VCCharactor.m in Sources */ = {isa = PBXBuildFile; fileRef = 192CBD7B1EA65047002E48F7 /* VCCharactor.m */; };
+		192CBD7F1EA6607C002E48F7 /* Vcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 192CBD7E1EA6607C002E48F7 /* Vcell.m */; };
 		1953DA3D1E9CE74A0097D40F /* VCMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */; };
 		1953DA431E9CF91D0097D40F /* Prepare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA421E9CF91D0097D40F /* Prepare.storyboard */; };
 		199E02F01E98F93900F07F30 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 199E02EF1E98F93900F07F30 /* login.storyboard */; };
@@ -77,6 +79,10 @@
 		1919243F1EA3636D00F8B759 /* help.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = help.storyboard; sourceTree = "<group>"; };
 		191924411EA3638A00F8B759 /* VCHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHelp.h; sourceTree = "<group>"; };
 		191924421EA3638A00F8B759 /* VCHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHelp.m; sourceTree = "<group>"; };
+		192CBD7A1EA65047002E48F7 /* VCCharactor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCharactor.h; sourceTree = "<group>"; };
+		192CBD7B1EA65047002E48F7 /* VCCharactor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCharactor.m; sourceTree = "<group>"; };
+		192CBD7D1EA6607C002E48F7 /* Vcell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vcell.h; sourceTree = "<group>"; };
+		192CBD7E1EA6607C002E48F7 /* Vcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vcell.m; sourceTree = "<group>"; };
 		1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VCMain.storyboard; sourceTree = "<group>"; };
 		1953DA421E9CF91D0097D40F /* Prepare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Prepare.storyboard; path = wolfmen_killers/Prepare.storyboard; sourceTree = "<group>"; };
 		199E02EF1E98F93900F07F30 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = login.storyboard; path = wolfmen_killers/login.storyboard; sourceTree = "<group>"; };
@@ -120,6 +126,10 @@
 		190051031E98D5AB00D5415A /* 界面 */ = {
 			isa = PBXGroup;
 			children = (
+				192CBD7D1EA6607C002E48F7 /* Vcell.h */,
+				192CBD7E1EA6607C002E48F7 /* Vcell.m */,
+				192CBD7A1EA65047002E48F7 /* VCCharactor.h */,
+				192CBD7B1EA65047002E48F7 /* VCCharactor.m */,
 				19FE7B021EA4EB4F00ACA6E0 /* VCWeb.h */,
 				19FE7B031EA4EB4F00ACA6E0 /* VCWeb.m */,
 				191924411EA3638A00F8B759 /* VCHelp.h */,
@@ -353,6 +363,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				192CBD7F1EA6607C002E48F7 /* Vcell.m in Sources */,
+				192CBD7C1EA65047002E48F7 /* VCCharactor.m in Sources */,
 				19F5CFFE1E99244B00B15A67 /* VCRegist.m in Sources */,
 				1919243A1EA3624500F8B759 /* VCHistory.m in Sources */,
 				190BD23D1EA5C4FF0085EB44 /* FMDatabasePool.m in Sources */,
