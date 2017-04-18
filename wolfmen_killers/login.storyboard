@@ -56,7 +56,6 @@
                                 <state key="normal" title="登陆" backgroundImage="ui-button-default"/>
                                 <connections>
                                     <action selector="pressLogin:" destination="5pN-8V-Urd" eventType="touchUpInside" id="BzP-ov-ym6"/>
-                                    <segue destination="tBu-fS-NdH" kind="show" identifier="mainVC" customClass="CIDoorwaySegue" id="z4Y-t8-rvk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gw4-Q9-dCm">
@@ -156,9 +155,10 @@
                         <outlet property="Swch_saveInfo" destination="kIh-r2-6Uk" id="ROX-pe-1o9"/>
                         <outlet property="Text_CAPTCHA" destination="on4-mW-n9M" id="7lM-OZ-PZQ"/>
                         <outlet property="Text_imgCAPTCHA" destination="l9n-t6-Vyq" id="vtq-Js-yia"/>
-                        <outlet property="Text_loginName" destination="agY-pp-GEC" id="71w-zr-Akb"/>
+                        <outlet property="Text_loginName" destination="agY-pp-GEC" id="3uV-Je-iRe"/>
                         <outlet property="Text_passWord" destination="GRp-IA-ShT" id="2dS-wk-p3Q"/>
                         <outlet property="Text_waring" destination="RZF-oV-b6c" id="EOY-LG-cWc"/>
+                        <segue destination="tBu-fS-NdH" kind="show" identifier="mainVC" customClass="CIDoorwaySegue" id="UNu-sC-1md"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oRZ-Ya-hcZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -168,7 +168,9 @@
         <!--VCMain-->
         <scene sceneID="ywk-Gb-Iz0">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="VCMain" storyboardName="VCMain" id="tBu-fS-NdH" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="VCMain" storyboardName="VCMain" id="tBu-fS-NdH" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="IhJ-2L-HHw"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="psf-67-w02" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4199" y="-208"/>

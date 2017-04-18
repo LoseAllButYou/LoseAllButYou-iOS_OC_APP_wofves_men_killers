@@ -10,7 +10,7 @@
 #import "VCUserInfo.h"
 @interface VCMain ()
 
-@property (weak, nonatomic) IBOutlet UIButton *crearButton;
+
 @property (weak, nonatomic) IBOutlet UIImageView *Img_headImg;
 @property (assign, nonatomic) IBOutlet UILabel *Label_userName;
 
@@ -21,7 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.crearButton.titleLabel.numberOfLines = 0;
     //界面载入时 通过上层界面传入的loginName值 读数据库取用户名
     //未shixian
      _Label_userName.text=self.loginName;

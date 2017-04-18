@@ -21,9 +21,9 @@
       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pressUrl) name:UITextFieldTextDidBeginEditingNotification object:_Text_url];
 }
 - (IBAction)press:(id)sender {
-     if(![_Text_url.text hasPrefix:@"https://"] )
+     if(![_Text_url.text hasPrefix:@"https://"]&&! [_Text_url.text hasPrefix:@"http://"])
      {
-          _Text_url.text=[NSString stringWithFormat:@"https://%@",_Text_url.text];
+          _Text_url.text=[NSString stringWithFormat:@"http://%@",_Text_url.text];
      }
      NSLog(@"%@",_Text_url.text);
      NSURL *url = [NSURL URLWithString:_Text_url.text];

@@ -1,0 +1,56 @@
+//
+//  NSObject+DBPart.m
+//  wolfmen_killers
+//
+//  Created by 裴培华 on 17/4/17.
+//  Copyright © 2017年 裴培华. All rights reserved.
+//
+
+#import "NSObject+DBPart.h"
+#import "sqlite3.h"
+@implementation DBPart:NSObject
+
+-(BOOL)openOrCreatDB:(NSString*)path
+{
+    NSString *resourcePath = [[NSBundle mainBundle] pathForResource:@"wolfmen_killer_DB" ofType:@"db"];
+    //strPath=[NSHomeDirectory() stringByAppendingString:path];
+    NSLog(@"resourcepath==%@",resourcePath);
+    db=[FMDatabase databaseWithPath:resourcePath];
+    if(db)
+        return YES ;
+    return NO;
+}
+-(BOOL)openDB
+{
+    if([db open])
+        return YES;
+    else if([db lastErrorCode]==14)
+    {
+       
+        return [db open];
+     
+    }
+    else
+        return NO;
+}
+
+-(BOOL)insertData:(NSString*)sqlQuery
+{
+    
+    return YES;
+}
+-(BOOL)deleteData:(NSString*)sqlQuery
+{
+    return YES;
+}
+-(BOOL)closeDB
+{
+    return [db close];
+}
+
+-(FMResultSet*)selectAllFromDB:(NSString*)sqlQuery
+{
+    return [db executeQuery:sqlQuery];
+}
+
+@end
