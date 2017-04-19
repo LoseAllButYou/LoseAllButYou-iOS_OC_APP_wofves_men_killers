@@ -10,6 +10,7 @@
 
 @interface VCCharactor : UIViewController<UICollectionViewDelegate,UICollectionViewDataSource>
 {
+     NSInteger count;
      
 }
 
