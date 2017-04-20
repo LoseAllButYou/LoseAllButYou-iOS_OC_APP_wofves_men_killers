@@ -11,5 +11,5 @@
 @interface Vcell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *Cell_img;
 @property (weak, nonatomic) IBOutlet UILabel *Cell_label;
-
+@property (weak, nonatomic) IBOutlet UIImageView *Img_isSelect;
 @end

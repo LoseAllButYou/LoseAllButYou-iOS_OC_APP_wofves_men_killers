@@ -9,6 +9,7 @@
 #import "VCCharactor.h"
 #import "NSObject+DBPart.h"
 #import "Vcell.h"
+#import "VCPrepare.h"
 @interface VCCharactor ()
 @property (weak, nonatomic) IBOutlet UICollectionView *Coll_charactorList;
 @property (strong,nonatomic)FMResultSet* charactor;
@@ -16,7 +17,6 @@
 
 @property (strong,nonatomic)NSMutableArray* imageArr;
 @property (strong,nonatomic)NSMutableArray* nameArr;
-
 @property (nonatomic, strong) NSMutableIndexSet* selectedIndexSet;
 @end
 
@@ -41,10 +41,20 @@ static NSString * const reuseIdentifier = @"Cell";
      {
           ++count;
           [_imageArr  addObject:[_charactor stringForColumn:@"image_name"]];
-          [_nameArr  addObject:[_charactor stringForColumn:@"image_name"]];
+          [_nameArr  addObject:[_charactor stringForColumn:@"identity"]];
      }
      //设置允许多选
      _Coll_list.allowsMultipleSelection = YES;
+}
+
+- (IBAction)pressDone:(id)sender {
+     
+     //此页面已经存在于self.navigationController.viewControllers中,并且是当前页面的前一页面
+     VCPrepare * up= [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-1];
+     up.nameArr=[NSMutableArray alloc];
+     up.nameArr=_nameArr;
+     
+          [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -54,6 +64,19 @@ static NSString * const reuseIdentifier = @"Cell";
 }
 
 #pragma mark ---UICollectionView DataSource
+//选中cell
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+     
+     ((Vcell*)[collectionView cellForItemAtIndexPath:indexPath]).Img_isSelect.image=[UIImage imageNamed:@"didSelect.png"];
+  
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(nonnull NSIndexPath *)indexPath
+{
+     ((Vcell*)[collectionView cellForItemAtIndexPath:indexPath]).Img_isSelect.image=[UIImage imageNamed:@"notSelect.png"];
+    
+}
+
 //定义展示的Section的个数
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -80,9 +103,12 @@ static NSString * const reuseIdentifier = @"Cell";
      NSString *identify = @"c1";
 
      UIImage* img=[UIImage imageNamed:_imageArr[indexPath.row]];
-     Vcell* cell=(Vcell*)[collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
+     Vcell* cell = (Vcell*)[collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
+     if(!cell)
+          cell=(Vcell*)[collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
      cell.Cell_img.image= img;
      cell.Cell_label.text=_nameArr[indexPath.row];
+    // cell.Img_isSelect.image=[UIImage imageNamed:@"notSelect.png"];
      return cell;
 }
 //定义每个UICollectionView 的大小

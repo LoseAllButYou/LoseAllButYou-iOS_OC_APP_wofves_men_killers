@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface VCPrepare : UIViewController
+@property (strong,nonatomic)NSMutableArray* nameArr;
 
+@property (strong, nonatomic) IBOutlet UITextView *TextView_charactor;
 
 @end

@@ -27,10 +27,26 @@
      _gameUserNum= [NSNumber numberWithInteger: 6 ];
      _civilianNum= [NSNumber numberWithInteger: 2 ];
      _werwolfNum= [NSNumber numberWithInteger: 2 ];
+     
+     NSLog(@"load  ------");
 }
 - (IBAction)pressAddCharactor:(id)sender {
      
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+     //判断并接收返回的参数
+     for(int i=0;i<_nameArr.count;++i)
+     {
+          if(i!=0)
+               [_TextView_charactor.text stringByAppendingString:@"\n"];
+          [_TextView_charactor.text stringByAppendingString:[_nameArr objectAtIndex:i]];
+           NSLog(@"view appear text==%@",[_nameArr objectAtIndex:i]);
+     }
+     NSLog(@"view appear");
+}
+
 //pickview 选中某行数据
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
