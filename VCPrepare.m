@@ -7,14 +7,10 @@
 //
 
 #import "VCPrepare.h"
-
+#import "MBProgressHUD+MJ.h"
 @interface VCPrepare ()
 @property (weak, nonatomic) IBOutlet UIPickerView *Pick_gameUserNum;
 
-
-@property (weak, nonatomic) NSNumber* gameUserNum;
-@property (weak, nonatomic) NSNumber* civilianNum;
-@property (weak, nonatomic) NSNumber* werwolfNum;
 @property (weak, nonatomic) IBOutlet UIButton *Btn_addCharactor;
 
 @end
@@ -24,11 +20,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-     _gameUserNum= [NSNumber numberWithInteger: 6 ];
-     _civilianNum= [NSNumber numberWithInteger: 2 ];
-     _werwolfNum= [NSNumber numberWithInteger: 2 ];
-     
-     NSLog(@"load  ------");
+    gameUserNum= 6;
+    civilianNum= 2;
+    werwolfNum= 2;
+    
+    
 }
 - (IBAction)pressAddCharactor:(id)sender {
      
@@ -36,32 +32,46 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
      //判断并接收返回的参数
-     for(int i=0;i<_nameArr.count;++i)
-     {
-          if(i!=0)
-               [_TextView_charactor.text stringByAppendingString:@"\n"];
-          [_TextView_charactor.text stringByAppendingString:[_nameArr objectAtIndex:i]];
-           NSLog(@"view appear text==%@",[_nameArr objectAtIndex:i]);
-     }
-     NSLog(@"view appear");
+    if (!_nameArr)
+        return;
+    [self judgeIsTureNum];
 }
-
+//判断 游戏 人数 身份数 是否符合
+-(void)judgeIsTureNum
+{
+    _TextView_charactor.text = @"游戏身份:\n";
+    _TextView_charactor.text = [_TextView_charactor.text stringByAppendingString:[NSString stringWithFormat: @"总人数X%d 平民X%d 普通狼人X%d\n特殊身份：\n",gameUserNum, civilianNum ,werwolfNum]];
+    for(int i=0;i<_nameArr.count;++i)
+    {
+        if(i!=0)
+            _TextView_charactor.text = [_TextView_charactor.text stringByAppendingString:@"   "];
+        _TextView_charactor.text = [_TextView_charactor.text stringByAppendingString:[_nameArr objectAtIndex:i]];
+        NSLog(@"view appear text==%@",[_nameArr objectAtIndex:i]);
+    }
+    if(_nameArr.count+civilianNum+werwolfNum !=gameUserNum)
+    {
+        [MBProgressHUD showError:@"游戏身份配置有误 请重新计算 人数!!!"];
+        return ;
+    }
+    _Btn_begainGame.enabled=YES;
+}
 //pickview 选中某行数据
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
      if(component==0){
-          _gameUserNum= [NSNumber numberWithInteger: row +6 ];
-          NSLog(@"user num==%@",_gameUserNum);
+          gameUserNum= row +6 ;
      }
      else if(component==1){
-          _civilianNum= [NSNumber numberWithInteger: row +2 ];
-          NSLog(@"civilan num==%@",_civilianNum);
+          civilianNum= row +2 ;
      }
      else{
-          _werwolfNum= [NSNumber numberWithInteger: row +2 ];
-          NSLog(@"wolf num==%@",_werwolfNum);
+          werwolfNum= row +2 ;
      }
+    if (!_nameArr)
+        return;
+    [self judgeIsTureNum];
      
 }
 //pickerview 组数

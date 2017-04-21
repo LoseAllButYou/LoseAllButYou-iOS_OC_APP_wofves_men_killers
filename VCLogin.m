@@ -56,7 +56,7 @@
      if([self.Text_passWord.text isEqualToString: @"123" ] &&[self.Text_loginName.text isEqualToString: @"123"])
      {
           //下载开源MBProgressHUD 库 便捷提示框
-          NSLog(@"\nlogin success!!!\n");
+         
           //获取网络数据库验证
           [MBProgressHUD showMessage:@"努力加载中！请大爷耐心等待！"];
           dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

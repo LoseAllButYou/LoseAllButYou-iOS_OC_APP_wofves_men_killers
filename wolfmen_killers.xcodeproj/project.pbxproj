@@ -31,6 +31,7 @@
 		192CBD7F1EA6607C002E48F7 /* Vcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 192CBD7E1EA6607C002E48F7 /* Vcell.m */; };
 		1953DA3D1E9CE74A0097D40F /* VCMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */; };
 		1953DA431E9CF91D0097D40F /* Prepare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA421E9CF91D0097D40F /* Prepare.storyboard */; };
+		1972DDC41EA9C8E80010DD1C /* VCSelectCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1972DDC31EA9C8E80010DD1C /* VCSelectCharacter.m */; };
 		199E02F01E98F93900F07F30 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 199E02EF1E98F93900F07F30 /* login.storyboard */; };
 		19F2F7A31E98C56000936FCF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F7A21E98C56000936FCF /* main.m */; };
 		19F2F7A61E98C56000936FCF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F7A51E98C56000936FCF /* AppDelegate.m */; };
@@ -85,6 +86,8 @@
 		192CBD7E1EA6607C002E48F7 /* Vcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vcell.m; sourceTree = "<group>"; };
 		1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VCMain.storyboard; sourceTree = "<group>"; };
 		1953DA421E9CF91D0097D40F /* Prepare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Prepare.storyboard; path = wolfmen_killers/Prepare.storyboard; sourceTree = "<group>"; };
+		1972DDC21EA9C8E80010DD1C /* VCSelectCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSelectCharacter.h; sourceTree = "<group>"; };
+		1972DDC31EA9C8E80010DD1C /* VCSelectCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSelectCharacter.m; sourceTree = "<group>"; };
 		199E02EF1E98F93900F07F30 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = login.storyboard; path = wolfmen_killers/login.storyboard; sourceTree = "<group>"; };
 		19F2F79E1E98C56000936FCF /* wolfmen_killers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wolfmen_killers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F2F7A21E98C56000936FCF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -126,6 +129,8 @@
 		190051031E98D5AB00D5415A /* 界面 */ = {
 			isa = PBXGroup;
 			children = (
+				1972DDC21EA9C8E80010DD1C /* VCSelectCharacter.h */,
+				1972DDC31EA9C8E80010DD1C /* VCSelectCharacter.m */,
 				192CBD7D1EA6607C002E48F7 /* Vcell.h */,
 				192CBD7E1EA6607C002E48F7 /* Vcell.m */,
 				192CBD7A1EA65047002E48F7 /* VCCharactor.h */,
@@ -380,6 +385,7 @@
 				1919242A1EA217FB00F8B759 /* VCFriend.m in Sources */,
 				19F2F7A31E98C56000936FCF /* main.m in Sources */,
 				19FE7B041EA4EB4F00ACA6E0 /* VCWeb.m in Sources */,
+				1972DDC41EA9C8E80010DD1C /* VCSelectCharacter.m in Sources */,
 				1919241C1E9FB2F200F8B759 /* VCUserInfo.m in Sources */,
 				190BD2451EA5E7320085EB44 /* NSObject+DBPart.m in Sources */,
 				191924431EA3638A00F8B759 /* VCHelp.m in Sources */,

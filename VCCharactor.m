@@ -17,7 +17,7 @@
 
 @property (strong,nonatomic)NSMutableArray* imageArr;
 @property (strong,nonatomic)NSMutableArray* nameArr;
-@property (nonatomic, strong) NSMutableIndexSet* selectedIndexSet;
+@property (nonatomic, strong)NSMutableArray* selectedNameArr;
 @end
 
 @implementation VCCharactor
@@ -34,9 +34,9 @@ static NSString * const reuseIdentifier = @"Cell";
      
      _charactor=[FMResultSet alloc];
      _charactor= [dbPart selectAllFromDB:@"select * from game_identity where identity!='123'"];
-     _selectedIndexSet=[NSMutableIndexSet alloc];
      _imageArr=[NSMutableArray arrayWithCapacity:10 ];
      _nameArr=[NSMutableArray arrayWithCapacity:10];
+     _selectedNameArr=[NSMutableArray arrayWithCapacity:10];
      for(;[_charactor next];)
      {
           ++count;
@@ -50,13 +50,10 @@ static NSString * const reuseIdentifier = @"Cell";
 - (IBAction)pressDone:(id)sender {
      
      //此页面已经存在于self.navigationController.viewControllers中,并且是当前页面的前一页面
-     VCPrepare * up= [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-1];
-     up.nameArr=[NSMutableArray alloc];
-     up.nameArr=_nameArr;
-     
+     VCPrepare * up= [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
+     up.nameArr=_selectedNameArr;
           [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -68,13 +65,16 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
      
      ((Vcell*)[collectionView cellForItemAtIndexPath:indexPath]).Img_isSelect.image=[UIImage imageNamed:@"didSelect.png"];
+    [_selectedNameArr addObject:_nameArr[indexPath.row]];
+    
   
 }
 
+//取消选中cell
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
      ((Vcell*)[collectionView cellForItemAtIndexPath:indexPath]).Img_isSelect.image=[UIImage imageNamed:@"notSelect.png"];
-    
+    [_selectedNameArr removeObject:_nameArr[indexPath.row]];
 }
 
 //定义展示的Section的个数
