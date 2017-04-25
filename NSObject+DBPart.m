@@ -35,12 +35,17 @@
 
 -(BOOL)insertData:(NSString*)sqlQuery
 {
-    
-    return YES;
+    if([db executeUpdate:sqlQuery])
+        return YES;
+    else
+        return NO;
 }
 -(BOOL)deleteData:(NSString*)sqlQuery
 {
-    return YES;
+    if([db executeUpdate:sqlQuery])
+        return YES;
+    else
+        return NO;
 }
 -(BOOL)closeDB
 {
@@ -49,7 +54,6 @@
 
 -(FMResultSet*)selectAllFromDB:(NSString*)sqlQuery
 {
-     
      FMResultSet* ret=[db executeQuery:sqlQuery];
      NSLog(@"%@",ret);
      NSLog(@"ret num=%d",ret.columnCount);

@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="URL-TI-VsW">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="URL-TI-VsW">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -71,6 +71,10 @@
                                 <state key="normal" title="开始游戏" backgroundImage="button_green">
                                     <color key="titleColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="Btn_begainGame:" destination="URL-TI-VsW" eventType="touchUpInside" id="mWY-sp-3Qm"/>
+                                    <segue destination="9D6-Ec-o1n" kind="show" identifier="VCPlayerSelect" id="e0J-P1-Vfb"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -86,7 +90,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSU-9H-H8G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-282.39999999999998" y="-891.00449775112452"/>
+            <point key="canvasLocation" x="-438" y="-891"/>
+        </scene>
+        <!--PlayerSelectCharacter-->
+        <scene sceneID="pzf-yW-lB0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PlayerSelectCharacter" id="9D6-Ec-o1n" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ygM-Jh-LNm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="148" y="-699"/>
         </scene>
         <!--特殊角色选择-->
         <scene sceneID="aov-hU-tNF">
@@ -165,13 +177,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="Coll_charactorList" destination="wZo-Hd-1PJ" id="NNi-9T-ExV"/>
-                        <outlet property="Coll_list" destination="wZo-Hd-1PJ" id="hFV-tC-KpN"/>
+                        <outlet property="Coll_list" destination="wZo-Hd-1PJ" id="z0X-ol-Yep"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LIR-hx-8M2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="606" y="-891"/>
+            <point key="canvasLocation" x="591" y="-912"/>
         </scene>
     </scenes>
     <resources>

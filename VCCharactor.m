@@ -11,13 +11,14 @@
 #import "Vcell.h"
 #import "VCPrepare.h"
 @interface VCCharactor ()
-@property (weak, nonatomic) IBOutlet UICollectionView *Coll_charactorList;
+//@property (weak, nonatomic) IBOutlet UICollectionView *Coll_charactorList;
 @property (strong,nonatomic)FMResultSet* charactor;
 @property (weak, nonatomic) IBOutlet UICollectionView *Coll_list;
 
 @property (strong,nonatomic)NSMutableArray* imageArr;
 @property (strong,nonatomic)NSMutableArray* nameArr;
 @property (nonatomic, strong)NSMutableArray* selectedNameArr;
+@property (nonatomic, strong)NSMutableArray* selectedImageArr;
 @end
 
 @implementation VCCharactor
@@ -37,6 +38,7 @@ static NSString * const reuseIdentifier = @"Cell";
      _imageArr=[NSMutableArray arrayWithCapacity:10 ];
      _nameArr=[NSMutableArray arrayWithCapacity:10];
      _selectedNameArr=[NSMutableArray arrayWithCapacity:10];
+     _selectedImageArr=[NSMutableArray arrayWithCapacity:10];
      for(;[_charactor next];)
      {
           ++count;
@@ -45,13 +47,16 @@ static NSString * const reuseIdentifier = @"Cell";
      }
      //设置允许多选
      _Coll_list.allowsMultipleSelection = YES;
+    [dbPart closeDB];
 }
 
 - (IBAction)pressDone:(id)sender {
      
      //此页面已经存在于self.navigationController.viewControllers中,并且是当前页面的前一页面
      VCPrepare * up= [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
-     up.nameArr=_selectedNameArr;
+    up.nameArr=_selectedNameArr;
+    up.imageArr=_selectedImageArr;
+    up.isPressDone=[NSNumber numberWithBool:YES];
           [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -66,7 +71,7 @@ static NSString * const reuseIdentifier = @"Cell";
      
      ((Vcell*)[collectionView cellForItemAtIndexPath:indexPath]).Img_isSelect.image=[UIImage imageNamed:@"didSelect.png"];
     [_selectedNameArr addObject:_nameArr[indexPath.row]];
-    
+    [_selectedImageArr addObject:_imageArr[indexPath.row]];
   
 }
 
@@ -75,6 +80,7 @@ static NSString * const reuseIdentifier = @"Cell";
 {
      ((Vcell*)[collectionView cellForItemAtIndexPath:indexPath]).Img_isSelect.image=[UIImage imageNamed:@"notSelect.png"];
     [_selectedNameArr removeObject:_nameArr[indexPath.row]];
+    [_selectedImageArr removeObject:_imageArr[indexPath.row]];
 }
 
 //定义展示的Section的个数

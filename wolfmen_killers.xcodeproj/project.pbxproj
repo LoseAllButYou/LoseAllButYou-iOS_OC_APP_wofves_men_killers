@@ -31,7 +31,6 @@
 		192CBD7F1EA6607C002E48F7 /* Vcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 192CBD7E1EA6607C002E48F7 /* Vcell.m */; };
 		1953DA3D1E9CE74A0097D40F /* VCMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */; };
 		1953DA431E9CF91D0097D40F /* Prepare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA421E9CF91D0097D40F /* Prepare.storyboard */; };
-		1972DDC41EA9C8E80010DD1C /* VCSelectCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1972DDC31EA9C8E80010DD1C /* VCSelectCharacter.m */; };
 		199E02F01E98F93900F07F30 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 199E02EF1E98F93900F07F30 /* login.storyboard */; };
 		19F2F7A31E98C56000936FCF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F7A21E98C56000936FCF /* main.m */; };
 		19F2F7A61E98C56000936FCF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F7A51E98C56000936FCF /* AppDelegate.m */; };
@@ -44,6 +43,9 @@
 		19F5D0201E9A64D400B15A67 /* CIDoorwaySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F5D01F1E9A64D400B15A67 /* CIDoorwaySegue.m */; };
 		19FE7B041EA4EB4F00ACA6E0 /* VCWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FE7B031EA4EB4F00ACA6E0 /* VCWeb.m */; };
 		19FE7B091EA4F4A000ACA6E0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE7B081EA4F4A000ACA6E0 /* AudioToolbox.framework */; };
+		FE0C69091EAF8525000B228C /* PlayerSelectCharacter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE0C69081EAF8525000B228C /* PlayerSelectCharacter.storyboard */; };
+		FE0C690C1EAF8875000B228C /* VCPlayerSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0C690B1EAF8875000B228C /* VCPlayerSelect.m */; };
+		FE0C690F1EAF89D6000B228C /* VSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0C690E1EAF89D6000B228C /* VSelectCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,8 +88,6 @@
 		192CBD7E1EA6607C002E48F7 /* Vcell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vcell.m; sourceTree = "<group>"; };
 		1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VCMain.storyboard; sourceTree = "<group>"; };
 		1953DA421E9CF91D0097D40F /* Prepare.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Prepare.storyboard; path = wolfmen_killers/Prepare.storyboard; sourceTree = "<group>"; };
-		1972DDC21EA9C8E80010DD1C /* VCSelectCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSelectCharacter.h; sourceTree = "<group>"; };
-		1972DDC31EA9C8E80010DD1C /* VCSelectCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSelectCharacter.m; sourceTree = "<group>"; };
 		199E02EF1E98F93900F07F30 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = login.storyboard; path = wolfmen_killers/login.storyboard; sourceTree = "<group>"; };
 		19F2F79E1E98C56000936FCF /* wolfmen_killers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wolfmen_killers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F2F7A21E98C56000936FCF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -111,6 +111,11 @@
 		19FE7B031EA4EB4F00ACA6E0 /* VCWeb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCWeb.m; sourceTree = "<group>"; };
 		19FE7B051EA4F49C00ACA6E0 /* wolfmen_killers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = wolfmen_killers.entitlements; path = wolfmen_killers/wolfmen_killers.entitlements; sourceTree = "<group>"; };
 		19FE7B081EA4F4A000ACA6E0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		FE0C69081EAF8525000B228C /* PlayerSelectCharacter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlayerSelectCharacter.storyboard; sourceTree = "<group>"; };
+		FE0C690A1EAF8875000B228C /* VCPlayerSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPlayerSelect.h; sourceTree = "<group>"; };
+		FE0C690B1EAF8875000B228C /* VCPlayerSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPlayerSelect.m; sourceTree = "<group>"; };
+		FE0C690D1EAF89D6000B228C /* VSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSelectCell.h; sourceTree = "<group>"; };
+		FE0C690E1EAF89D6000B228C /* VSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSelectCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,10 +134,12 @@
 		190051031E98D5AB00D5415A /* 界面 */ = {
 			isa = PBXGroup;
 			children = (
-				1972DDC21EA9C8E80010DD1C /* VCSelectCharacter.h */,
-				1972DDC31EA9C8E80010DD1C /* VCSelectCharacter.m */,
+				FE0C690A1EAF8875000B228C /* VCPlayerSelect.h */,
+				FE0C690B1EAF8875000B228C /* VCPlayerSelect.m */,
 				192CBD7D1EA6607C002E48F7 /* Vcell.h */,
 				192CBD7E1EA6607C002E48F7 /* Vcell.m */,
+				FE0C690D1EAF89D6000B228C /* VSelectCell.h */,
+				FE0C690E1EAF89D6000B228C /* VSelectCell.m */,
 				192CBD7A1EA65047002E48F7 /* VCCharactor.h */,
 				192CBD7B1EA65047002E48F7 /* VCCharactor.m */,
 				19FE7B021EA4EB4F00ACA6E0 /* VCWeb.h */,
@@ -208,6 +215,7 @@
 				1919243B1EA3627200F8B759 /* history.storyboard */,
 				19F2F7AF1E98C56000936FCF /* LaunchScreen.storyboard */,
 				1953DA421E9CF91D0097D40F /* Prepare.storyboard */,
+				FE0C69081EAF8525000B228C /* PlayerSelectCharacter.storyboard */,
 			);
 			name = storyboard;
 			sourceTree = "<group>";
@@ -219,9 +227,9 @@
 				19FE7B0C1EA4FC2A00ACA6E0 /* plist */,
 				191924311EA25D6B00F8B759 /* coreData */,
 				191924181E9E64F500F8B759 /* icon.png */,
-				1953DA3E1E9CEA950097D40F /* storyboard */,
 				19F5D01D1E9A645B00B15A67 /* Animation */,
 				19F5D0141E9A454600B15A67 /* MBHud库 */,
+				1953DA3E1E9CEA950097D40F /* storyboard */,
 				190051031E98D5AB00D5415A /* 界面 */,
 				19F2F7A01E98C56000936FCF /* wolfmen_killers */,
 				19F2F7A41E98C56000936FCF /* AppDelegate.h */,
@@ -315,7 +323,6 @@
 				TargetAttributes = {
 					19F2F79D1E98C56000936FCF = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 3762MX53AP;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.InterAppAudio = {
@@ -357,6 +364,7 @@
 				191924401EA3636D00F8B759 /* help.storyboard in Resources */,
 				19F2F7B11E98C56000936FCF /* LaunchScreen.storyboard in Resources */,
 				1919241E1EA1EA6900F8B759 /* Assets.xcassets in Resources */,
+				FE0C69091EAF8525000B228C /* PlayerSelectCharacter.storyboard in Resources */,
 				1953DA3D1E9CE74A0097D40F /* VCMain.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,12 +391,13 @@
 				19F5D01A1E9A464100B15A67 /* MBProgressHUD+MJ.m in Sources */,
 				191924301EA25D3100F8B759 /* gameElementDB.xcdatamodeld in Sources */,
 				1919242A1EA217FB00F8B759 /* VCFriend.m in Sources */,
+				FE0C690C1EAF8875000B228C /* VCPlayerSelect.m in Sources */,
 				19F2F7A31E98C56000936FCF /* main.m in Sources */,
 				19FE7B041EA4EB4F00ACA6E0 /* VCWeb.m in Sources */,
-				1972DDC41EA9C8E80010DD1C /* VCSelectCharacter.m in Sources */,
 				1919241C1E9FB2F200F8B759 /* VCUserInfo.m in Sources */,
 				190BD2451EA5E7320085EB44 /* NSObject+DBPart.m in Sources */,
 				191924431EA3638A00F8B759 /* VCHelp.m in Sources */,
+				FE0C690F1EAF89D6000B228C /* VSelectCell.m in Sources */,
 				19F5CFFB1E991C4F00B15A67 /* VCLogin.m in Sources */,
 				19F5D0191E9A464100B15A67 /* MBProgressHUD.m in Sources */,
 				1919242D1EA220F900F8B759 /* VCPrepare.m in Sources */,
@@ -455,6 +464,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -495,6 +505,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -504,7 +515,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = wolfmen_killers/wolfmen_killers.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3762MX53AP;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = wolfmen_killers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -519,7 +530,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = wolfmen_killers/wolfmen_killers.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3762MX53AP;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = wolfmen_killers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
