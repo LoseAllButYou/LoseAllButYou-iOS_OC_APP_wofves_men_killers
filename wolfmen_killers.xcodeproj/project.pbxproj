@@ -46,6 +46,9 @@
 		FE0C69091EAF8525000B228C /* PlayerSelectCharacter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE0C69081EAF8525000B228C /* PlayerSelectCharacter.storyboard */; };
 		FE0C690C1EAF8875000B228C /* VCPlayerSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0C690B1EAF8875000B228C /* VCPlayerSelect.m */; };
 		FE0C690F1EAF89D6000B228C /* VSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0C690E1EAF89D6000B228C /* VSelectCell.m */; };
+		FE5612441EB0C8A100968914 /* Begain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE5612431EB0C8A100968914 /* Begain.storyboard */; };
+		FE5612471EB0D8E300968914 /* VBeginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5612461EB0D8E300968914 /* VBeginCell.m */; };
+		FE56124A1EB0DE4B00968914 /* VRhead.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5612491EB0DE4B00968914 /* VRhead.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +119,11 @@
 		FE0C690B1EAF8875000B228C /* VCPlayerSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPlayerSelect.m; sourceTree = "<group>"; };
 		FE0C690D1EAF89D6000B228C /* VSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSelectCell.h; sourceTree = "<group>"; };
 		FE0C690E1EAF89D6000B228C /* VSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSelectCell.m; sourceTree = "<group>"; };
+		FE5612431EB0C8A100968914 /* Begain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Begain.storyboard; sourceTree = "<group>"; };
+		FE5612451EB0D8E300968914 /* VBeginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBeginCell.h; sourceTree = "<group>"; };
+		FE5612461EB0D8E300968914 /* VBeginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBeginCell.m; sourceTree = "<group>"; };
+		FE5612481EB0DE4B00968914 /* VRhead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VRhead.h; sourceTree = "<group>"; };
+		FE5612491EB0DE4B00968914 /* VRhead.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRhead.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +142,10 @@
 		190051031E98D5AB00D5415A /* 界面 */ = {
 			isa = PBXGroup;
 			children = (
+				FE5612481EB0DE4B00968914 /* VRhead.h */,
+				FE5612491EB0DE4B00968914 /* VRhead.m */,
+				FE5612451EB0D8E300968914 /* VBeginCell.h */,
+				FE5612461EB0D8E300968914 /* VBeginCell.m */,
 				FE0C690A1EAF8875000B228C /* VCPlayerSelect.h */,
 				FE0C690B1EAF8875000B228C /* VCPlayerSelect.m */,
 				192CBD7D1EA6607C002E48F7 /* Vcell.h */,
@@ -216,6 +228,7 @@
 				19F2F7AF1E98C56000936FCF /* LaunchScreen.storyboard */,
 				1953DA421E9CF91D0097D40F /* Prepare.storyboard */,
 				FE0C69081EAF8525000B228C /* PlayerSelectCharacter.storyboard */,
+				FE5612431EB0C8A100968914 /* Begain.storyboard */,
 			);
 			name = storyboard;
 			sourceTree = "<group>";
@@ -366,6 +379,7 @@
 				19F2F7B11E98C56000936FCF /* LaunchScreen.storyboard in Resources */,
 				1919241E1EA1EA6900F8B759 /* Assets.xcassets in Resources */,
 				FE0C69091EAF8525000B228C /* PlayerSelectCharacter.storyboard in Resources */,
+				FE5612441EB0C8A100968914 /* Begain.storyboard in Resources */,
 				1953DA3D1E9CE74A0097D40F /* VCMain.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,8 +397,10 @@
 				1919243A1EA3624500F8B759 /* VCHistory.m in Sources */,
 				190BD23D1EA5C4FF0085EB44 /* FMDatabasePool.m in Sources */,
 				1900510C1E98E21F00D5415A /* VCBegain.m in Sources */,
+				FE5612471EB0D8E300968914 /* VBeginCell.m in Sources */,
 				19F2F7A61E98C56000936FCF /* AppDelegate.m in Sources */,
 				190BD23E1EA5C4FF0085EB44 /* FMDatabaseQueue.m in Sources */,
+				FE56124A1EB0DE4B00968914 /* VRhead.m in Sources */,
 				190BD23B1EA5C4FF0085EB44 /* FMDatabase.m in Sources */,
 				190BD23C1EA5C4FF0085EB44 /* FMDatabaseAdditions.m in Sources */,
 				19F5D0101E9A432C00B15A67 /* VCMain.m in Sources */,

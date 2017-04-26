@@ -83,7 +83,7 @@
                     <navigationItem key="navigationItem" title="分配角色" id="wb8-Io-Rx5">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="BIv-9l-rlS">
                             <connections>
-                                <segue destination="GFQ-WD-R2X" kind="showDetail" id="0GY-J9-uan"/>
+                                <segue destination="GFQ-WD-R2X" kind="show" id="0GY-J9-uan"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="-31.199999999999999" y="151.57421289355324"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--Begain-->
         <scene sceneID="RE6-a6-fQF">
             <objects>
-                <viewControllerPlaceholder id="GFQ-WD-R2X" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Begain" id="GFQ-WD-R2X" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r3X-sr-gta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="567" y="151"/>
