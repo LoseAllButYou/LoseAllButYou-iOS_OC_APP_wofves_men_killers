@@ -59,13 +59,19 @@
 //选中cell
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     VSelectCell* cell=(VSelectCell*)[collectionView cellForItemAtIndexPath:indexPath];
-    cell.Img_back.hidden=NO;
+    //cell.Img_back.hidden=!cell.Img_back.hidden;
+    cell.Img_back.hidden=YES;
+    NSLog(@"%s", __func__);
 }
 
-//取消选中cell
+////取消选中cell
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    ((VSelectCell*)[collectionView cellForItemAtIndexPath:indexPath]).Img_back.hidden=YES;
+    VSelectCell* cell=(VSelectCell*)[collectionView cellForItemAtIndexPath:indexPath];
+    cell.Img_back.hidden=NO;
+    
+    NSLog(@"%s", __func__);
+    
 }
 
 //定义展示的Section的个数
@@ -97,12 +103,14 @@
     NSString* labelTitle;
     [self randCellView:&imgName sencondkid:&labelTitle ];
     UIImage* img=[UIImage imageNamed:imgName];
+    
     VSelectCell* cell = (VSelectCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
-    if(!cell)
-        cell=(VSelectCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
+//    if(!cell)
+//        cell=(VSelectCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
+    
     cell.Img_character.image= img;
     cell.Label_character.text=labelTitle;
-    // cell.Img_isSelect.image=[UIImage imageNamed:@"notSelect.png"];
+   
     return cell;
 }
 //定义每个UICollectionView 的大小
