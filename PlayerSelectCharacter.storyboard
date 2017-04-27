@@ -83,7 +83,7 @@
                     <navigationItem key="navigationItem" title="分配角色" id="wb8-Io-Rx5">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="BIv-9l-rlS">
                             <connections>
-                                <segue destination="GFQ-WD-R2X" kind="show" id="0GY-J9-uan"/>
+                                <segue destination="GFQ-WD-R2X" kind="show" identifier="begainVC" id="0GY-J9-uan"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

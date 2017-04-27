@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *Title_Info;
 @property (weak, nonatomic) IBOutlet UICollectionView *Coll_ShowUser;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Btn_changDayNight;
-;
+@property (weak, nonatomic) IBOutlet UITextView *Text_showAction;
 
+@property (strong, nonatomic) NSMutableDictionary* mutDic_userSelect;
 @end

@@ -17,4 +17,5 @@
 @property (strong, nonatomic) NSMutableArray* freedomArr;
 @property (strong, nonatomic) NSMutableArray* mutArr_characterName;
 @property (strong, nonatomic) NSMutableArray* mutArr_characterImg;
+@property (strong, nonatomic) NSMutableDictionary* mutDic_userSelect;
 @end

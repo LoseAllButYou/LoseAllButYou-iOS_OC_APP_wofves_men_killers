@@ -8,6 +8,9 @@
 
 #import "VCPlayerSelect.h"
 #import "VSelectCell.h"
+#import "VCBegain.h"
+#import "NSObject+DBPart.h"
+
 @interface VCPlayerSelect ()
 @property (weak, nonatomic) IBOutlet UICollectionView *Coll_character;
 
@@ -20,6 +23,8 @@
     // Do any additional setup after loading the view.
     curCharacterNum=[[_characterInfo valueForKey:@"userNum"]intValue];
     _freedomArr=[NSMutableArray arrayWithCapacity:curCharacterNum];
+    _mutDic_userSelect=[NSMutableDictionary dictionaryWithObjectsAndKeys:[NSMutableArray arrayWithCapacity:curCharacterNum],@"characterName",[NSMutableArray arrayWithCapacity:curCharacterNum] , @"characterImg" ,nil];
+    
     for(int i=0;i<[[_characterInfo valueForKey:@"userNum"]intValue];++i)
     {
         [_freedomArr addObject:[NSNumber numberWithInt:i]];
@@ -49,6 +54,8 @@
     *labelName=[_mutArr_characterName objectAtIndex:[[_freedomArr objectAtIndex:num1] intValue]];
     [_freedomArr removeObjectAtIndex:num1];
     --curCharacterNum;
+    [(NSMutableArray*)[_mutDic_userSelect valueForKey:@"characterImg"] addObject:*imgName];
+    [(NSMutableArray*)[_mutDic_userSelect valueForKey:@"characterName"] addObject:*labelName];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -61,7 +68,7 @@
     VSelectCell* cell=(VSelectCell*)[collectionView cellForItemAtIndexPath:indexPath];
     //cell.Img_back.hidden=!cell.Img_back.hidden;
     cell.Img_back.hidden=YES;
-    NSLog(@"%s", __func__);
+
 }
 
 ////取消选中cell
@@ -69,8 +76,6 @@
 {
     VSelectCell* cell=(VSelectCell*)[collectionView cellForItemAtIndexPath:indexPath];
     cell.Img_back.hidden=NO;
-    
-    NSLog(@"%s", __func__);
     
 }
 
@@ -135,14 +140,21 @@
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"begainVC"])
+    {
+        UINavigationController *nav = segue.destinationViewController;
+        VCBegain* nextVC = (VCBegain*)nav;
+        nextVC.mutDic_userSelect=_mutDic_userSelect;
+    }
+
 }
-*/
+
 
 @end
