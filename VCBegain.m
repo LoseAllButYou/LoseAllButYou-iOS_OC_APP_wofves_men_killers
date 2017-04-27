@@ -8,19 +8,29 @@
 
 #import "VCBegain.h"
 #import "VBeginCell.h"
-
-enum DEAD_OUT_TYPE{
+#import "NSObject+DBPart.h"
+//游戏状态
+enum STAT_TYPE{
     DEAD_BY_WERWOLF=0,
     DEAD_BY_WITCH=1,
     DEAD_BY_HUNTER=2,
     DEAD_BY_WERWOLF_KING=3,
     OUT_BY_CIVILIAN=4,
     DEAD_NOT_DEFINE=5,
+    SURVIVE=6,
 };
 
 @interface VCBegain ()
 @property (weak, nonatomic) NSNumber* curActUserNum;
 @property (weak, nonatomic) NSNumber* beActedUserNum;
+@property (weak, nonatomic) NSNumber* gameTime;
+@property (weak, nonatomic) NSNumber* dayOrNight;
+@property (weak, nonatomic) NSNumber* deityNum;
+@property (weak, nonatomic) NSNumber* civilianNum;
+@property (weak, nonatomic) NSNumber* werwolfNum;
+@property (weak, nonatomic) NSNumber* thirdPartyNum;//第三方人数
+@property (weak, nonatomic) NSMutableArray* cellArr;
+@property (weak, nonatomic) NSMutableArray* actOrder;
 @end
 
 @implementation VCBegain
@@ -28,8 +38,44 @@ enum DEAD_OUT_TYPE{
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _curActUserNum=[NSNumber numberWithInt:0];
+    _beActedUserNum=[NSNumber numberWithInt:0];
+    _gameTime=[NSNumber numberWithInt:1];
+    _dayOrNight=[NSNumber numberWithBool:NO];//NO夜晚 YES白天
+    _deityNum=[NSNumber numberWithInt:0];
+    _civilianNum=[NSNumber numberWithInt:0];
+    _thirdPartyNum=[NSNumber numberWithInt:0];
+    _cellArr=[NSMutableArray arrayWithCapacity:[[_mutDic_userSelect  objectForKey:@"characterName"]count]];
+    _actOrder=[NSMutableArray arrayWithCapacity:[_cellArr count]];
 }
+-(void)gameAction
+{
+    DBPart* db=[DBPart alloc];
+    [db openDB];
+    for(int i=0;i<[[_mutDic_userSelect valueForKey:@"charactorName"] count];++i){
+    [db insertData:[NSString stringWithFormat: @"insert into user_info(user_name,game_identity) values (player%d,%@)",i,[[_mutDic_userSelect valueForKey:@"charactorName"] objectAtIndex:i]]];
+    }
+    [db closeDB];
 
+    [self begainGame];
+    
+}
+-(void)begainGame
+{
+    
+}
+-(int)judgeCurActUser
+{
+    return 0;
+}
+-(bool)DidEndGame
+{
+    return false;
+}
+-(NSArray*)setActOrder
+{
+    return nil;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -82,6 +128,7 @@ enum DEAD_OUT_TYPE{
     
     cell.Label_num.text=[NSString stringWithFormat:@"%d", indexPath.row ];
     cell.Img_charactor.image=img;
+    [_cellArr addObject:cell];
     return cell;
 }
 

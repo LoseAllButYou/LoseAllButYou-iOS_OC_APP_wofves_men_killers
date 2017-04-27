@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface VCBegain : UIViewController
+
 @property (weak, nonatomic) IBOutlet UINavigationItem *Title_Info;
 @property (weak, nonatomic) IBOutlet UICollectionView *Coll_ShowUser;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Btn_changDayNight;

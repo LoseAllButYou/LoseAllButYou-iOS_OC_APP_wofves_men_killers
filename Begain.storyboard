@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="playerSelect_back" translatesAutoresizingMaskIntoConstraints="NO" id="V1C-ea-fez">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="night_back" translatesAutoresizingMaskIntoConstraints="NO" id="V1C-ea-fez">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -41,7 +41,6 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" pagingEnabled="YES" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zB7-Ti-qDy">
                                 <rect key="frame" x="0.0" y="217" width="375" height="450"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.58750392999339918" green="0.99536512305699487" blue="0.84779080668040263" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ToD-Zd-dTB">
                                     <size key="itemSize" width="113" height="112"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -110,8 +109,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="night_back" width="664" height="1000"/>
         <image name="num_back" width="128" height="120"/>
-        <image name="playerSelect_back" width="640" height="1136"/>
         <image name="user_head_default" width="600" height="413"/>
         <image name="wood_hint" width="522" height="313"/>
     </resources>

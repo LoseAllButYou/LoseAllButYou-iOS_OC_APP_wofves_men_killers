@@ -48,6 +48,7 @@
 		FE0C690F1EAF89D6000B228C /* VSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0C690E1EAF89D6000B228C /* VSelectCell.m */; };
 		FE5612441EB0C8A100968914 /* Begain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE5612431EB0C8A100968914 /* Begain.storyboard */; };
 		FE5612471EB0D8E300968914 /* VBeginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5612461EB0D8E300968914 /* VBeginCell.m */; };
+		FE56124C1EB217B300968914 /* day_back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FE56124B1EB217B300968914 /* day_back.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -121,6 +122,7 @@
 		FE5612431EB0C8A100968914 /* Begain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Begain.storyboard; sourceTree = "<group>"; };
 		FE5612451EB0D8E300968914 /* VBeginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBeginCell.h; sourceTree = "<group>"; };
 		FE5612461EB0D8E300968914 /* VBeginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBeginCell.m; sourceTree = "<group>"; };
+		FE56124B1EB217B300968914 /* day_back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = day_back.jpg; path = ../day_back.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +261,7 @@
 			children = (
 				19F2F7A51E98C56000936FCF /* AppDelegate.m */,
 				1919241D1EA1EA6900F8B759 /* Assets.xcassets */,
+				FE56124B1EB217B300968914 /* day_back.jpg */,
 				19F2F7A11E98C56000936FCF /* Supporting Files */,
 			);
 			path = wolfmen_killers;
@@ -365,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				199E02F01E98F93900F07F30 /* login.storyboard in Resources */,
+				FE56124C1EB217B300968914 /* day_back.jpg in Resources */,
 				1919243E1EA362DF00F8B759 /* friend.storyboard in Resources */,
 				1953DA431E9CF91D0097D40F /* Prepare.storyboard in Resources */,
 				190BD24B1EA60A200085EB44 /* wolfmen_killer_DB.db in Resources */,
