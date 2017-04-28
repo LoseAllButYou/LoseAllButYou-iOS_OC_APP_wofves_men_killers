@@ -10,6 +10,7 @@
 
 @interface VSelectCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *Img_back;
+@property (weak, nonatomic) IBOutlet UILabel *Label_userNum;
 @property (weak, nonatomic) IBOutlet UIImageView *Img_character;
 @property (weak, nonatomic) IBOutlet UILabel *Label_character;
 @end

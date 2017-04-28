@@ -14,6 +14,7 @@
 @interface VCPlayerSelect ()
 @property (weak, nonatomic) IBOutlet UICollectionView *Coll_character;
 
+
 @end
 
 @implementation VCPlayerSelect
@@ -47,6 +48,8 @@
 }
 -(void)randCellView:(NSString**)imgName sencondkid:(NSString**)labelName
 {
+    if(curCharacterNum==0)
+        return
     srand((unsigned)time(NULL));
     int num1=rand()%curCharacterNum;
     NSLog(@"index =%d",num1);
@@ -106,16 +109,20 @@
     NSString *identify = @"cell";
     NSString* imgName;
     NSString* labelTitle;
-    [self randCellView:&imgName sencondkid:&labelTitle ];
+    if(curCharacterNum!=0)
+        [self randCellView:&imgName sencondkid:&labelTitle ];
+    else
+    {
+        imgName=[(NSMutableArray*)[_mutDic_userSelect valueForKey:@"characterImg"]objectAtIndex:indexPath.row];
+        labelTitle=[(NSMutableArray*)[_mutDic_userSelect valueForKey:@"characterName"] objectAtIndex:indexPath.row];
+    }
     UIImage* img=[UIImage imageNamed:imgName];
     
     VSelectCell* cell = (VSelectCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
-//    if(!cell)
-//        cell=(VSelectCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
-    
+
     cell.Img_character.image= img;
     cell.Label_character.text=labelTitle;
-   
+    cell.Label_userNum.text=[NSString stringWithFormat:@"%d",indexPath.row+1];
     return cell;
 }
 //定义每个UICollectionView 的大小

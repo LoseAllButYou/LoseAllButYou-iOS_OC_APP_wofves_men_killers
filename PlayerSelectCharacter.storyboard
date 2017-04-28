@@ -63,12 +63,24 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="125" height="176"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="num_back" translatesAutoresizingMaskIntoConstraints="NO" id="3Kh-Zz-I20">
+                                                    <rect key="frame" x="88" y="141" width="37" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxi-yU-shU">
+                                                    <rect key="frame" x="88" y="141" width="37" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <connections>
                                             <outlet property="Img_back" destination="Xuw-Ry-IhE" id="9jo-b0-3s7"/>
                                             <outlet property="Img_character" destination="JdI-Pi-aQ7" id="sac-Tk-tNB"/>
                                             <outlet property="Label_character" destination="OTU-h1-9Jr" id="ueD-BU-j44"/>
+                                            <outlet property="Label_userNum" destination="fxi-yU-shU" id="G2I-NN-wZg"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -107,6 +119,7 @@
     </scenes>
     <resources>
         <image name="cardback" width="316" height="300"/>
+        <image name="num_back" width="128" height="120"/>
         <image name="playerSelect_back" width="640" height="1136"/>
     </resources>
 </document>

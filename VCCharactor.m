@@ -19,6 +19,8 @@
 @property (strong,nonatomic)NSMutableArray* nameArr;
 @property (nonatomic, strong)NSMutableArray* selectedNameArr;
 @property (nonatomic, strong)NSMutableArray* selectedImageArr;
+@property (weak, nonatomic) IBOutlet UILabel *Label_selectedNum;
+
 @end
 
 @implementation VCCharactor
@@ -32,9 +34,10 @@ static NSString * const reuseIdentifier = @"Cell";
      NSLog(@"op Source==%d",[dbPart openOrCreatDB:@"werwolf_killer_DB/werwolf_killer_DB.db"]);
      NSLog(@"openDB res ==%d",[dbPart openDB]);
      //_charactor=[dbPart selectAllFromDB:@"select * from history_info"];
-     
+     selectedNum=0;
+    _Label_selectedNum.text=[NSString stringWithFormat:@"以选择角色数:%d",selectedNum];
      _charactor=[FMResultSet alloc];
-     _charactor= [dbPart selectAllFromDB:@"select * from game_identity where identity!='123'"];
+     _charactor= [dbPart selectAllFromDB:@"select * from game_identity where identity!='123' order by action_priority"];
      _imageArr=[NSMutableArray arrayWithCapacity:10 ];
      _nameArr=[NSMutableArray arrayWithCapacity:10];
      _selectedNameArr=[NSMutableArray arrayWithCapacity:10];
@@ -72,7 +75,8 @@ static NSString * const reuseIdentifier = @"Cell";
      ((Vcell*)[collectionView cellForItemAtIndexPath:indexPath]).Img_isSelect.image=[UIImage imageNamed:@"didSelect.png"];
     [_selectedNameArr addObject:_nameArr[indexPath.row]];
     [_selectedImageArr addObject:_imageArr[indexPath.row]];
-  
+    ++selectedNum;
+    _Label_selectedNum.text=[NSString stringWithFormat:@"以选择角色数:%d",selectedNum];
 }
 
 //取消选中cell
@@ -81,6 +85,8 @@ static NSString * const reuseIdentifier = @"Cell";
      ((Vcell*)[collectionView cellForItemAtIndexPath:indexPath]).Img_isSelect.image=[UIImage imageNamed:@"notSelect.png"];
     [_selectedNameArr removeObject:_nameArr[indexPath.row]];
     [_selectedImageArr removeObject:_imageArr[indexPath.row]];
+    --selectedNum;
+    _Label_selectedNum.text=[NSString stringWithFormat:@"以选择角色数:%d",selectedNum];
 }
 
 //定义展示的Section的个数

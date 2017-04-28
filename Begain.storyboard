@@ -81,6 +81,7 @@
                                             <outlet property="Img_headImg" destination="F8f-YA-pKn" id="ZMW-lO-ZNX"/>
                                             <outlet property="Img_numBack" destination="BaT-x5-6tW" id="sSd-ld-vdL"/>
                                             <outlet property="Label_num" destination="xhO-Bz-V9K" id="Lcx-f3-Kwz"/>
+                                            <outlet property="backgroundView" destination="V1C-ea-fez" id="xT4-2a-tOT"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

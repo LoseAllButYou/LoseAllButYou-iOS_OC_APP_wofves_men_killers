@@ -77,6 +77,10 @@ enum STAT_TYPE{
     
     return nil;
 }
+-(void)dividePart
+{
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
