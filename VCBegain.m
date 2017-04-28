@@ -74,6 +74,7 @@ enum STAT_TYPE{
 }
 -(NSArray*)setActOrder
 {
+    
     return nil;
 }
 - (void)didReceiveMemoryWarning {
