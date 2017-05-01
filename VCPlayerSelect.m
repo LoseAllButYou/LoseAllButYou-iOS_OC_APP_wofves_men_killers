@@ -10,10 +10,9 @@
 #import "VSelectCell.h"
 #import "VCBegain.h"
 #import "NSObject+DBPart.h"
-
+#import "NSObject+GameCharacter.h"
 @interface VCPlayerSelect ()
 @property (weak, nonatomic) IBOutlet UICollectionView *Coll_character;
-
 
 @end
 
@@ -31,30 +30,58 @@
         [_freedomArr addObject:[NSNumber numberWithInt:i]];
     }
 
-    _mutArr_characterName=[_characterInfo valueForKey:@"specialCharactor"];
-    _mutArr_characterImg=[_characterInfo valueForKey:@"imgName"];
-    for(int i=0;i<[[_characterInfo valueForKey:@"civilianNum"]intValue];++i)
-    {
-        [_mutArr_characterName addObject:@"平民"];
-        [_mutArr_characterImg addObject:@"civilian.jpg"];
+    //_mutArr_characterName=[_characterInfo valueForKey:@"specialCharactor"];
+    //_mutArr_characterImg=[_characterInfo valueForKey:@"imgName"];
+    if(_characterArr.count<curCharacterNum){
+        for(int i=0;i<[[_characterInfo valueForKey:@"civilianNum"]intValue];++i)
+        {
+            //[_mutArr_characterName addObject:@"平民"];
+            //[_mutArr_characterImg addObject:@"civilian.jpg"];
+            GameCharacter* gc=[GameCharacter alloc];
+            [gc alloc];
+            gc.character=@"平民";
+            gc.imgName=@"civilian.jpg";
+            gc.gamePriority=[NSNumber numberWithInt: 10];
+            [gc setGameIdentity:[NSNumber numberWithInt:10]];
+            [gc autoSet];
+            [_characterArr addObject:gc];
+        }
+        for(int i=0;i<[[_characterInfo valueForKey:@"werwolfNum"] intValue];++i)
+        {
+            GameCharacter* gc=[GameCharacter alloc];
+            [gc alloc];
+            gc.character=@"普通狼人";
+            gc.imgName=@"wolf.jpg";
+            gc.gamePriority=[NSNumber numberWithInt: 4];
+            [gc setGameIdentity:[NSNumber numberWithInt:0]];
+            [gc autoSet];
+            [_characterArr addObject:gc];
+        }
     }
-    for(int i=0;i<[[_characterInfo valueForKey:@"werwolfNum"] intValue];++i)
-    {
-        [_mutArr_characterName addObject:@"普通狼人"];
-        [_mutArr_characterImg addObject:@"wolf.jpg"];
-    }
+    if(_isHaveBobber)
+        do{
+            srand((unsigned int)time(NULL));
+            int num=rand()%curCharacterNum;
+            if([[[_characterArr objectAtIndex:num] gameIdentity] intValue]!=5)
+            {
+                [_characterArr exchangeObjectAtIndex:curCharacterNum withObjectAtIndex:num];
+                [_characterArr exchangeObjectAtIndex:curCharacterNum+1 withObjectAtIndex:num];
+                break;
+            }
+        }while(1);
     //设置允许多选
     _Coll_character.allowsMultipleSelection = YES;
 }
--(void)randCellView:(NSString**)imgName sencondkid:(NSString**)labelName
+-(void)randCellView:(NSString**)imgName sencondkid:(NSString**)labelName thirdkid:(NSUInteger) index
 {
     if(curCharacterNum==0)
         return
     srand((unsigned)time(NULL));
     int num1=rand()%curCharacterNum;
     NSLog(@"index =%d",num1);
-    *imgName=[_mutArr_characterImg objectAtIndex:[[_freedomArr objectAtIndex:num1] intValue]];
-    *labelName=[_mutArr_characterName objectAtIndex:[[_freedomArr objectAtIndex:num1] intValue]];
+    *imgName=[[_characterArr objectAtIndex: [[_freedomArr objectAtIndex: num1 ] intValue]] imgName];
+    *labelName=[[_characterArr objectAtIndex: [[_freedomArr objectAtIndex: num1 ] intValue]] character];
+    [[_characterArr objectAtIndex: [[_freedomArr objectAtIndex: num1 ] intValue]] setUserNum:[NSNumber numberWithUnsignedInteger:index]];
     [_freedomArr removeObjectAtIndex:num1];
     --curCharacterNum;
     [(NSMutableArray*)[_mutDic_userSelect valueForKey:@"characterImg"] addObject:*imgName];
@@ -110,7 +137,7 @@
     NSString* imgName;
     NSString* labelTitle;
     if(curCharacterNum!=0)
-        [self randCellView:&imgName sencondkid:&labelTitle ];
+        [self randCellView:&imgName sencondkid:&labelTitle thirdkid:indexPath.row];
     else
     {
         imgName=[(NSMutableArray*)[_mutDic_userSelect valueForKey:@"characterImg"]objectAtIndex:indexPath.row];
@@ -122,7 +149,7 @@
 
     cell.Img_character.image= img;
     cell.Label_character.text=labelTitle;
-    cell.Label_userNum.text=[NSString stringWithFormat:@"%d",indexPath.row+1];
+    cell.Label_userNum.text=[NSString stringWithFormat:@"%ld",indexPath.row+1];
     return cell;
 }
 //定义每个UICollectionView 的大小
@@ -158,7 +185,8 @@
     {
         UINavigationController *nav = segue.destinationViewController;
         VCBegain* nextVC = (VCBegain*)nav;
-        nextVC.mutDic_userSelect=_mutDic_userSelect;
+        nextVC.characterArr=_characterArr;
+        nextVC.isHaveBobber=_isHaveBobber;
     }
 
 }

@@ -8,6 +8,7 @@
 
 #import "VCMain.h"
 #import "VCUserInfo.h"
+#import "VCLogin.h"
 @interface VCMain ()
 
 
@@ -59,6 +60,13 @@
           userInfo .popoverPresentationController.delegate = self;
           //[self.view addSubview:userInfo.view];
      }
+    if([segue.identifier isEqual:@"login"])
+    {
+        VCLogin* login=segue.destinationViewController;
+        [login.Swch_isAutoLogin setOn:NO];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"isAutoLogin"];
+        
+    }
 }
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
 {

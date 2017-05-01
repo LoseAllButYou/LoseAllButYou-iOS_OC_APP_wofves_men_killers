@@ -9,28 +9,21 @@
 #import "VCBegain.h"
 #import "VBeginCell.h"
 #import "NSObject+DBPart.h"
-//游戏状态
-enum STAT_TYPE{
-    DEAD_BY_WERWOLF=0,
-    DEAD_BY_WITCH=1,
-    DEAD_BY_HUNTER=2,
-    DEAD_BY_WERWOLF_KING=3,
-    OUT_BY_CIVILIAN=4,
-    DEAD_NOT_DEFINE=5,
-    SURVIVE=6,
-};
-
+#import "VRShowAct.h"
+#import "NSObject+GameCharacter.h"
+#import <math.h>
+#import "VCRobberSelect.h"
 @interface VCBegain ()
-@property (weak, nonatomic) NSNumber* curActUserNum;
-@property (weak, nonatomic) NSNumber* beActedUserNum;
-@property (weak, nonatomic) NSNumber* gameTime;
-@property (weak, nonatomic) NSNumber* dayOrNight;
-@property (weak, nonatomic) NSNumber* deityNum;
-@property (weak, nonatomic) NSNumber* civilianNum;
-@property (weak, nonatomic) NSNumber* werwolfNum;
-@property (weak, nonatomic) NSNumber* thirdPartyNum;//第三方人数
-@property (weak, nonatomic) NSMutableArray* cellArr;
-@property (weak, nonatomic) NSMutableArray* actOrder;
+
+@property (strong, nonatomic) NSNumber* gameTime;
+@property (strong, nonatomic) NSNumber* dayOrNight;
+
+@property (strong, nonatomic) NSMutableArray* cellArr;
+@property (strong ,nonatomic) NSMutableArray* actOrder;
+@property (strong, nonatomic) VRShowAct *RCell_showAction;
+
+@property (strong, nonatomic) NSMutableAttributedString *attributedStr;//富文本 字符串
+@property (strong, nonatomic) NSString* actList;
 @end
 
 @implementation VCBegain
@@ -38,48 +31,196 @@ enum STAT_TYPE{
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    _curActUserNum=[NSNumber numberWithInt:0];
-    _beActedUserNum=[NSNumber numberWithInt:0];
+    curActUserNum=0;
+    beActedUserNum=0;
     _gameTime=[NSNumber numberWithInt:1];
     _dayOrNight=[NSNumber numberWithBool:NO];//NO夜晚 YES白天
-    _deityNum=[NSNumber numberWithInt:0];
-    _civilianNum=[NSNumber numberWithInt:0];
-    _thirdPartyNum=[NSNumber numberWithInt:0];
-    _cellArr=[NSMutableArray arrayWithCapacity:[[_mutDic_userSelect  objectForKey:@"characterName"]count]];
-    _actOrder=[NSMutableArray arrayWithCapacity:[_cellArr count]];
-}
--(void)gameAction
-{
+    _cellArr=[NSMutableArray arrayWithCapacity:1];
+    _actOrder=[NSMutableArray arrayWithCapacity:1];
+    for(int i=0;i<_characterArr.count;++i)
+        [_actOrder addObject:[GameCharacter allocWithZone:(__bridge struct _NSZone *)([_characterArr objectAtIndex:i]) ]];
+    _actOrder=[_characterArr mutableCopy];
+    werwolfNum=0;
+    civilianNum=0;
+    thirdPartNum=0;
+    deityNum=0;
+    neutralityPart=0;
+    [self sortArray:_actOrder orderWithKey:@"gamePriority" ascending:(YES)];
+     [self sortArray:_characterArr orderWithKey:@"userNum" ascending:(YES)];
+    _Title_Info.title=[NSString stringWithFormat:@"第-%3d  -天夜晚\n",[_gameTime intValue]];
+    _actList=[NSString stringWithFormat:@"%@", _Title_Info.title];
     DBPart* db=[DBPart alloc];
     [db openDB];
-    for(int i=0;i<[[_mutDic_userSelect valueForKey:@"charactorName"] count];++i){
-    [db insertData:[NSString stringWithFormat: @"insert into user_info(user_name,game_identity) values (player%d,%@)",i,[[_mutDic_userSelect valueForKey:@"charactorName"] objectAtIndex:i]]];
+    for(int i=0;i<_characterArr.count;++i){
+        
+        [db insertData:[NSString stringWithFormat: @"insert into user_info(user_name,game_identity) values (player%d,%@)",i, [_characterArr objectAtIndex:i]]];
     }
-    [db closeDB];
+    [self outputDateOnView ];
 
-    [self begainGame];
     
+   
 }
--(void)begainGame
+-(void)viewDidAppear:(BOOL)animated
 {
-    
+    [self gameAction:curActUserNum];
 }
--(int)judgeCurActUser
-{
-    return 0;
-}
--(bool)DidEndGame
-{
-    return false;
-}
--(NSArray*)setActOrder
+-(void)gameAction:(int)index
 {
     
-    return nil;
+    if([self didEndGame]){
+        if(![_dayOrNight boolValue])
+        {
+            if([[[_actOrder objectAtIndex:index]gameState] intValue]>=SURVIVE&&[[[_actOrder objectAtIndex:index]gamePriority] intValue]<=7)
+            {
+                [self outputActOnView:index];
+                [self changeCardState:[[[_actOrder objectAtIndex:index]userNum] intValue]];
+                [self userAction:[[[_actOrder objectAtIndex:index]userNum] intValue]];
+            }
+        }
+        else
+        {
+            [self outputDateOnView];
+        }
+    }
+}
+-(void)changeCardState:(int)index
+{
+    if([[[_characterArr objectAtIndex:index] gameState] intValue]>=SURVIVE)
+    {
+        [[_cellArr objectAtIndex:index] Img_headImg].hidden=YES;
+    }
+}
+-(void)outputDateOnView
+{
+    [self makeActList:_actList Type:1 Num:0];
+
+    [_RCell_showAction.Text_showAct setAttributedText:_attributedStr];
+    
+}
+-(void)outputActOnView:(int)index
+{
+    
+    NSString* str=[NSString stringWithFormat:@"%2d 号玩家[%@]开始行动",[[[_actOrder objectAtIndex:index]userNum] intValue]+1,[[_actOrder objectAtIndex:index]character] ];
+    [self makeActList:str Type:2 Num:1];
+    [_RCell_showAction.Text_showAct setAttributedText:_attributedStr];
+    
+}
+-(void)userAction:(int)index
+{
+    switch ([[[_characterArr objectAtIndex:index]gameIdentity] intValue]) {
+        case 5:
+        {
+           // [self performSegueWithIdentifier:@"ribborSelectCard" sender:nil];
+           // [[[_cellArr objectAtIndex:index] Tap_RobberSelect] a]
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return ;
+}
+-(void)makeActList:(NSString*)str Type:(int)type Num:(int)num
+{
+    if(type==1)
+    {
+        //创建 NSMutableAttributedString
+        if(_attributedStr==nil)
+            _attributedStr = [[NSMutableAttributedString alloc] initWithString: str];
+        else
+            [_attributedStr appendAttributedString:[[NSMutableAttributedString alloc] initWithString: str]];
+        //添加属性
+        
+        //给所有字符设置字体为Zapfino，字体高度为15像素
+        [_attributedStr addAttribute: NSFontAttributeName value: [UIFont fontWithName: @"AmericanTypewriter-Bold" size: 24]
+                               range: NSMakeRange(0, str.length)];
+        //分段控制，最开始4个字符颜色设置成蓝色
+        [_attributedStr  addAttribute: NSForegroundColorAttributeName value: [UIColor blueColor] range: NSMakeRange(2,5)];
+        //分段控制，第5个字符开始的3个字符，即第5、6、7字符设置为红色
+        [_attributedStr  addAttribute: NSForegroundColorAttributeName value: [UIColor redColor] range: NSMakeRange(str.length-2,2)];
+        
+    }
+    else
+    {
+        //创建 NSMutableAttributedString
+        _attributedStr = [[NSMutableAttributedString alloc] initWithString: str];
+        
+        //添加属性
+        
+        //给所有字符设置字体为Zapfino，字体高度为15像素
+        [_attributedStr addAttribute: NSFontAttributeName value: [UIFont fontWithName: @"AmericanTypewriter-Bold" size: 24]
+                               range: NSMakeRange(0, str.length)];
+        //分段控制，最开始4个字符颜色设置成蓝色
+        [_attributedStr  addAttribute: NSForegroundColorAttributeName value: [UIColor blueColor] range: NSMakeRange(3,2 )];
+        //分段控制，第5个字符开始的3个字符，即第5、6、7字符设置为红色
+        [_attributedStr  addAttribute: NSForegroundColorAttributeName value: [UIColor redColor] range: NSMakeRange(str.length-3,2)];
+        
+    }
+}
+
+//判断游戏是否结束
+-(bool)didEndGame
+{
+    if(thirdPartNum!=0)
+    {
+        if(civilianNum+deityNum>=werwolfNum)
+            return NO;
+        else if(civilianNum+deityNum<werwolfNum)
+        {
+            winPart=-1;
+            return YES;
+        }
+        else if(civilianNum+deityNum+werwolfNum==0)
+        {
+            winPart=3;
+            return YES;
+        }
+    }
+    else
+    {
+        if(werwolfNum>civilianNum+deityNum||deityNum==0||civilianNum==0)
+        {
+            winPart=-1;
+            return YES;
+        }
+        else if(werwolfNum==0)
+        {
+            winPart=1;
+            return YES;
+        }
+        else
+            return NO;
+    }
+    return NO;
+}
+
+//ios自带 array 排序工具 1.array 2.排序字段 3.升序或者降序
+-(void) sortArray:(NSMutableArray *)dicArray orderWithKey:(NSString *)key ascending:(BOOL)yesOrNo{
+    
+    NSSortDescriptor *distanceDescriptor = [[NSSortDescriptor alloc] initWithKey:key ascending:yesOrNo];
+    
+    NSArray *descriptors = [NSArray arrayWithObjects:distanceDescriptor,nil];
+    
+    [dicArray sortUsingDescriptors:descriptors];
+    
 }
 -(void)dividePart
 {
-    
+    for(int i=0;i<_actOrder.count;++i)
+    {
+        if([[[_actOrder objectAtIndex:i] part] intValue]==-1)
+        {
+            werwolfNum++;
+        }
+        else if([[[_actOrder objectAtIndex:i] part] intValue]==0)
+            neutralityPart++;
+        else if([[[_actOrder objectAtIndex:i] part] intValue]==1)
+        {
+            civilianNum++;
+        }
+        else
+            deityNum++;
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -119,32 +260,39 @@ enum STAT_TYPE{
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     //return [_mutDic_userSelect ];
-    return [[_mutDic_userSelect valueForKey:@"characterImg"] count];
+    return _characterArr.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *identify = @"cell";
     NSString* imgName;
-    [[_mutDic_userSelect valueForKey:@"characterImg"] objectAtIndex:indexPath.row];
+    imgName=[[_characterArr objectAtIndex:indexPath.row] imgName];
     UIImage* img=[UIImage imageNamed:imgName];
     
     VBeginCell* cell = (VBeginCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
     
-    cell.Label_num.text=[NSString stringWithFormat:@"%d", indexPath.row ];
+    cell.Label_num.text=[NSString stringWithFormat:@"%ld",(long)indexPath.row +1];
     cell.Img_charactor.image=img;
     [_cellArr addObject:cell];
     return cell;
 }
 
-
+//判断 collectionview 子视图类型 赋值
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    if (kind == UICollectionElementKindSectionHeader&&_RCell_showAction==NULL ) {
+      _RCell_showAction =(VRShowAct*) [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"Rcell" forIndexPath:indexPath];
+         _RCell_showAction.Text_showAct.attributedText = _attributedStr;
+    }
+    return _RCell_showAction;
+}
 
 //定义每个UICollectionView 的大小
 - ( CGSize )collectionView:( UICollectionView *)collectionView layout:( UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:( NSIndexPath *)indexPath
 {
     CGFloat x=[[UIScreen mainScreen]bounds].size.width;
-    CGFloat y=[[UIScreen mainScreen]bounds].size.height;
-    return CGSizeMake(x/2-10,x/2-10);
+    //CGFloat y=[[UIScreen mainScreen]bounds].size.height;
+    return CGSizeMake(x/(int)sqrt(_characterArr.count)-10,x/(int)sqrt(_characterArr.count)-10);
 }
 
 //定义每个UICollectionView 的边距
@@ -162,14 +310,26 @@ enum STAT_TYPE{
 
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if ([segue.identifier  isEqual: @"ribborSelectCard"]) {
+        VCRobberSelect* robberSelect = segue.destinationViewController ;
+        robberSelect  .modalPresentationStyle = UIModalPresentationPopover;
+        robberSelect  .popoverPresentationController.delegate = self;
+        robberSelect .begain=self;
+        //[self.view addSubview:userInfo.view];
+    }
+
 }
-*/
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
+{
+    return UIModalPresentationNone;
+}
+
 
 @end

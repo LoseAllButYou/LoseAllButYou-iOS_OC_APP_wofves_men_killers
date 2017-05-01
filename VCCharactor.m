@@ -10,17 +10,19 @@
 #import "NSObject+DBPart.h"
 #import "Vcell.h"
 #import "VCPrepare.h"
+#import "NSObject+GameCharacter.h"
 @interface VCCharactor ()
 //@property (weak, nonatomic) IBOutlet UICollectionView *Coll_charactorList;
 @property (strong,nonatomic)FMResultSet* charactor;
 @property (weak, nonatomic) IBOutlet UICollectionView *Coll_list;
 
-@property (strong,nonatomic)NSMutableArray* imageArr;
-@property (strong,nonatomic)NSMutableArray* nameArr;
-@property (nonatomic, strong)NSMutableArray* selectedNameArr;
-@property (nonatomic, strong)NSMutableArray* selectedImageArr;
+//@property (strong,nonatomic)NSMutableArray* imageArr;
+//@property (strong,nonatomic)NSMutableArray* nameArr;
+//@property (nonatomic, strong)NSMutableArray* selectedNameArr;
+//@property (nonatomic, strong)NSMutableArray* selectedImageArr;
 @property (weak, nonatomic) IBOutlet UILabel *Label_selectedNum;
-
+@property (nonatomic, strong)NSMutableArray* characterArr;
+@property (nonatomic, strong)NSMutableArray* selectedcharacterArr;
 @end
 
 @implementation VCCharactor
@@ -38,16 +40,29 @@ static NSString * const reuseIdentifier = @"Cell";
     _Label_selectedNum.text=[NSString stringWithFormat:@"以选择角色数:%d",selectedNum];
      _charactor=[FMResultSet alloc];
      _charactor= [dbPart selectAllFromDB:@"select * from game_identity where identity!='123' order by action_priority"];
-     _imageArr=[NSMutableArray arrayWithCapacity:10 ];
-     _nameArr=[NSMutableArray arrayWithCapacity:10];
-     _selectedNameArr=[NSMutableArray arrayWithCapacity:10];
-     _selectedImageArr=[NSMutableArray arrayWithCapacity:10];
+//     _imageArr=[NSMutableArray arrayWithCapacity:10 ];
+//     _nameArr=[NSMutableArray arrayWithCapacity:10];
+//     _selectedNameArr=[NSMutableArray arrayWithCapacity:10];
+//     _selectedImageArr=[NSMutableArray arrayWithCapacity:10];
+    _characterArr=[NSMutableArray arrayWithCapacity:10];
+    _selectedcharacterArr=[NSMutableArray arrayWithCapacity:( 10)];
+     _isHaveBobber=[NSNumber numberWithBool:NO];
      for(;[_charactor next];)
      {
           ++count;
-          [_imageArr  addObject:[_charactor stringForColumn:@"image_name"]];
-          [_nameArr  addObject:[_charactor stringForColumn:@"identity"]];
-     }
+//          [_imageArr  addObject:[_charactor stringForColumn:@"image_name"]];
+//          [_nameArr  addObject:[_charactor stringForColumn:@"identity"]];
+         GameCharacter* gc=[GameCharacter alloc];
+         [gc alloc];
+         gc.character=[_charactor stringForColumn:@"identity"];
+         gc.imgName=[_charactor stringForColumn:@"image_name"];
+         gc.gamePriority=[NSNumber numberWithInt: [_charactor intForColumn:@"action_priority"] ];
+         gc.gameIdentity=[NSNumber numberWithInt:[_charactor intForColumn:@"id"]];
+         [gc autoSet];
+         [_characterArr addObject:gc];
+         if([gc.gameIdentity intValue]==5)
+             _isHaveBobber=[NSNumber numberWithBool:YES];
+     }	
      //设置允许多选
      _Coll_list.allowsMultipleSelection = YES;
     [dbPart closeDB];
@@ -57,10 +72,14 @@ static NSString * const reuseIdentifier = @"Cell";
      
      //此页面已经存在于self.navigationController.viewControllers中,并且是当前页面的前一页面
      VCPrepare * up= [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
-    up.nameArr=_selectedNameArr;
-    up.imageArr=_selectedImageArr;
+//    up.nameArr=_selectedNameArr;
+//    up.imageArr=_selectedImageArr;
+    up.characterArr=[NSMutableArray arrayWithCapacity:1];
+    up.characterArr= _selectedcharacterArr;
     up.isPressDone=[NSNumber numberWithBool:YES];
+    up.isHaveBobber=_isHaveBobber;
           [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -73,8 +92,9 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
      
      ((Vcell*)[collectionView cellForItemAtIndexPath:indexPath]).Img_isSelect.image=[UIImage imageNamed:@"didSelect.png"];
-    [_selectedNameArr addObject:_nameArr[indexPath.row]];
-    [_selectedImageArr addObject:_imageArr[indexPath.row]];
+//    [_selectedNameArr addObject:_nameArr[indexPath.row]];
+//    [_selectedImageArr addObject:_imageArr[indexPath.row]];
+    [_selectedcharacterArr addObject:_characterArr[indexPath.row]];
     ++selectedNum;
     _Label_selectedNum.text=[NSString stringWithFormat:@"以选择角色数:%d",selectedNum];
 }
@@ -83,8 +103,9 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
      ((Vcell*)[collectionView cellForItemAtIndexPath:indexPath]).Img_isSelect.image=[UIImage imageNamed:@"notSelect.png"];
-    [_selectedNameArr removeObject:_nameArr[indexPath.row]];
-    [_selectedImageArr removeObject:_imageArr[indexPath.row]];
+//    [_selectedNameArr removeObject:_nameArr[indexPath.row]];
+//    [_selectedImageArr removeObject:_imageArr[indexPath.row]];
+     [_selectedcharacterArr removeObject:_characterArr[indexPath.row]];
     --selectedNum;
     _Label_selectedNum.text=[NSString stringWithFormat:@"以选择角色数:%d",selectedNum];
 }
@@ -114,13 +135,14 @@ static NSString * const reuseIdentifier = @"Cell";
 {
      NSString *identify = @"c1";
 
-     UIImage* img=[UIImage imageNamed:_imageArr[indexPath.row]];
+//     UIImage* img=[UIImage imageNamed:_imageArr[indexPath.row]];
+    UIImage* img=[UIImage imageNamed:[[_characterArr objectAtIndex:indexPath.row] imgName]];
      Vcell* cell = (Vcell*)[collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
      if(!cell)
           cell=(Vcell*)[collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
      cell.Cell_img.image= img;
-     cell.Cell_label.text=_nameArr[indexPath.row];
-    // cell.Img_isSelect.image=[UIImage imageNamed:@"notSelect.png"];
+    // cell.Cell_label.text=_nameArr[indexPath.row];
+    cell.Cell_label.text=[[_characterArr objectAtIndex:indexPath.row ] character];
      return cell;
 }
 //定义每个UICollectionView 的大小

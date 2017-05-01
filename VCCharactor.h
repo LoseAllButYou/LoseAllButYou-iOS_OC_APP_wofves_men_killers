@@ -13,5 +13,5 @@
      NSInteger count;
     int selectedNum;
 }
-
+@property (strong, nonatomic)NSNumber* isHaveBobber;//是否有盗贼
 @end

@@ -10,7 +10,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "NSObject+DBPart.h"
 #import "VCPlayerSelect.h"
-
+#import "NSObject+GameCharacter.h"
 @interface VCPrepare ()
 @property (weak, nonatomic) IBOutlet UIPickerView *Pick_gameUserNum;
 
@@ -45,8 +45,10 @@
 {
     [super viewDidAppear:animated];
      //判断并接收返回的参数
-    if (!_nameArr)
-        return;
+//    if (!_nameArr)
+//        return;
+    if(!_characterArr)
+        return ;
     if([_isPressDone boolValue])
     {
         _isPressDone=[NSNumber numberWithBool:NO];
@@ -58,18 +60,28 @@
 {
     _TextView_charactor.text = @"游戏身份:\n";
     _TextView_charactor.text = [_TextView_charactor.text stringByAppendingString:[NSString stringWithFormat: @"总人数X%d 平民X%d 普通狼人X%d\n特殊身份：\n",gameUserNum, civilianNum ,werwolfNum]];
-    for(int i=0;i<_nameArr.count;++i)
+    for(int i=0;i<_characterArr.count;++i)
     {
         if(i!=0)
             _TextView_charactor.text = [_TextView_charactor.text stringByAppendingString:@"   "];
-        _TextView_charactor.text = [_TextView_charactor.text stringByAppendingString:[_nameArr objectAtIndex:i]];
-        NSLog(@"view appear text==%@",[_nameArr objectAtIndex:i]);
+        _TextView_charactor.text = [_TextView_charactor.text stringByAppendingString:[[_characterArr objectAtIndex:i] character]];
     }
-    if(_nameArr.count+civilianNum+werwolfNum !=gameUserNum)
+    if([_isHaveBobber boolValue])
     {
-        [MBProgressHUD showError:@"游戏身份配置有误 请重新计算 人数!!!"];
-        return ;
+        if(_characterArr.count+civilianNum+werwolfNum !=gameUserNum+2)
+        {
+            if( _isPressDone)
+                [MBProgressHUD showError:@"游戏身份配置有误 请重新计算 人数!!!"];
+            return ;
+        }
     }
+    else
+        if(_characterArr.count+civilianNum+werwolfNum !=gameUserNum)
+        {
+            if( _isPressDone)
+                [MBProgressHUD showError:@"游戏身份配置有误 请重新计算 人数!!!"];
+            return ;
+        }
     _Btn_begainGame.enabled=YES;
 }
 //pickview 选中某行数据
@@ -84,7 +96,7 @@
      else{
           werwolfNum= row +2 ;
      }
-    if (!_nameArr)
+    if (!_characterArr)
         return;
     [self judgeIsTrueNum];
      
@@ -134,9 +146,10 @@
     // Pass the selected object to the new view controller.
     if ([segue.identifier  isEqual: @"VCPlayerSelect"]) {
         VCPlayerSelect* playerSelect = segue.destinationViewController ;
-        NSDictionary* dic=[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:gameUserNum],@"userNum", [NSNumber numberWithInt:civilianNum],@"civilianNum" ,[NSNumber numberWithInt:werwolfNum],@"werwolfNum",_nameArr,@"specialCharactor",_imageArr,@"imgName",nil];
+        NSDictionary* dic=[NSDictionary dictionaryWithObjectsAndKeys: [NSNumber numberWithInt:gameUserNum],@"userNum", [NSNumber numberWithInt:civilianNum],@"civilianNum" ,[NSNumber numberWithInt:werwolfNum],@"werwolfNum",nil];
         playerSelect.characterInfo=dic;
-
+        playerSelect.isHaveBobber=_isHaveBobber;
+        playerSelect.characterArr=_characterArr;
         //[self.view addSubview:userInfo.view];
     }
 

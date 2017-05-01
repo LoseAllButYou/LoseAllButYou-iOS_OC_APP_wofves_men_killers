@@ -13,4 +13,5 @@
      BOOL isCAPTCHAEqual;
      BOOL isFirst;
 }
+@property (weak, nonatomic) IBOutlet UISwitch *Swch_isAutoLogin;
 @end

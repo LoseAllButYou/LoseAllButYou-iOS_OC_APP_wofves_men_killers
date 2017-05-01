@@ -21,7 +21,6 @@
 		1919242A1EA217FB00F8B759 /* VCFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 191924291EA217FB00F8B759 /* VCFriend.m */; };
 		1919242D1EA220F900F8B759 /* VCPrepare.m in Sources */ = {isa = PBXBuildFile; fileRef = 1919242C1EA220F900F8B759 /* VCPrepare.m */; };
 		191924301EA25D3100F8B759 /* gameElementDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1919242E1EA25D3100F8B759 /* gameElementDB.xcdatamodeld */; };
-		191924341EA3597A00F8B759 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 191924331EA3597A00F8B759 /* libsqlite3.tbd */; };
 		1919243A1EA3624500F8B759 /* VCHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 191924391EA3624500F8B759 /* VCHistory.m */; };
 		1919243C1EA3627200F8B759 /* history.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1919243B1EA3627200F8B759 /* history.storyboard */; };
 		1919243E1EA362DF00F8B759 /* friend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1919243D1EA362DF00F8B759 /* friend.storyboard */; };
@@ -29,7 +28,6 @@
 		191924431EA3638A00F8B759 /* VCHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 191924421EA3638A00F8B759 /* VCHelp.m */; };
 		192CBD7C1EA65047002E48F7 /* VCCharactor.m in Sources */ = {isa = PBXBuildFile; fileRef = 192CBD7B1EA65047002E48F7 /* VCCharactor.m */; };
 		192CBD7F1EA6607C002E48F7 /* Vcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 192CBD7E1EA6607C002E48F7 /* Vcell.m */; };
-		1953DA3D1E9CE74A0097D40F /* VCMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */; };
 		1953DA431E9CF91D0097D40F /* Prepare.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA421E9CF91D0097D40F /* Prepare.storyboard */; };
 		199E02F01E98F93900F07F30 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 199E02EF1E98F93900F07F30 /* login.storyboard */; };
 		19F2F7A31E98C56000936FCF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F2F7A21E98C56000936FCF /* main.m */; };
@@ -42,12 +40,17 @@
 		19F5D01A1E9A464100B15A67 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F5D0181E9A464100B15A67 /* MBProgressHUD+MJ.m */; };
 		19F5D0201E9A64D400B15A67 /* CIDoorwaySegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 19F5D01F1E9A64D400B15A67 /* CIDoorwaySegue.m */; };
 		19FE7B041EA4EB4F00ACA6E0 /* VCWeb.m in Sources */ = {isa = PBXBuildFile; fileRef = 19FE7B031EA4EB4F00ACA6E0 /* VCWeb.m */; };
-		19FE7B091EA4F4A000ACA6E0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE7B081EA4F4A000ACA6E0 /* AudioToolbox.framework */; };
 		FE0C69091EAF8525000B228C /* PlayerSelectCharacter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE0C69081EAF8525000B228C /* PlayerSelectCharacter.storyboard */; };
 		FE0C690C1EAF8875000B228C /* VCPlayerSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0C690B1EAF8875000B228C /* VCPlayerSelect.m */; };
 		FE0C690F1EAF89D6000B228C /* VSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0C690E1EAF89D6000B228C /* VSelectCell.m */; };
+		FE50708F1EB4D89500C4BC11 /* NSObject+GameCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE50708E1EB4D89500C4BC11 /* NSObject+GameCharacter.m */; };
 		FE5612441EB0C8A100968914 /* Begain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE5612431EB0C8A100968914 /* Begain.storyboard */; };
 		FE5612471EB0D8E300968914 /* VBeginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5612461EB0D8E300968914 /* VBeginCell.m */; };
+		FE5612521EB45F3700968914 /* VRShowAct.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5612511EB45F3700968914 /* VRShowAct.m */; };
+		FE5612551EB4B34900968914 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE7B081EA4F4A000ACA6E0 /* AudioToolbox.framework */; };
+		FE5612561EB4B35200968914 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 191924331EA3597A00F8B759 /* libsqlite3.tbd */; };
+		FEFA8C681EB7597C004A73BB /* VCRobberSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFA8C671EB7597C004A73BB /* VCRobberSelect.m */; };
+		FEFBCFC61EB4C9B7001E95CD /* VCMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,11 +96,11 @@
 		199E02EF1E98F93900F07F30 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = login.storyboard; path = wolfmen_killers/login.storyboard; sourceTree = "<group>"; };
 		19F2F79E1E98C56000936FCF /* wolfmen_killers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wolfmen_killers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F2F7A21E98C56000936FCF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		19F2F7A41E98C56000936FCF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = wolfmen_killers/AppDelegate.h; sourceTree = "<group>"; };
+		19F2F7A41E98C56000936FCF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		19F2F7A51E98C56000936FCF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		19F2F7B01E98C56000936FCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		19F2F7B21E98C56000936FCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = wolfmen_killers/Info.plist; sourceTree = "<group>"; };
-		19F5CFF91E991C4F00B15A67 /* VCLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCLogin.h; sourceTree = "<group>"; };
+		19F5CFF91E991C4F00B15A67 /* VCLogin.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = VCLogin.h; sourceTree = "<group>"; };
 		19F5CFFA1E991C4F00B15A67 /* VCLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCLogin.m; sourceTree = "<group>"; };
 		19F5CFFC1E99244B00B15A67 /* VCRegist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCRegist.h; path = wolfmen_killers/VCRegist.h; sourceTree = "<group>"; };
 		19F5CFFD1E99244B00B15A67 /* VCRegist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCRegist.m; path = wolfmen_killers/VCRegist.m; sourceTree = "<group>"; };
@@ -118,9 +121,15 @@
 		FE0C690B1EAF8875000B228C /* VCPlayerSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPlayerSelect.m; sourceTree = "<group>"; };
 		FE0C690D1EAF89D6000B228C /* VSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSelectCell.h; sourceTree = "<group>"; };
 		FE0C690E1EAF89D6000B228C /* VSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSelectCell.m; sourceTree = "<group>"; };
+		FE50708D1EB4D89500C4BC11 /* NSObject+GameCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+GameCharacter.h"; sourceTree = "<group>"; };
+		FE50708E1EB4D89500C4BC11 /* NSObject+GameCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+GameCharacter.m"; sourceTree = "<group>"; };
 		FE5612431EB0C8A100968914 /* Begain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Begain.storyboard; sourceTree = "<group>"; };
 		FE5612451EB0D8E300968914 /* VBeginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VBeginCell.h; sourceTree = "<group>"; };
 		FE5612461EB0D8E300968914 /* VBeginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBeginCell.m; sourceTree = "<group>"; };
+		FE5612501EB45F3700968914 /* VRShowAct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VRShowAct.h; sourceTree = "<group>"; };
+		FE5612511EB45F3700968914 /* VRShowAct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRShowAct.m; sourceTree = "<group>"; };
+		FEFA8C661EB7597C004A73BB /* VCRobberSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRobberSelect.h; sourceTree = "<group>"; };
+		FEFA8C671EB7597C004A73BB /* VCRobberSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRobberSelect.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +137,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19FE7B091EA4F4A000ACA6E0 /* AudioToolbox.framework in Frameworks */,
-				191924341EA3597A00F8B759 /* libsqlite3.tbd in Frameworks */,
+				FE5612561EB4B35200968914 /* libsqlite3.tbd in Frameworks */,
+				FE5612551EB4B34900968914 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +148,10 @@
 		190051031E98D5AB00D5415A /* 界面 */ = {
 			isa = PBXGroup;
 			children = (
+				FEFA8C661EB7597C004A73BB /* VCRobberSelect.h */,
+				FEFA8C671EB7597C004A73BB /* VCRobberSelect.m */,
+				FE5612501EB45F3700968914 /* VRShowAct.h */,
+				FE5612511EB45F3700968914 /* VRShowAct.m */,
 				FE5612451EB0D8E300968914 /* VBeginCell.h */,
 				FE5612461EB0D8E300968914 /* VBeginCell.m */,
 				FE0C690A1EAF8875000B228C /* VCPlayerSelect.h */,
@@ -176,6 +189,8 @@
 		190BD22F1EA5C4E10085EB44 /* FMDB */ = {
 			isa = PBXGroup;
 			children = (
+				FE50708D1EB4D89500C4BC11 /* NSObject+GameCharacter.h */,
+				FE50708E1EB4D89500C4BC11 /* NSObject+GameCharacter.m */,
 				190BD2431EA5E7320085EB44 /* NSObject+DBPart.h */,
 				190BD2441EA5E7320085EB44 /* NSObject+DBPart.m */,
 				190BD2301EA5C4FF0085EB44 /* FMDatabase.h */,
@@ -240,7 +255,6 @@
 				1953DA3E1E9CEA950097D40F /* storyboard */,
 				190051031E98D5AB00D5415A /* 界面 */,
 				19F2F7A01E98C56000936FCF /* wolfmen_killers */,
-				19F2F7A41E98C56000936FCF /* AppDelegate.h */,
 				19F2F79F1E98C56000936FCF /* Products */,
 				191924321EA3597A00F8B759 /* Frameworks */,
 			);
@@ -257,6 +271,7 @@
 		19F2F7A01E98C56000936FCF /* wolfmen_killers */ = {
 			isa = PBXGroup;
 			children = (
+				19F2F7A41E98C56000936FCF /* AppDelegate.h */,
 				19F2F7A51E98C56000936FCF /* AppDelegate.m */,
 				1919241D1EA1EA6900F8B759 /* Assets.xcassets */,
 				19F2F7A11E98C56000936FCF /* Supporting Files */,
@@ -374,8 +389,8 @@
 				19F2F7B11E98C56000936FCF /* LaunchScreen.storyboard in Resources */,
 				1919241E1EA1EA6900F8B759 /* Assets.xcassets in Resources */,
 				FE0C69091EAF8525000B228C /* PlayerSelectCharacter.storyboard in Resources */,
+				FEFBCFC61EB4C9B7001E95CD /* VCMain.storyboard in Resources */,
 				FE5612441EB0C8A100968914 /* Begain.storyboard in Resources */,
-				1953DA3D1E9CE74A0097D40F /* VCMain.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,8 +406,10 @@
 				19F5CFFE1E99244B00B15A67 /* VCRegist.m in Sources */,
 				1919243A1EA3624500F8B759 /* VCHistory.m in Sources */,
 				190BD23D1EA5C4FF0085EB44 /* FMDatabasePool.m in Sources */,
+				FE50708F1EB4D89500C4BC11 /* NSObject+GameCharacter.m in Sources */,
 				1900510C1E98E21F00D5415A /* VCBegain.m in Sources */,
 				FE5612471EB0D8E300968914 /* VBeginCell.m in Sources */,
+				FE5612521EB45F3700968914 /* VRShowAct.m in Sources */,
 				19F2F7A61E98C56000936FCF /* AppDelegate.m in Sources */,
 				190BD23E1EA5C4FF0085EB44 /* FMDatabaseQueue.m in Sources */,
 				190BD23B1EA5C4FF0085EB44 /* FMDatabase.m in Sources */,
@@ -406,6 +423,7 @@
 				19F2F7A31E98C56000936FCF /* main.m in Sources */,
 				19FE7B041EA4EB4F00ACA6E0 /* VCWeb.m in Sources */,
 				1919241C1E9FB2F200F8B759 /* VCUserInfo.m in Sources */,
+				FEFA8C681EB7597C004A73BB /* VCRobberSelect.m in Sources */,
 				190BD2451EA5E7320085EB44 /* NSObject+DBPart.m in Sources */,
 				191924431EA3638A00F8B759 /* VCHelp.m in Sources */,
 				FE0C690F1EAF89D6000B228C /* VSelectCell.m in Sources */,
