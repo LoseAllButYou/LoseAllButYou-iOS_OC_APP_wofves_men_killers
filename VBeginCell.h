@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface VBeginCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *Img_selected;
-@property (weak, nonatomic) IBOutlet UILabel *Label_num;
-@property (weak, nonatomic) IBOutlet UIImageView *Img_numBack;
-@property (weak, nonatomic) IBOutlet UIImageView *Img_headImg;
-@property (weak, nonatomic) IBOutlet UIImageView *Img_charactor;
+@property (strong, nonatomic) IBOutlet UIImageView *Img_selected;
+@property (strong, nonatomic) IBOutlet UILabel *Label_num;
+@property (strong, nonatomic) IBOutlet UIImageView *Img_numBack;
+@property (strong, nonatomic) IBOutlet UIImageView *Img_headImg;
+@property (strong, readwrite) IBOutlet UIImageView *Img_charactor;
 
 @end

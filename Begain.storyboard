@@ -118,7 +118,7 @@
                         <outlet property="Coll_ShowUser" destination="zB7-Ti-qDy" id="hGl-k8-OOP"/>
                         <outlet property="Tap_RobberSelect" destination="XAV-uq-NsM" id="iBh-F7-P1m"/>
                         <outlet property="Title_Info" destination="b9H-eL-Lel" id="sr1-ie-H3m"/>
-                        <segue destination="zoS-TR-MXB" kind="popoverPresentation" identifier="ribborSelectCard" popoverAnchorView="xhO-Bz-V9K" id="ZQt-8e-Wjy">
+                        <segue destination="zoS-TR-MXB" kind="popoverPresentation" identifier="ribborSelectCard" popoverAnchorView="V1C-ea-fez" id="c4W-VD-Th5">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                     </connections>
@@ -130,7 +130,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-436" y="74.212893553223395"/>
+            <point key="canvasLocation" x="-501" y="75"/>
         </scene>
         <!--Robber Select-->
         <scene sceneID="HlO-ct-KD9">
@@ -144,7 +144,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uc4-Z9-UEw">
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uc4-Z9-UEw">
                                 <rect key="frame" x="7" y="64" width="131" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -159,7 +159,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zUz-8Y-bLj">
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zUz-8Y-bLj">
                                 <rect key="frame" x="162" y="64" width="131" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -170,6 +170,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.2338298382" green="0.9173413212" blue="0.9121015402" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="200"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -191,7 +192,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="235" y="-51"/>
+            <point key="canvasLocation" x="307" y="-13"/>
         </scene>
     </scenes>
     <resources>

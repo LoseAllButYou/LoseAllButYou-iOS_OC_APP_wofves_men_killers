@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "VCBegain.h"
+@class VCBegain;
 @interface VCRobberSelect : UIViewController
-@property (weak, nonatomic) IBOutlet UIImageView *Img_character1;
-@property (weak, nonatomic) IBOutlet UIImageView *Img_character2;
+@property (strong, nonatomic) IBOutlet UIImageView *Img_character1;
+@property (strong, nonatomic) IBOutlet UIImageView *Img_character2;
+@property (strong, nonatomic) NSString* name1;
+@property (strong, nonatomic) NSString* name2;
 @property (weak, nonatomic) VCBegain* begain;
 
 @end

@@ -7,18 +7,10 @@
 //
 
 #import "VCBegain.h"
-#import "VBeginCell.h"
-#import "NSObject+DBPart.h"
-#import "VRShowAct.h"
-#import "NSObject+GameCharacter.h"
-#import <math.h>
-#import "VCRobberSelect.h"
-@interface VCBegain ()
 
+@interface VCBegain ()
 @property (strong, nonatomic) NSNumber* gameTime;
 @property (strong, nonatomic) NSNumber* dayOrNight;
-
-@property (strong, nonatomic) NSMutableArray* cellArr;
 @property (strong ,nonatomic) NSMutableArray* actOrder;
 @property (strong, nonatomic) VRShowAct *RCell_showAction;
 
@@ -37,6 +29,13 @@
     _dayOrNight=[NSNumber numberWithBool:NO];//NO夜晚 YES白天
     _cellArr=[NSMutableArray arrayWithCapacity:1];
     _actOrder=[NSMutableArray arrayWithCapacity:1];
+    if([_isHaveBobber boolValue])
+    {
+        _character1=[_characterArr objectAtIndex:[_characterArr count]-2];
+        _character2=[_characterArr objectAtIndex:[_characterArr count]-1];
+        [_characterArr removeObjectAtIndex:[_characterArr count]-1];
+        [_characterArr removeObjectAtIndex:[_characterArr count]-1];
+    }
     for(int i=0;i<_characterArr.count;++i)
         [_actOrder addObject:[GameCharacter allocWithZone:(__bridge struct _NSZone *)([_characterArr objectAtIndex:i]) ]];
     _actOrder=[_characterArr mutableCopy];
@@ -57,9 +56,9 @@
     }
     [self outputDateOnView ];
 
-    
-   
 }
+
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [self gameAction:curActUserNum];
@@ -70,8 +69,10 @@
     if([self didEndGame]){
         if(![_dayOrNight boolValue])
         {
-            if([[[_actOrder objectAtIndex:index]gameState] intValue]>=SURVIVE&&[[[_actOrder objectAtIndex:index]gamePriority] intValue]<=7)
+            if([[[_actOrder objectAtIndex:index]gameState] intValue]>=SURVIVE)
             {
+                if([[[_actOrder objectAtIndex:index]gamePriority] intValue]<=7)
+                {}
                 [self outputActOnView:index];
                 [self changeCardState:[[[_actOrder objectAtIndex:index]userNum] intValue]];
                 [self userAction:[[[_actOrder objectAtIndex:index]userNum] intValue]];
@@ -105,13 +106,17 @@
     [_RCell_showAction.Text_showAct setAttributedText:_attributedStr];
     
 }
+
 -(void)userAction:(int)index
 {
     switch ([[[_characterArr objectAtIndex:index]gameIdentity] intValue]) {
         case 5:
         {
-           // [self performSegueWithIdentifier:@"ribborSelectCard" sender:nil];
-           // [[[_cellArr objectAtIndex:index] Tap_RobberSelect] a]
+            _robberNum=[NSNumber numberWithInt:index];
+            _img1=[UIImage imageNamed:_character1.imgName];
+            _img1=[UIImage imageNamed:_character2.imgName];
+           [self performSegueWithIdentifier:@"ribborSelectCard" sender:nil];
+           
         }
             break;
             
@@ -322,6 +327,8 @@
         robberSelect  .modalPresentationStyle = UIModalPresentationPopover;
         robberSelect  .popoverPresentationController.delegate = self;
         robberSelect .begain=self;
+        robberSelect.name1=[_character1 imgName];
+        robberSelect.name2=[_character2 imgName];
         //[self.view addSubview:userInfo.view];
     }
 
