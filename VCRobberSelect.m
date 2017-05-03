@@ -24,11 +24,13 @@
 - (IBAction)TapImg1:(id)sender {
     UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"选择角色" message:@"确认选择吗？" preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self retSelect:1];
    
         [_begain. characterArr setObject:_begain. character1 atIndexedSubscript:[_begain.robberNum intValue]];
     
-        [[[_begain.cellArr objectAtIndex:[_begain.robberNum intValue]]Img_charactor] setImage:_begain.img1];
+        
+        VBeginCell *cell = _begain.cellArr[[_begain.robberNum integerValue]];
+        [cell.Img_charactor setImage:[UIImage imageNamed:_begain.character1.imgName]];
+        
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
@@ -41,8 +43,11 @@
     UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"选择角色" message:@"确认选择吗？" preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
          [_begain. characterArr setObject:_begain. character2 atIndexedSubscript:[_begain.robberNum intValue]];
-
-        [[[_begain.cellArr objectAtIndex:[_begain.robberNum intValue]]Img_charactor] setImage:_begain.img2];
+        VBeginCell *cell = _begain.cellArr[[_begain.robberNum integerValue]];
+        [cell.Img_charactor setImage:[UIImage imageNamed:_begain.character2.imgName]];
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
@@ -51,10 +56,7 @@
         
     }];
 }
--(void)retSelect:(int)select
-{
-    _begain.robberSelect=[NSNumber numberWithInt:select];
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

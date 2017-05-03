@@ -35,7 +35,7 @@
 @property(strong,nonatomic)GameCharacter* character1;
 @property(strong,nonatomic)GameCharacter* character2;
 @property(strong,nonatomic)NSNumber* robberNum;//盗贼 身份玩家号码
-@property (strong, nonatomic) UIImage* img1;
-@property (strong, nonatomic) UIImage* img2;
+//@property (strong, nonatomic) UIImage* img1;
+//@property (strong, nonatomic) UIImage* img2;
 @property (strong, nonatomic) NSMutableArray* cellArr;
 @end

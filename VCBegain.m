@@ -46,7 +46,7 @@
     neutralityPart=0;
     [self sortArray:_actOrder orderWithKey:@"gamePriority" ascending:(YES)];
      [self sortArray:_characterArr orderWithKey:@"userNum" ascending:(YES)];
-    _Title_Info.title=[NSString stringWithFormat:@"第-%3d  -天夜晚\n",[_gameTime intValue]];
+    _Title_Info.title=[NSString stringWithFormat:@"第-%3d  -天夜晚",[_gameTime intValue]];
     _actList=[NSString stringWithFormat:@"%@", _Title_Info.title];
     DBPart* db=[DBPart alloc];
     [db openDB];
@@ -101,7 +101,7 @@
 -(void)outputActOnView:(int)index
 {
     
-    NSString* str=[NSString stringWithFormat:@"%2d 号玩家[%@]开始行动",[[[_actOrder objectAtIndex:index]userNum] intValue]+1,[[_actOrder objectAtIndex:index]character] ];
+    NSString* str=[NSString stringWithFormat:@"\n%2d 号玩家[%3@]开始行动",[[[_actOrder objectAtIndex:index]userNum] intValue]+1,[[_actOrder objectAtIndex:index]character] ];
     [self makeActList:str Type:2 Num:1];
     [_RCell_showAction.Text_showAct setAttributedText:_attributedStr];
     
@@ -113,8 +113,7 @@
         case 5:
         {
             _robberNum=[NSNumber numberWithInt:index];
-            _img1=[UIImage imageNamed:_character1.imgName];
-            _img1=[UIImage imageNamed:_character2.imgName];
+            sleep(1);
            [self performSegueWithIdentifier:@"ribborSelectCard" sender:nil];
            
         }
@@ -127,6 +126,7 @@
 }
 -(void)makeActList:(NSString*)str Type:(int)type Num:(int)num
 {
+    
     if(type==1)
     {
         //创建 NSMutableAttributedString
@@ -136,7 +136,7 @@
             [_attributedStr appendAttributedString:[[NSMutableAttributedString alloc] initWithString: str]];
         //添加属性
         
-        //给所有字符设置字体为Zapfino，字体高度为15像素
+        //给所有字符设置字体为Zapfino，字体高度为24像素
         [_attributedStr addAttribute: NSFontAttributeName value: [UIFont fontWithName: @"AmericanTypewriter-Bold" size: 24]
                                range: NSMakeRange(0, str.length)];
         //分段控制，最开始4个字符颜色设置成蓝色
@@ -147,18 +147,22 @@
     }
     else
     {
-        //创建 NSMutableAttributedString
-        _attributedStr = [[NSMutableAttributedString alloc] initWithString: str];
-        
+       // NSAttributedString* subStr=[[NSMutableAttributedString alloc] initWithString: str];
         //添加属性
         
+  
+        NSMutableAttributedString* substr=NULL;
+        substr=[[NSMutableAttributedString alloc]initWithString:str];
+        
         //给所有字符设置字体为Zapfino，字体高度为15像素
-        [_attributedStr addAttribute: NSFontAttributeName value: [UIFont fontWithName: @"AmericanTypewriter-Bold" size: 24]
-                               range: NSMakeRange(0, str.length)];
+        [substr addAttribute: NSFontAttributeName value: [UIFont fontWithName: @"AmericanTypewriter-Bold" size: 24]
+                       range: NSMakeRange(0, str.length)];
         //分段控制，最开始4个字符颜色设置成蓝色
-        [_attributedStr  addAttribute: NSForegroundColorAttributeName value: [UIColor blueColor] range: NSMakeRange(3,2 )];
+        [substr  addAttribute: NSForegroundColorAttributeName value: [UIColor blueColor] range: NSMakeRange(0,4 )];
         //分段控制，第5个字符开始的3个字符，即第5、6、7字符设置为红色
-        [_attributedStr  addAttribute: NSForegroundColorAttributeName value: [UIColor redColor] range: NSMakeRange(str.length-3,2)];
+        [substr  addAttribute: NSForegroundColorAttributeName value: [UIColor redColor] range: NSMakeRange(str.length-8,4)];
+        [_attributedStr appendAttributedString:substr];
+        
         
     }
 }

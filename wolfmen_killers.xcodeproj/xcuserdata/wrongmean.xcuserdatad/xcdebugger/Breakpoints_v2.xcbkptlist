@@ -9,61 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VCRobberSelect.m"
-            timestampString = "515427510.589962"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "-TapImg1:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[VCRobberSelect TapImg1:]"
-                  moduleName = "wolfmen_killers"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wrongmean/Desktop/LoseAllButYou-iOS_OC_APP_wofves_men_killers/VCRobberSelect.m"
-                  timestampString = "515429293.618564"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "336">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__26-[VCRobberSelect TapImg1:]_block_invoke.40"
-                  moduleName = "wolfmen_killers"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wrongmean/Desktop/LoseAllButYou-iOS_OC_APP_wofves_men_killers/VCRobberSelect.m"
-                  timestampString = "515429293.632121"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
-                  offsetFromSymbolStart = "51">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "VCBegain.m"
-            timestampString = "515427699.930544"
+            timestampString = "515474234.628926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "-viewDidAppear:"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "-userAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,46 +25,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VCRobberSelect.m"
-            timestampString = "515429138.137875"
+            filePath = "VCBegain.m"
+            timestampString = "515472944.870055"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "-TapImg2:"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "-gameAction:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[VCRobberSelect TapImg2:]"
-                  moduleName = "wolfmen_killers"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wrongmean/Desktop/LoseAllButYou-iOS_OC_APP_wofves_men_killers/VCRobberSelect.m"
-                  timestampString = "515429293.654645"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "47"
-                  endingLineNumber = "47"
-                  offsetFromSymbolStart = "336">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__26-[VCRobberSelect TapImg2:]_block_invoke.54"
-                  moduleName = "wolfmen_killers"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wrongmean/Desktop/LoseAllButYou-iOS_OC_APP_wofves_men_killers/VCRobberSelect.m"
-                  timestampString = "515429293.660428"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "51">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
