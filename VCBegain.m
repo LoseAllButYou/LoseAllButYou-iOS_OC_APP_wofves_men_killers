@@ -7,11 +7,11 @@
 //
 
 #import "VCBegain.h"
-
+#import "VCPlayerSelect.h"
 @interface VCBegain ()
 @property (strong, nonatomic) NSNumber* gameTime;
 @property (strong, nonatomic) NSNumber* dayOrNight;
-@property (strong ,nonatomic) NSMutableArray* actOrder;
+
 @property (strong, nonatomic) VRShowAct *RCell_showAction;
 
 @property (strong, nonatomic) NSMutableAttributedString *attributedStr;//富文本 字符串
@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
     curActUserNum=0;
     beActedUserNum=0;
     _gameTime=[NSNumber numberWithInt:1];
@@ -33,8 +34,6 @@
     {
         _character1=[_characterArr objectAtIndex:[_characterArr count]-2];
         _character2=[_characterArr objectAtIndex:[_characterArr count]-1];
-        [_characterArr removeObjectAtIndex:[_characterArr count]-1];
-        [_characterArr removeObjectAtIndex:[_characterArr count]-1];
     }
     for(int i=0;i<_characterArr.count;++i)
         [_actOrder addObject:[GameCharacter allocWithZone:(__bridge struct _NSZone *)([_characterArr objectAtIndex:i]) ]];
@@ -65,24 +64,36 @@
 }
 -(void)gameAction:(int)index
 {
-    
+    if([[[_actOrder objectAtIndex:index]gamePriority] intValue]<=7)
+    {
+        [self changeDayOrNightBack];
+    }
     if([self didEndGame]){
         if(![_dayOrNight boolValue])
         {
             if([[[_actOrder objectAtIndex:index]gameState] intValue]>=SURVIVE)
             {
-                if([[[_actOrder objectAtIndex:index]gamePriority] intValue]<=7)
-                {}
-                [self outputActOnView:index];
+             
+                NSString* str=[NSString stringWithFormat:@"\n%2d 号玩家[%3@]开始行动",[[[_actOrder objectAtIndex:index]userNum] intValue]+1,[[_actOrder objectAtIndex:index]character] ];
+                [self outputActOnView:index :str];
+                
                 [self changeCardState:[[[_actOrder objectAtIndex:index]userNum] intValue]];
                 [self userAction:[[[_actOrder objectAtIndex:index]userNum] intValue]];
             }
         }
         else
         {
-            [self outputDateOnView];
+           
         }
     }
+}
+-(void)changeDayOrNightBack
+{
+    if([_dayOrNight boolValue]==NO)
+        _CollImg_back.image=[UIImage imageNamed:@"day_back"];
+    else
+        _CollImg_back.image=[UIImage imageNamed:@"night_back"];
+    _dayOrNight =[NSNumber numberWithBool: ![_dayOrNight boolValue] ];
 }
 -(void)changeCardState:(int)index
 {
@@ -96,15 +107,17 @@
     [self makeActList:_actList Type:1 Num:0];
 
     [_RCell_showAction.Text_showAct setAttributedText:_attributedStr];
+   
     
 }
--(void)outputActOnView:(int)index
+
+-(void)outputActOnView:(int)index :(NSString*)str
 {
-    
-    NSString* str=[NSString stringWithFormat:@"\n%2d 号玩家[%3@]开始行动",[[[_actOrder objectAtIndex:index]userNum] intValue]+1,[[_actOrder objectAtIndex:index]character] ];
     [self makeActList:str Type:2 Num:1];
     [_RCell_showAction.Text_showAct setAttributedText:_attributedStr];
     
+    [self.RCell_showAction reloadInputViews]; [self reloadInputViews ];
+    sleep(2);
 }
 
 -(void)userAction:(int)index
@@ -113,7 +126,6 @@
         case 5:
         {
             _robberNum=[NSNumber numberWithInt:index];
-            sleep(1);
            [self performSegueWithIdentifier:@"ribborSelectCard" sender:nil];
            
         }
@@ -165,6 +177,9 @@
         
         
     }
+}
+- (IBAction)pressStop:(id)sender {
+    
 }
 
 //判断游戏是否结束
@@ -335,7 +350,9 @@
         robberSelect.name2=[_character2 imgName];
         //[self.view addSubview:userInfo.view];
     }
-
+    if ([segue.identifier  isEqual: @"userInfo"]) {
+   
+    }
 }
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
 {

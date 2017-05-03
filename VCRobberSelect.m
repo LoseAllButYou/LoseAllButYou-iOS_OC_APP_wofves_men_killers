@@ -26,10 +26,13 @@
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
    
         [_begain. characterArr setObject:_begain. character1 atIndexedSubscript:[_begain.robberNum intValue]];
-    
-        
         VBeginCell *cell = _begain.cellArr[[_begain.robberNum integerValue]];
         [cell.Img_charactor setImage:[UIImage imageNamed:_begain.character1.imgName]];
+        [_begain.characterArr exchangeObjectAtIndex:[_begain.characterArr count]-2 withObjectAtIndex:[_begain.robberNum intValue]];
+        
+        [_begain.characterArr removeObjectAtIndex:[_begain.characterArr count]-1];
+         [_begain.characterArr removeObjectAtIndex:[_begain.characterArr count]-1];
+         [_begain outputActOnView:2 :[NSString stringWithFormat:@"\n女巫选择了%@", _begain.character1.character]];
         
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -45,8 +48,12 @@
          [_begain. characterArr setObject:_begain. character2 atIndexedSubscript:[_begain.robberNum intValue]];
         VBeginCell *cell = _begain.cellArr[[_begain.robberNum integerValue]];
         [cell.Img_charactor setImage:[UIImage imageNamed:_begain.character2.imgName]];
+        [_begain.characterArr exchangeObjectAtIndex:[_begain.characterArr count]-1 withObjectAtIndex:[_begain.robberNum intValue]];
+        
+        [_begain.characterArr removeObjectAtIndex:[_begain.characterArr count]-1];
+        [_begain.characterArr removeObjectAtIndex:[_begain.characterArr count]-1];
+        [_begain outputActOnView:2 :[NSString stringWithFormat:@"女巫选择了%@", _begain.character2.character]];
         [self dismissViewControllerAnimated:YES completion:^{
-            
         }];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -56,7 +63,10 @@
         
     }];
 }
-
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [_begain sortArray:_begain.actOrder orderWithKey:@"gamePriority" ascending:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

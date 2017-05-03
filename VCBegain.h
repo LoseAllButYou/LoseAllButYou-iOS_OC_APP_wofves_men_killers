@@ -35,7 +35,10 @@
 @property(strong,nonatomic)GameCharacter* character1;
 @property(strong,nonatomic)GameCharacter* character2;
 @property(strong,nonatomic)NSNumber* robberNum;//盗贼 身份玩家号码
-//@property (strong, nonatomic) UIImage* img1;
-//@property (strong, nonatomic) UIImage* img2;
+@property (weak, nonatomic) IBOutlet UIImageView *CollImg_back;
+@property (strong ,nonatomic) NSMutableArray* actOrder;
 @property (strong, nonatomic) NSMutableArray* cellArr;
+//ios自带 array 排序工具 1.array 2.排序字段 3.升序或者降序
+-(void) sortArray:(NSMutableArray *)dicArray orderWithKey:(NSString *)key ascending:(BOOL)yesOrNo;
+-(void)outputActOnView:(int)index :(NSString*)str;
 @end

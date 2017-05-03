@@ -21,10 +21,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+ 
     curCharacterNum=[[_characterInfo valueForKey:@"userNum"]intValue];
     _freedomArr=[NSMutableArray arrayWithCapacity:curCharacterNum];
     _mutDic_userSelect=[NSMutableDictionary dictionaryWithObjectsAndKeys:[NSMutableArray arrayWithCapacity:curCharacterNum],@"characterName",[NSMutableArray arrayWithCapacity:curCharacterNum] , @"characterImg" ,nil];
-    
+        _isFirst=[NSNumber numberWithBool:YES];
     for(int i=0;i<[[_characterInfo valueForKey:@"userNum"]intValue];++i)
     {
         [_freedomArr addObject:[NSNumber numberWithInt:i]];

@@ -40,10 +40,7 @@ static NSString * const reuseIdentifier = @"Cell";
     _Label_selectedNum.text=[NSString stringWithFormat:@"以选择角色数:%d",selectedNum];
      _charactor=[FMResultSet alloc];
      _charactor= [dbPart selectAllFromDB:@"select * from game_identity where identity!='123' order by action_priority"];
-//     _imageArr=[NSMutableArray arrayWithCapacity:10 ];
-//     _nameArr=[NSMutableArray arrayWithCapacity:10];
-//     _selectedNameArr=[NSMutableArray arrayWithCapacity:10];
-//     _selectedImageArr=[NSMutableArray arrayWithCapacity:10];
+
     _characterArr=[NSMutableArray arrayWithCapacity:10];
     _selectedcharacterArr=[NSMutableArray arrayWithCapacity:( 10)];
      _isHaveBobber=[NSNumber numberWithBool:NO];
@@ -72,8 +69,6 @@ static NSString * const reuseIdentifier = @"Cell";
      
      //此页面已经存在于self.navigationController.viewControllers中,并且是当前页面的前一页面
      VCPrepare * up= [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
-//    up.nameArr=_selectedNameArr;
-//    up.imageArr=_selectedImageArr;
     up.characterArr=[NSMutableArray arrayWithCapacity:1];
     up.characterArr= _selectedcharacterArr;
     up.isPressDone=[NSNumber numberWithBool:YES];
