@@ -29,8 +29,8 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *Coll_ShowUser;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Btn_changDayNight;
 @property (strong, nonatomic)NSNumber* isHaveBobber;//是否有盗贼
+@property (strong, nonatomic)NSNumber* isHaveCupid;//是否有丘比特
 @property (strong, nonatomic)NSNumber* robberSelect;//盗贼选择
-@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *Tap_RobberSelect;
 @property (strong, nonatomic) NSMutableArray* characterArr;
 @property(strong,nonatomic)GameCharacter* character1;
 @property(strong,nonatomic)GameCharacter* character2;
@@ -40,5 +40,7 @@
 @property (strong, nonatomic) NSMutableArray* cellArr;
 //ios自带 array 排序工具 1.array 2.排序字段 3.升序或者降序
 -(void) sortArray:(NSMutableArray *)dicArray orderWithKey:(NSString *)key ascending:(BOOL)yesOrNo;
--(void)outputActOnView:(int)index :(NSString*)str;
+-(void)outputActOnView :(NSString*)str :(int)type;
+-(void)gameAction:(int)index;
+-(void)changeCardState:(int)index;
 @end

@@ -8,6 +8,9 @@
 
 #import "VCBegain.h"
 #import "VCPlayerSelect.h"
+#import "VCCharacterInfo.h"
+#import "VCMain.h"
+#import "MBProgressHUD+MJ.h"
 @interface VCBegain ()
 @property (strong, nonatomic) NSNumber* gameTime;
 @property (strong, nonatomic) NSNumber* dayOrNight;
@@ -35,8 +38,8 @@
         _character1=[_characterArr objectAtIndex:[_characterArr count]-2];
         _character2=[_characterArr objectAtIndex:[_characterArr count]-1];
     }
-    for(int i=0;i<_characterArr.count;++i)
-        [_actOrder addObject:[GameCharacter allocWithZone:(__bridge struct _NSZone *)([_characterArr objectAtIndex:i]) ]];
+   // for(int i=0;i<_characterArr.count;++i)
+   //     [_actOrder addObject:[GameCharacter allocWithZone:(__bridge struct _NSZone *)([_characterArr objectAtIndex:i]) ]];
     _actOrder=[_characterArr mutableCopy];
     werwolfNum=0;
     civilianNum=0;
@@ -54,7 +57,8 @@
         [db insertData:[NSString stringWithFormat: @"insert into user_info(user_name,game_identity) values (player%d,%@)",i, [_characterArr objectAtIndex:i]]];
     }
     [self outputDateOnView ];
-
+    _Coll_ShowUser.allowsMultipleSelection = YES;
+    [self.view setUserInteractionEnabled:NO];
 }
 
 
@@ -62,44 +66,154 @@
 {
     [self gameAction:curActUserNum];
 }
+- (IBAction)pressUserInfo:(id)sender {
+    
+}
 -(void)gameAction:(int)index
 {
-    if([[[_actOrder objectAtIndex:index]gamePriority] intValue]<=7)
+    if([[[_actOrder objectAtIndex:index]gamePriority] intValue]>7)
     {
         [self changeDayOrNightBack];
+        ++curActUserNum;
     }
     if([self didEndGame]){
         if(![_dayOrNight boolValue])
         {
+            //晚上 行动
             if([[[_actOrder objectAtIndex:index]gameState] intValue]>=SURVIVE)
             {
-             
-                NSString* str=[NSString stringWithFormat:@"\n%2d 号玩家[%3@]开始行动",[[[_actOrder objectAtIndex:index]userNum] intValue]+1,[[_actOrder objectAtIndex:index]character] ];
-                [self outputActOnView:index :str];
+                if([[[_actOrder objectAtIndex:index] gameState] intValue]==lovers)
+                {
+                    //获取情侣号码
+                    NSString* str=[NSString stringWithFormat:@"\n[情侣] 商讨战术" ];
+                    [self outputActOnView :str :2];
+                    
+                }
                 
-                [self changeCardState:[[[_actOrder objectAtIndex:index]userNum] intValue]];
-                [self userAction:[[[_actOrder objectAtIndex:index]userNum] intValue]];
+                NSString* str=[NSString stringWithFormat:@"\n[%3@] 开始行动",[[_actOrder objectAtIndex:index]character] ];
+                [self outputActOnView :str :2];
+             
+                if([_isHaveBobber boolValue])
+                {
+                    [self userAction:[[[_actOrder objectAtIndex:index]userNum]intValue]:YES:0];
+                     [self changeCardState:[[[_actOrder objectAtIndex:index]userNum] intValue]];
+                    return;
+                }
+                if([[[_actOrder objectAtIndex:index] userNum] intValue]!=100)
+                {
+                    [self changeCardState:[[[_actOrder objectAtIndex:index]userNum] intValue]];
+                    [self showActHint:[[[_actOrder objectAtIndex:index] gameIdentity] intValue]];
+                     [self.view setUserInteractionEnabled:YES];
+                }
+                else
+                {
+                    [self showActHint:[[[_actOrder objectAtIndex:index] gameIdentity] intValue]];
+                    ++curActUserNum;
+                    [self gameAction:curActUserNum];
+                }
+            }
+            else
+            {
+                ++curActUserNum;
+                [self gameAction:curActUserNum];
             }
         }
         else
         {
-           
+           //白天
+            if([_gameTime intValue]==1)
+            {
+                NSString* str=[NSString stringWithFormat:@"\n开始竞选警长" ];
+                [self outputActOnView :str :2];
+            }
         }
     }
+    else
+    {
+        //游戏结束提示
+    }
 }
+
+//输出技能提示
+-(void)showActHint:(int)gameId
+{
+    NSString* str;
+    switch (gameId) {
+        case 0:
+        {
+            str=[NSString stringWithFormat: @"请选择杀人目标！！！"] ;
+        }
+            break;
+        case 3:
+        {
+            str=[NSString stringWithFormat: @"请选择检验目标！！！"] ;
+        }
+            break;
+        case 4:
+        {
+            str=[NSString stringWithFormat: @"请选择守护目标！！！"] ;
+        }
+            break;
+        case 1:
+        {
+            str=[NSString stringWithFormat: @"请选择用药目标！！！"] ;
+        }
+            break;
+        case 21:
+        {
+            str=[NSString stringWithFormat: @"请选择禁言目标！！！"] ;
+        }
+            break;
+        case 6:
+        {
+            str=[NSString stringWithFormat: @"请选择情侣！！！"] ;
+        }
+            break;
+        case 7:
+        {
+            str=[NSString stringWithFormat: @"请选择偷看！！！"] ;
+        }
+            break;
+        case 17:
+        {
+        
+        }
+            break;
+        default:
+            break;
+    }
+
+    [MBProgressHUD showMessage:str];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //移除提示框遮盖
+        [MBProgressHUD hideHUD];
+    });
+   
+   
+}
+
 -(void)changeDayOrNightBack
 {
-    if([_dayOrNight boolValue]==NO)
+    if([_dayOrNight boolValue]==NO){
         _CollImg_back.image=[UIImage imageNamed:@"day_back"];
-    else
+        _Title_Info.title=[NSString stringWithFormat:@"第-%3d  -天白天",[_gameTime intValue]];
+        _actList=_Title_Info.title;
+        [self outputDateOnView];
+    }
+    else{
+        _gameTime=[NSNumber numberWithInt:[_gameTime intValue]+1];
         _CollImg_back.image=[UIImage imageNamed:@"night_back"];
+        _Title_Info.title=[NSString stringWithFormat:@"第-%3d  -天夜晚",[_gameTime intValue]];
+        _actList=_Title_Info.title;
+        [self outputDateOnView];
+    }
     _dayOrNight =[NSNumber numberWithBool: ![_dayOrNight boolValue] ];
 }
 -(void)changeCardState:(int)index
 {
     if([[[_characterArr objectAtIndex:index] gameState] intValue]>=SURVIVE)
     {
-        [[_cellArr objectAtIndex:index] Img_headImg].hidden=YES;
+        [[_cellArr objectAtIndex:index] Img_headImg].hidden=![[_cellArr objectAtIndex:index] Img_headImg].hidden;
     }
 }
 -(void)outputDateOnView
@@ -107,33 +221,137 @@
     [self makeActList:_actList Type:1 Num:0];
 
     [_RCell_showAction.Text_showAct setAttributedText:_attributedStr];
-   
-    
+      [_RCell_showAction.Text_showAct scrollRangeToVisible:NSMakeRange(_attributedStr.length, 1)];
 }
 
--(void)outputActOnView:(int)index :(NSString*)str
+-(void)outputActOnView :(NSString*)str :(int)type
 {
-    [self makeActList:str Type:2 Num:1];
+    [self makeActList:str Type:type Num:1];
     [_RCell_showAction.Text_showAct setAttributedText:_attributedStr];
-    
-    [self.RCell_showAction reloadInputViews]; [self reloadInputViews ];
-    sleep(2);
+    [_RCell_showAction.Text_showAct scrollRangeToVisible:NSMakeRange(_attributedStr.length, 1)];
+  
+//    [self.RCell_showAction reloadInputViews];
+//    
+//    [self reloadInputViews ];
+ 
 }
 
--(void)userAction:(int)index
+-(void)showDisCuss :(int )type
+{
+    UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"商讨战术" message:@"确定结束商讨战术？" preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+            if(type==-1)
+            {
+                [self showActHint:1];
+            }
+        }];
+        
+          }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [self presentViewController:alert animated:YES completion:^{
+        
+    }];
+
+}
+
+-(void)userAction :(int)index :(BOOL)isSelected :(int)selectedNum
 {
     switch ([[[_characterArr objectAtIndex:index]gameIdentity] intValue]) {
         case 5:
         {
             _robberNum=[NSNumber numberWithInt:index];
            [self performSegueWithIdentifier:@"ribborSelectCard" sender:nil];
-           
         }
             break;
+        case 0:
+        {
             
+        }
+            break;
+        case 3:
+        {
+            _robberNum=[NSNumber numberWithInt:index];
+            [self performSegueWithIdentifier:@"ribborSelectCard" sender:nil];
+        }
+            break;
+        case 4:
+        {
+            _robberNum=[NSNumber numberWithInt:index];
+            [self performSegueWithIdentifier:@"ribborSelectCard" sender:nil];
+        }
+            break;
+        case 1:
+        {
+            _robberNum=[NSNumber numberWithInt:index];
+            [self performSegueWithIdentifier:@"ribborSelectCard" sender:nil];
+        }
+            break;
+        case 21:
+        {
+            _robberNum=[NSNumber numberWithInt:index];
+            [self performSegueWithIdentifier:@"ribborSelectCard" sender:nil];
+        }
+            break;
+        case 6:
+        {
+            if(isSelected)
+            {
+                 [[[_characterArr objectAtIndex:index] skillOb] addObject:[NSNumber numberWithInt:selectedNum]];
+            }
+            else
+            {
+                [[[_characterArr objectAtIndex:index] skillOb] removeObject:[NSNumber numberWithInt:selectedNum]];
+            }
+            
+            if([[_characterArr objectAtIndex:[[[_actOrder objectAtIndex:curActUserNum] userNum] intValue]] skillOb].count==2)
+            {
+                int idx1=[[[[_characterArr objectAtIndex:index] skillOb] objectAtIndex:0] intValue] ,idx2=[[[[_characterArr objectAtIndex:index] skillOb] objectAtIndex:1] intValue] ;
+                UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"选择情侣" message:@"确认选择吗？" preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [[_characterArr objectAtIndex:idx1] setGameState:[NSNumber numberWithInt: lovers ]];
+                    [[_characterArr objectAtIndex:idx2 ]setGameState:[NSNumber numberWithInt: lovers ]];
+                    NSString* str=[NSString stringWithFormat:@"\n[丘比特] 选择了 %d 号 ,%d 号 为情侣",idx1+1,idx2+1];
+                    [self outputActOnView :str :2];
+                    [[_characterArr objectAtIndex:index] setGamePriority:[NSNumber numberWithInt:7]];
+                    
+                    [[_characterArr objectAtIndex:idx1] setGamePriority:[NSNumber numberWithInt:0]];
+                    [[_characterArr objectAtIndex:idx2] setGamePriority:[NSNumber numberWithInt:0]];
+                    [self sortArray:_actOrder orderWithKey:@"gamePriority" ascending:(YES)];
+                    [[[_cellArr objectAtIndex:idx1] Img_selected] setHidden:YES];
+                    [[[_cellArr objectAtIndex:idx2] Img_selected] setHidden:YES];
+                    [self changeCardState:index];
+                    [self gameAction:curActUserNum];
+                }]];
+                [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                }]];
+                [self presentViewController:alert animated:YES completion:^{
+                    
+                }];
+
+            }
+        }
+            break;
+        case 7:
+        {
+            _robberNum=[NSNumber numberWithInt:index];
+            [self performSegueWithIdentifier:@"ribborSelectCard" sender:nil];
+        }
+            break;
+        case 17:
+        {
+            _robberNum=[NSNumber numberWithInt:index];
+            [self performSegueWithIdentifier:@"ribborSelectCard" sender:nil];
+        }
+            break;
         default:
             break;
     }
+  //  [self gameAction:++curActUserNum];
     return ;
 }
 -(void)makeActList:(NSString*)str Type:(int)type Num:(int)num
@@ -157,29 +375,48 @@
         [_attributedStr  addAttribute: NSForegroundColorAttributeName value: [UIColor redColor] range: NSMakeRange(str.length-2,2)];
         
     }
-    else
+    else if(type==2)
     {
        // NSAttributedString* subStr=[[NSMutableAttributedString alloc] initWithString: str];
         //添加属性
-        
-  
         NSMutableAttributedString* substr=NULL;
         substr=[[NSMutableAttributedString alloc]initWithString:str];
         
         //给所有字符设置字体为Zapfino，字体高度为15像素
-        [substr addAttribute: NSFontAttributeName value: [UIFont fontWithName: @"AmericanTypewriter-Bold" size: 24]
+        [substr addAttribute: NSFontAttributeName value: [UIFont fontWithName: @"AmericanTypewriter-Bold" size: 18]
+                       range: NSMakeRange(0, str.length)];
+       
+        //分段控制，第5个字符开始的3个字符，即第5、6、7字符设置为红色
+        [substr  addAttribute: NSForegroundColorAttributeName value: [UIColor redColor] range: NSMakeRange(0,6)];
+        [_attributedStr appendAttributedString:substr];
+    }
+    else if(type==3)
+    {
+        NSMutableAttributedString* substr=NULL;
+        substr=[[NSMutableAttributedString alloc]initWithString:str];
+        
+        //给所有字符设置字体为Zapfino，字体高度为15像素
+        [substr addAttribute: NSFontAttributeName value: [UIFont fontWithName: @"AmericanTypewriter-Bold" size: 18]
                        range: NSMakeRange(0, str.length)];
         //分段控制，最开始4个字符颜色设置成蓝色
-        [substr  addAttribute: NSForegroundColorAttributeName value: [UIColor blueColor] range: NSMakeRange(0,4 )];
+        [substr  addAttribute: NSForegroundColorAttributeName value: [UIColor blueColor] range: NSMakeRange(1,3 )];
         //分段控制，第5个字符开始的3个字符，即第5、6、7字符设置为红色
-        [substr  addAttribute: NSForegroundColorAttributeName value: [UIColor redColor] range: NSMakeRange(str.length-8,4)];
+        [substr  addAttribute: NSForegroundColorAttributeName value: [UIColor redColor] range: NSMakeRange(str.length-4,4)];
         [_attributedStr appendAttributedString:substr];
-        
-        
     }
 }
+
 - (IBAction)pressStop:(id)sender {
-    
+    UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"退出游戏" message:@"确认退出当前游戏吗？" preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }]];
+    [self presentViewController:alert animated:YES completion:^{
+        
+    }];
 }
 
 //判断游戏是否结束
@@ -254,13 +491,15 @@
 #pragma mark ---UICollectionView DataSource
 //选中cell
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+    [[[_cellArr objectAtIndex:indexPath.row] Img_selected]setHidden:NO];
+    [self userAction:[[[_actOrder objectAtIndex:curActUserNum] userNum] intValue]:YES:(int)indexPath.row];
 }
 
 ////取消选中cell
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-  
+   [[[_cellArr objectAtIndex:indexPath.row] Img_selected]setHidden:YES];
+     [self userAction:[[[_actOrder objectAtIndex:curActUserNum] userNum] intValue]:NO:(int)indexPath.row];
     
 }
 
@@ -284,7 +523,9 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     //return [_mutDic_userSelect ];
-    return _characterArr.count;
+    if([_isHaveBobber boolValue])
+        return _characterArr.count-2;
+     return _characterArr.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -351,7 +592,9 @@
         //[self.view addSubview:userInfo.view];
     }
     if ([segue.identifier  isEqual: @"userInfo"]) {
-   
+        VCCharacterInfo* info = segue.destinationViewController ;
+        info  .modalPresentationStyle = UIModalPresentationPopover;
+        info .popoverPresentationController.delegate = self;
     }
 }
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller

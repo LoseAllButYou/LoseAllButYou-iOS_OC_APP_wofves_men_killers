@@ -49,6 +49,7 @@
 		FE5612521EB45F3700968914 /* VRShowAct.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5612511EB45F3700968914 /* VRShowAct.m */; };
 		FE5612551EB4B34900968914 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE7B081EA4F4A000ACA6E0 /* AudioToolbox.framework */; };
 		FE5612561EB4B35200968914 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 191924331EA3597A00F8B759 /* libsqlite3.tbd */; };
+		FE680AE81EBD9ACF00327DC7 /* VCCharacterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FE680AE71EBD9ACF00327DC7 /* VCCharacterInfo.m */; };
 		FEFA8C681EB7597C004A73BB /* VCRobberSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFA8C671EB7597C004A73BB /* VCRobberSelect.m */; };
 		FEFBCFC61EB4C9B7001E95CD /* VCMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */; };
 /* End PBXBuildFile section */
@@ -128,6 +129,8 @@
 		FE5612461EB0D8E300968914 /* VBeginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBeginCell.m; sourceTree = "<group>"; };
 		FE5612501EB45F3700968914 /* VRShowAct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VRShowAct.h; sourceTree = "<group>"; };
 		FE5612511EB45F3700968914 /* VRShowAct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRShowAct.m; sourceTree = "<group>"; };
+		FE680AE61EBD9ACF00327DC7 /* VCCharacterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCharacterInfo.h; sourceTree = "<group>"; };
+		FE680AE71EBD9ACF00327DC7 /* VCCharacterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCharacterInfo.m; sourceTree = "<group>"; };
 		FEFA8C661EB7597C004A73BB /* VCRobberSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRobberSelect.h; sourceTree = "<group>"; };
 		FEFA8C671EB7597C004A73BB /* VCRobberSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRobberSelect.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -148,6 +151,8 @@
 		190051031E98D5AB00D5415A /* 界面 */ = {
 			isa = PBXGroup;
 			children = (
+				FE680AE61EBD9ACF00327DC7 /* VCCharacterInfo.h */,
+				FE680AE71EBD9ACF00327DC7 /* VCCharacterInfo.m */,
 				FEFA8C661EB7597C004A73BB /* VCRobberSelect.h */,
 				FEFA8C671EB7597C004A73BB /* VCRobberSelect.m */,
 				FE5612501EB45F3700968914 /* VRShowAct.h */,
@@ -416,6 +421,7 @@
 				190BD23C1EA5C4FF0085EB44 /* FMDatabaseAdditions.m in Sources */,
 				19F5D0101E9A432C00B15A67 /* VCMain.m in Sources */,
 				190BD23F1EA5C4FF0085EB44 /* FMResultSet.m in Sources */,
+				FE680AE81EBD9ACF00327DC7 /* VCCharacterInfo.m in Sources */,
 				19F5D01A1E9A464100B15A67 /* MBProgressHUD+MJ.m in Sources */,
 				191924301EA25D3100F8B759 /* gameElementDB.xcdatamodeld in Sources */,
 				1919242A1EA217FB00F8B759 /* VCFriend.m in Sources */,
@@ -549,6 +555,7 @@
 		19F2F7B61E98C56000936FCF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_ENTITLEMENTS = wolfmen_killers/wolfmen_killers.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -568,6 +575,7 @@
 		19F2F7B71E98C56000936FCF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_ENTITLEMENTS = wolfmen_killers/wolfmen_killers.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

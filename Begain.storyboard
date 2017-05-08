@@ -78,7 +78,6 @@
                                             <outlet property="Img_numBack" destination="BaT-x5-6tW" id="sSd-ld-vdL"/>
                                             <outlet property="Img_selected" destination="Fix-gB-tyP" id="FJ8-Up-K3R"/>
                                             <outlet property="Label_num" destination="xhO-Bz-V9K" id="Lcx-f3-Kwz"/>
-                                            <outletCollection property="gestureRecognizers" destination="XAV-uq-NsM" appends="YES" id="PfH-Yy-dsB"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -106,6 +105,10 @@
                                     <outlet property="delegate" destination="ehE-OL-Izc" id="3b9-k0-HzM"/>
                                 </connections>
                             </collectionView>
+                            <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wvi-uF-Kl8">
+                                <rect key="frame" x="163" y="220" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -117,8 +120,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="查寻玩家信息" id="NOQ-wV-Pa7">
                             <connections>
-                                <segue destination="WIG-Ei-2NN" kind="popoverPresentation" identifier="userInfo" popoverAnchorBarButtonItem="NOQ-wV-Pa7" id="SkS-LW-TZM">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" right="YES"/>
+                                <action selector="pressUserInfo:" destination="ehE-OL-Izc" id="kct-ya-Lfe"/>
+                                <segue destination="WIG-Ei-2NN" kind="popoverPresentation" identifier="userInfo" popoverAnchorBarButtonItem="NOQ-wV-Pa7" id="c6c-7K-78T">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
                         </barButtonItem>
@@ -128,27 +132,21 @@
                         <outlet property="Btn_changDayNight" destination="NOQ-wV-Pa7" id="xkL-pj-Y1E"/>
                         <outlet property="CollImg_back" destination="xeJ-Ve-fX5" id="o85-fc-csJ"/>
                         <outlet property="Coll_ShowUser" destination="zB7-Ti-qDy" id="hGl-k8-OOP"/>
-                        <outlet property="Tap_RobberSelect" destination="XAV-uq-NsM" id="iBh-F7-P1m"/>
                         <outlet property="Title_Info" destination="b9H-eL-Lel" id="sr1-ie-H3m"/>
-                        <segue destination="zoS-TR-MXB" kind="popoverPresentation" identifier="ribborSelectCard" popoverAnchorView="V1C-ea-fez" id="c4W-VD-Th5">
+                        <segue destination="zoS-TR-MXB" kind="popoverPresentation" identifier="ribborSelectCard" popoverAnchorView="Wvi-uF-Kl8" id="c4W-VD-Th5">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                         <segue destination="30r-Wd-PRu" kind="showDetail" id="TV1-Yv-ZN8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ow-er-GRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="XAV-uq-NsM">
-                    <connections>
-                        <outlet property="delegate" destination="ehE-OL-Izc" id="QGA-D7-XP9"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-281" y="48"/>
         </scene>
-        <!--View Controller-->
+        <!--Character Info-->
         <scene sceneID="bY7-F5-VQ8">
             <objects>
-                <viewController id="WIG-Ei-2NN" sceneMemberID="viewController">
+                <viewController id="WIG-Ei-2NN" customClass="VCCharacterInfo" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LL5-rR-PXx"/>
                         <viewControllerLayoutGuide type="bottom" id="u4l-Mb-N8j"/>
@@ -237,7 +235,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="371" y="97"/>
+            <point key="canvasLocation" x="498" y="70"/>
         </scene>
     </scenes>
     <resources>
