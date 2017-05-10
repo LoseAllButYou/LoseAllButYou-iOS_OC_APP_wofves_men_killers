@@ -16,13 +16,10 @@
 @property (strong,nonatomic)FMResultSet* charactor;
 @property (weak, nonatomic) IBOutlet UICollectionView *Coll_list;
 
-//@property (strong,nonatomic)NSMutableArray* imageArr;
-//@property (strong,nonatomic)NSMutableArray* nameArr;
-//@property (nonatomic, strong)NSMutableArray* selectedNameArr;
-//@property (nonatomic, strong)NSMutableArray* selectedImageArr;
 @property (weak, nonatomic) IBOutlet UILabel *Label_selectedNum;
 @property (nonatomic, strong)NSMutableArray* characterArr;
 @property (nonatomic, strong)NSMutableArray* selectedcharacterArr;
+@property (nonatomic, strong)NSMutableArray* boolArr;
 @end
 
 @implementation VCCharactor
@@ -59,7 +56,9 @@ static NSString * const reuseIdentifier = @"Cell";
          [_characterArr addObject:gc];
          if([gc.gameIdentity intValue]==5)
              _isHaveBobber=[NSNumber numberWithBool:YES];
-     }	
+     }
+    _boolArr=[NSMutableArray arrayWithCapacity:12];
+ 
      //设置允许多选
      _Coll_list.allowsMultipleSelection = YES;
     [dbPart closeDB];
@@ -87,8 +86,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
      
      ((Vcell*)[collectionView cellForItemAtIndexPath:indexPath]).Img_isSelect.image=[UIImage imageNamed:@"didSelect.png"];
-//    [_selectedNameArr addObject:_nameArr[indexPath.row]];
-//    [_selectedImageArr addObject:_imageArr[indexPath.row]];
+    [_boolArr setObject:@"didSelect" atIndexedSubscript:indexPath.row];
     [_selectedcharacterArr addObject:_characterArr[indexPath.row]];
     ++selectedNum;
     _Label_selectedNum.text=[NSString stringWithFormat:@"以选择角色数:%d",selectedNum];
@@ -98,8 +96,7 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
      ((Vcell*)[collectionView cellForItemAtIndexPath:indexPath]).Img_isSelect.image=[UIImage imageNamed:@"notSelect.png"];
-//    [_selectedNameArr removeObject:_nameArr[indexPath.row]];
-//    [_selectedImageArr removeObject:_imageArr[indexPath.row]];
+    [_boolArr setObject:@"notSelect" atIndexedSubscript:indexPath.row];
      [_selectedcharacterArr removeObject:_characterArr[indexPath.row]];
     --selectedNum;
     _Label_selectedNum.text=[NSString stringWithFormat:@"以选择角色数:%d",selectedNum];
@@ -132,12 +129,20 @@ static NSString * const reuseIdentifier = @"Cell";
 
 //     UIImage* img=[UIImage imageNamed:_imageArr[indexPath.row]];
     UIImage* img=[UIImage imageNamed:[[_characterArr objectAtIndex:indexPath.row] imgName]];
-     Vcell* cell = (Vcell*)[collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
-     if(!cell)
-          cell=(Vcell*)[collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
+    
+    Vcell* cell = (Vcell*)[collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
+   
      cell.Cell_img.image= img;
     // cell.Cell_label.text=_nameArr[indexPath.row];
     cell.Cell_label.text=[[_characterArr objectAtIndex:indexPath.row ] character];
+    if(_boolArr.count>indexPath.row)
+    {
+        cell.Img_isSelect.image=[UIImage imageNamed:[_boolArr objectAtIndex:indexPath.row]];    }
+    else{
+        cell.Img_isSelect.image=[UIImage imageNamed:@"notSelect"];
+        [_boolArr addObject:@"notSelect"];
+    }
+  
      return cell;
 }
 //定义每个UICollectionView 的大小

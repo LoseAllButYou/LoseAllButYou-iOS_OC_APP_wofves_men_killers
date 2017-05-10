@@ -51,7 +51,7 @@
         {
             GameCharacter* gc=[GameCharacter alloc];
             [gc alloc];
-            gc.character=@"普通狼人";
+            gc.character=@"狼人";
             gc.imgName=@"wolf.jpg";
             gc.gamePriority=[NSNumber numberWithInt: 4];
             [gc setGameIdentity:[NSNumber numberWithInt:0]];

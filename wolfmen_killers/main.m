@@ -1,4 +1,3 @@
-	//
 //  main.m
 //  wolfmen_killers
 //

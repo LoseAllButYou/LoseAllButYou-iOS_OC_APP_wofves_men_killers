@@ -17,6 +17,8 @@ typedef NS_ENUM(int,State)  {
     DEAD_BY_WERWOLF_KING=3,
     OUT_BY_CIVILIAN=4,
     DEAD_NOT_DEFINE=5,
+    DEAD_BY_BOOM=-1,
+    DEAD_FOR_LOVE=-2,
     //存活状态
     SURVIVE=6,
     Idol,//偶像
