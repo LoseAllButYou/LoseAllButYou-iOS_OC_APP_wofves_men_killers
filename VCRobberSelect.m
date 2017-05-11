@@ -21,9 +21,42 @@
     // Do any additional setup after loading the view.
     _Img_character1.image=[UIImage imageNamed:_name1 ];
      _Img_character2.image=[UIImage imageNamed:_name2 ];
-    [_begain.view setUserInteractionEnabled:NO];
+       [_begain.view setUserInteractionEnabled:NO];
+}
+-(void)viewDidAppear:(BOOL)animated
+{
+    if([[[_begain.characterArr objectAtIndex:[_begain.characterArr count]-2] part] intValue]==-1)
+    {
+        [self.view setUserInteractionEnabled:NO];
+        [self TapImg1:nil];
+    }
+    if([[[_begain.characterArr objectAtIndex:[_begain.characterArr count]-1] part] intValue]==-1)
+    {
+        [self.view setUserInteractionEnabled:NO];
+        [self TapImg2:nil];
+    }
+
 }
 - (IBAction)TapImg1:(id)sender {
+    if(sender==nil)
+    {
+         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_begain. characterArr setObject:_begain. character2 atIndexedSubscript:[_begain.robberNum intValue]];
+        VBeginCell *cell = _begain.cellArr[[_begain.robberNum integerValue]];
+        [cell.Img_charactor setImage:[UIImage imageNamed:_begain.character2.imgName]];
+        
+        [_begain.characterArr exchangeObjectAtIndex:[_begain.characterArr count]-1 withObjectAtIndex:[_begain.robberNum intValue]];
+        [_begain.characterArr removeObjectAtIndex:[_begain.characterArr count]-1];
+        [_begain outputActOnView :[NSString stringWithFormat:@"\n有狼人角色，强制盗贼选择狼人！！！"]:4];
+        [_begain outputActOnView :[NSString stringWithFormat:@"\n盗贼 选择了  %@", _begain.character2.character]:3];
+        [_begain outputActOnView :[NSString stringWithFormat:@"\n盗贼 埋掉了  %@", _begain.character1.character] :3];
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+         
+        });
+        return;
+    }
+
     UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"选择角色" message:@"确认选择吗？" preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
    
@@ -32,11 +65,11 @@
         [cell.Img_charactor setImage:[UIImage imageNamed:_begain.character1.imgName]];
         [_begain.characterArr exchangeObjectAtIndex:[_begain.characterArr count]-2 withObjectAtIndex:[_begain.robberNum intValue]];
          [_begain.characterArr removeObjectAtIndex:[_begain.characterArr count]-2];
-//        
-//        [_begain.characterArr removeObjectAtIndex:[_begain.characterArr count]-1];
-//         [_begain.characterArr removeObjectAtIndex:[_begain.characterArr count]-1];
+
         [_begain outputActOnView :[NSString stringWithFormat:@"\n盗贼 选择了%@", _begain.character1.character] :3];
         [_begain outputActOnView :[NSString stringWithFormat:@"\n盗贼 埋掉了  %@", _begain.character2.character] :3];
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
@@ -46,12 +79,30 @@
     }];
 }
 - (IBAction)TapImg2:(id)sender {
+    if(sender==nil)
+    {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [_begain. characterArr setObject:_begain. character2 atIndexedSubscript:[_begain.robberNum intValue]];
+            VBeginCell *cell = _begain.cellArr[[_begain.robberNum integerValue]];
+            [cell.Img_charactor setImage:[UIImage imageNamed:_begain.character2.imgName]];
+            
+            [_begain.characterArr exchangeObjectAtIndex:[_begain.characterArr count]-1 withObjectAtIndex:[_begain.robberNum intValue]];
+            [_begain.characterArr removeObjectAtIndex:[_begain.characterArr count]-1];
+            [_begain outputActOnView :[NSString stringWithFormat:@"\n有狼人角色，强制盗贼选择狼人！！！"]:4];
+            [_begain outputActOnView :[NSString stringWithFormat:@"\n盗贼 选择了  %@", _begain.character2.character]:3];
+            [_begain outputActOnView :[NSString stringWithFormat:@"\n盗贼 埋掉了  %@", _begain.character1.character] :3];
+            [self dismissViewControllerAnimated:YES completion:^{
+            }];
+
+        });
+        return;
+    }
     UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"选择角色" message:@"确认选择吗？" preferredStyle:UIAlertControllerStyleAlert];
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
          [_begain. characterArr setObject:_begain. character2 atIndexedSubscript:[_begain.robberNum intValue]];
         VBeginCell *cell = _begain.cellArr[[_begain.robberNum integerValue]];
         [cell.Img_charactor setImage:[UIImage imageNamed:_begain.character2.imgName]];
-      //  [_begain.characterArr exchangeObjectAtIndex:[_begain.characterArr count]-1 withObjectAtIndex:[_begain.robberNum intValue]];
+  
         [_begain.characterArr exchangeObjectAtIndex:[_begain.characterArr count]-1 withObjectAtIndex:[_begain.robberNum intValue]];
         [_begain.characterArr removeObjectAtIndex:[_begain.characterArr count]-1];
 
@@ -77,6 +128,7 @@
     [_begain.view setUserInteractionEnabled:YES];
     [_begain changeCardState:[_begain.robberNum intValue]];
     [_begain gameAction:0];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

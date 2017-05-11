@@ -32,7 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Btn_changDayNight;
 @property (strong, nonatomic)NSNumber* isHaveBobber;//是否有盗贼
 @property (strong, nonatomic)NSNumber* isHaveCupid;//是否有丘比特
-
+@property (strong, nonatomic)NSNumber* isSelectSheriff;//是否选择警长
 @property (strong, nonatomic)NSNumber* robberSelect;//盗贼选择
 @property (strong, nonatomic) NSMutableArray* characterArr;
 @property(strong,nonatomic)GameCharacter* character1;

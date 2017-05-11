@@ -59,34 +59,45 @@
             [_characterArr addObject:gc];
         }
     }
-    if(_isHaveBobber)
+    if([_isHaveBobber boolValue]){
+        int i=0;
         do{
             srand((unsigned int)time(NULL));
             int num=rand()%curCharacterNum;
-            if([[[_characterArr objectAtIndex:num] gameIdentity] intValue]!=5)
+            if([[[_characterArr objectAtIndex:num] gameIdentity] intValue]==5)
+                continue;
+                [_characterArr exchangeObjectAtIndex:curCharacterNum+i withObjectAtIndex:num];
+            i=1;
+            num=rand()%curCharacterNum;
+            if([[[_characterArr objectAtIndex:num] gameIdentity] intValue]==5)
+                continue;
+            [_characterArr exchangeObjectAtIndex:curCharacterNum +i withObjectAtIndex:num];
+            if(([[[_characterArr objectAtIndex:curCharacterNum] part] intValue]!=-1||[[[_characterArr objectAtIndex:curCharacterNum+1] part] intValue]!=-1))
             {
-                [_characterArr exchangeObjectAtIndex:curCharacterNum withObjectAtIndex:num];
-                [_characterArr exchangeObjectAtIndex:curCharacterNum+1 withObjectAtIndex:num];
-                break;
+                 break;
             }
         }while(1);
+    }
+    [self randCellView];
     //设置允许多选
     _Coll_character.allowsMultipleSelection = YES;
 }
--(void)randCellView:(NSString**)imgName sencondkid:(NSString**)labelName thirdkid:(NSUInteger) index
+-(void)randCellView
 {
-    if(curCharacterNum==0)
-        return
-    srand((unsigned)time(NULL));
-    int num1=rand()%curCharacterNum;
-    NSLog(@"index =%d",num1);
-    *imgName=[[_characterArr objectAtIndex: [[_freedomArr objectAtIndex: num1 ] intValue]] imgName];
-    *labelName=[[_characterArr objectAtIndex: [[_freedomArr objectAtIndex: num1 ] intValue]] character];
-    [[_characterArr objectAtIndex: [[_freedomArr objectAtIndex: num1 ] intValue]] setUserNum:[NSNumber numberWithUnsignedInteger:index]];
-    [_freedomArr removeObjectAtIndex:num1];
-    --curCharacterNum;
-    [(NSMutableArray*)[_mutDic_userSelect valueForKey:@"characterImg"] addObject:*imgName];
-    [(NSMutableArray*)[_mutDic_userSelect valueForKey:@"characterName"] addObject:*labelName];
+    for(int i=0;curCharacterNum>0;++i,--curCharacterNum){
+
+        srand((unsigned)time(NULL));
+        int num1=rand()%curCharacterNum;
+        
+        
+        [[_characterArr objectAtIndex: [[_freedomArr objectAtIndex: num1 ] intValue]] setUserNum:[NSNumber numberWithInt:i]];
+        NSLog(@"index =%d %@ = %d,",num1,[[_characterArr objectAtIndex: [[_freedomArr objectAtIndex: num1 ]intValue]] character],[[[_characterArr objectAtIndex: [[_freedomArr objectAtIndex: num1 ]intValue]] userNum] intValue]);
+        
+        [(NSMutableArray*)[_mutDic_userSelect valueForKey:@"characterImg"] addObject:[[_characterArr objectAtIndex: [[_freedomArr objectAtIndex: num1 ] intValue]] imgName]];
+        [(NSMutableArray*)[_mutDic_userSelect valueForKey:@"characterName"] addObject:[[_characterArr objectAtIndex: [[_freedomArr objectAtIndex: num1 ] intValue]] character]];
+         [_freedomArr removeObjectAtIndex:num1];
+    }
+   
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -135,22 +146,13 @@
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *identify = @"cell";
-    NSString* imgName;
-    NSString* labelTitle;
-    if(curCharacterNum!=0)
-        [self randCellView:&imgName sencondkid:&labelTitle thirdkid:indexPath.row];
-    else
-    {
-        imgName=[(NSMutableArray*)[_mutDic_userSelect valueForKey:@"characterImg"]objectAtIndex:indexPath.row];
-        labelTitle=[(NSMutableArray*)[_mutDic_userSelect valueForKey:@"characterName"] objectAtIndex:indexPath.row];
-    }
-    UIImage* img=[UIImage imageNamed:imgName];
+    UIImage* img=[UIImage imageNamed:[(NSMutableArray*)[_mutDic_userSelect valueForKey:@"characterImg"]objectAtIndex:indexPath.row]];
     
     VSelectCell* cell = (VSelectCell*)[collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
 
     cell.Img_character.image= img;
-    cell.Label_character.text=labelTitle;
-    cell.Label_userNum.text=[NSString stringWithFormat:@"%ld",indexPath.row+1];
+    cell.Label_character.text=[(NSMutableArray*)[_mutDic_userSelect valueForKey:@"characterName"] objectAtIndex:indexPath.row];
+    cell.Label_userNum.text=[NSString stringWithFormat:@"%d",(int)indexPath.row+1];
     return cell;
 }
 //定义每个UICollectionView 的大小

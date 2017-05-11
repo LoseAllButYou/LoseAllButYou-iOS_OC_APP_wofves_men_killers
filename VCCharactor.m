@@ -54,8 +54,7 @@ static NSString * const reuseIdentifier = @"Cell";
          gc.gameIdentity=[NSNumber numberWithInt:[_charactor intForColumn:@"id"]];
          [gc autoSet];
          [_characterArr addObject:gc];
-         if([gc.gameIdentity intValue]==5)
-             _isHaveBobber=[NSNumber numberWithBool:YES];
+         
      }
     _boolArr=[NSMutableArray arrayWithCapacity:12];
  
@@ -89,6 +88,8 @@ static NSString * const reuseIdentifier = @"Cell";
     [_boolArr setObject:@"didSelect" atIndexedSubscript:indexPath.row];
     [_selectedcharacterArr addObject:_characterArr[indexPath.row]];
     ++selectedNum;
+    if([[_characterArr [indexPath.row]gameIdentity] intValue]==5)
+        _isHaveBobber=[NSNumber numberWithBool:YES];
     _Label_selectedNum.text=[NSString stringWithFormat:@"以选择角色数:%d",selectedNum];
 }
 
@@ -99,6 +100,8 @@ static NSString * const reuseIdentifier = @"Cell";
     [_boolArr setObject:@"notSelect" atIndexedSubscript:indexPath.row];
      [_selectedcharacterArr removeObject:_characterArr[indexPath.row]];
     --selectedNum;
+    if([[_characterArr [indexPath.row]gameIdentity] intValue]==5)
+        _isHaveBobber=[NSNumber numberWithBool:NO];
     _Label_selectedNum.text=[NSString stringWithFormat:@"以选择角色数:%d",selectedNum];
 }
 
