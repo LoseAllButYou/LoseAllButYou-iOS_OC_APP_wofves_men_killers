@@ -30,6 +30,7 @@
     
     //-1 没有警徽 0 未设置 1正在设置 2已经设置
     _isSelectSheriff=[NSNumber numberWithInt:0];
+    isDeadSkill=NO;
     curActUserNum=0;
     beActedUserNum=0;
     _gameTime=[NSNumber numberWithInt:1];
@@ -45,11 +46,6 @@
    // for(int i=0;i<_characterArr.count;++i)
    //     [_actOrder addObject:[GameCharacter allocWithZone:(__bridge struct _NSZone *)([_characterArr objectAtIndex:i]) ]];
     _actOrder=[_characterArr mutableCopy];
-    werwolfNum=0;
-    civilianNum=0;
-    thirdPartNum=0;
-    deityNum=0;
-    neutralityPart=0;
     [self sortArray:_actOrder orderWithKey:@"gamePriority" ascending:(YES)];
      [self sortArray:_characterArr orderWithKey:@"userNum" ascending:(YES)];
     _Title_Info.title=[NSString stringWithFormat:@"第-%3d  -天夜晚",[_gameTime intValue]];
@@ -61,8 +57,7 @@
         [db insertData:[NSString stringWithFormat: @"insert into user_info(user_name,game_identity) values (player%d,%@)",i, [_characterArr objectAtIndex:i]]];
     }
     [self outputDateOnView ];
- 
-    [self.view setUserInteractionEnabled:NO];
+    _Coll_ShowUser.allowsMultipleSelection = NO;
 }
 
 
@@ -79,7 +74,8 @@
 {
     for(int i=0;i<_cellArr.count;++i)
     {
-        [[_cellArr objectAtIndex:i] setUserInteractionEnabled:yesOrNo];
+        if([[[_characterArr objectAtIndex:i] gameState] intValue]&SURVIVE)
+            [[_cellArr objectAtIndex:i] setUserInteractionEnabled:yesOrNo];
     }
 }
 -(void)nightAct:(int)index
@@ -89,7 +85,7 @@
         if([[[_actOrder objectAtIndex:index]gamePriority] intValue]==7)
         {
             NSString* str=[NSString stringWithFormat:@"\n[%@] 确认身份 ",[[_actOrder objectAtIndex:index] character]];
-            [self outputActOnView :str :2];
+            [self outputActOnView :[str substringFromIndex:1] :2];
             [MBProgressHUD showMessage:str];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUD];
@@ -107,47 +103,74 @@
             [self userAction:[[[_actOrder objectAtIndex:index]userNum]intValue]:YES:0];
             return;
         }
-    if([[[_actOrder objectAtIndex:index] userNum] intValue]!=100)
+    if([[[_actOrder objectAtIndex:index] userNum] intValue]==100||SURVIVE!=([[[_actOrder objectAtIndex:index] gameState] intValue]&SURVIVE))
+    {
+        [self showActHint:[[[_actOrder objectAtIndex:index] gameIdentity] intValue]];
+        if([[[_actOrder objectAtIndex:index] gameIdentity] intValue]==6)
+            [_actOrder removeObjectAtIndex:0];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            ++curActUserNum;
+            [self gameAction:curActUserNum];
+        });
+
+    }
+        else
         {
            
             if([[[_actOrder objectAtIndex:index] gameIdentity] intValue]==6)
                 _Coll_ShowUser.allowsMultipleSelection = YES;
             else
                 _Coll_ShowUser.allowsMultipleSelection = NO;
-            if([[[_actOrder objectAtIndex:index] gameIdentity] intValue]==1&&([[[_actOrder objectAtIndex:index] Skill] intValue]&antidote)>0)
+            if([[[_actOrder objectAtIndex:index] gameIdentity] intValue]==1)
             {
                 [self changeCardState:[[[_actOrder objectAtIndex:index]userNum] intValue]];
-                UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"选择救活目标" message: [NSString stringWithFormat:@"%d 号玩家死亡，是否救活他",curDeadNum+1] preferredStyle:UIAlertControllerStyleAlert];
-                [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    NSString* str=[NSString stringWithFormat:@"\n[女巫]救活了 %d 号玩家",curDeadNum+1];
-                    [[_characterArr objectAtIndex:curDeadNum] setGameState:[NSNumber numberWithInt:SURVIVE]];
-                    [[[_cellArr objectAtIndex:curDeadNum] Img_selected] setHidden:YES];
-                    [[[_cellArr objectAtIndex:curActUserNum] Img_selected]setImage:[UIImage imageNamed:@"seleced"]];
-                    [[_characterArr objectAtIndex:index] setSkill:[NSNumber numberWithInt:[[[_characterArr objectAtIndex:index] Skill] intValue]-antidote]];
-                    [self outputActOnView :str :2];
-                    [self changeCardState:[[[_actOrder objectAtIndex:index]userNum] intValue]];
-                    [self gameAction:++curActUserNum];
-                    return;
-                }]];
+                NSString* str;
+                if(([[[_actOrder objectAtIndex:index] Skill] intValue]&antidote))
+                    str=[NSString stringWithFormat:@"%d 号玩家死亡，是否救活他",curDeadNum+1];
+                else
+                    str=[NSString stringWithFormat:@"你没有解药了"];
+                UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"女巫开始行动" message:  str preferredStyle:UIAlertControllerStyleAlert];
+                if(([[[_actOrder objectAtIndex:index] Skill] intValue]&antidote))
+                    [alert addAction:[UIAlertAction actionWithTitle:@"救活" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        
+                        NSString* str=[NSString stringWithFormat:@"\n[女巫] 救活了 %d 号玩家",curDeadNum+1];
+                        [self outputActOnView :str :2];
+                        
+                        [[_characterArr objectAtIndex:[[[_actOrder objectAtIndex:index]userNum] intValue]] setSkill:[NSNumber numberWithInt:[[[_characterArr objectAtIndex:[[[_actOrder objectAtIndex:index]userNum] intValue]] Skill] intValue]^antidote]];
+                        
+                        [self changeCardState:[[[_actOrder objectAtIndex:index]userNum] intValue]];
+                        if(([[[_characterArr objectAtIndex:curDeadNum] gameState]intValue ]&beDefend)!=beDefend){
+                            [[_characterArr objectAtIndex:curDeadNum] setGameState:[NSNumber numberWithInt:[[[_characterArr objectAtIndex:curDeadNum] gameState] intValue]|SURVIVE]];
+                            [[[_cellArr objectAtIndex:curDeadNum] Img_selected] setHidden:YES];
+                            [[[_cellArr objectAtIndex:curActUserNum] Img_selected]setImage:[UIImage imageNamed:@"seleced"]];
+                        }
+                        else{
+                            [[_characterArr objectAtIndex:curDeadNum] setGameState:[NSNumber numberWithInt:DEAD_BY_WERWOLF]];
+                            [self deadOut:curDeadNum];
+                        }
+                        [self gameAction:++curActUserNum];
+                        return;
+                    }]];
+                if([[[_actOrder objectAtIndex:index] Skill] intValue]&bane)
+                    [alert addAction:[UIAlertAction actionWithTitle:@"使用毒药" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        [self deadOut:curDeadNum];
+                        [self setUserEnterEnable:YES];
+                    }]];
                 [alert addAction:[UIAlertAction actionWithTitle:@"空药" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     NSString* str=[NSString stringWithFormat:@"\n[女巫] 没有用药 "];
                     [self outputActOnView :str :2];
                     [self changeCardState:[[[_actOrder objectAtIndex:index]userNum] intValue]];
                     [self gameAction:++curActUserNum];
-                     return;
+                    return;
                 }]];
                 
-                [alert addAction:[UIAlertAction actionWithTitle:@"使用毒药" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                   
-                    [self deadOut:curDeadNum];
-                    [self setUserEnterEnable:YES];
-                }]];
+
                 [self presentViewController:alert animated:YES completion:^{
                     
                 }];
                 return;
             }
-            if([[[_actOrder objectAtIndex:index] part] intValue]==-1)
+            if([[[_actOrder objectAtIndex:index] part] intValue]&wolf)
             {
                 for(int i=0;i<werwolfNum;++i)
                     [self changeCardState:[[[_actOrder objectAtIndex:index+i]userNum] intValue]];
@@ -162,20 +185,48 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
             });
-            if([[[_actOrder objectAtIndex:index]gameState] intValue]<SURVIVE)
+            if(![[[_actOrder objectAtIndex:index]gameState] intValue]&SURVIVE)
             {
                 [self gameAction:++curActUserNum];
             }
             [self setUserEnterEnable: YES];
         }
-        else
+}
+
+-(void)dayAct:(int)type
+{
+    NSString *str1 ,*str2;
+    if(type==1)
+    {
+        str1=@"玩家发言";
+        str2=@"是否结束发言";
+    }
+    if(type==2)
+    {
+        str1=@"玩家发表遗言";
+        str2=@"是否结束发言";
+    }
+    UIAlertController* alert=[UIAlertController alertControllerWithTitle:str1 message:str2 preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        if(type==1)
         {
-          [self showActHint:[[[_actOrder objectAtIndex:index] gameIdentity] intValue]];
-           dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                ++curActUserNum;
-                [self gameAction:curActUserNum];
-           });
+            [MBProgressHUD showMessage:@"请玩家投票"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUD];
+            });
+            [self setUserEnterEnable:YES];
         }
+        else if(type==2)
+        {
+            [self changeDayOrNightBack];
+            [self gameAction:curActUserNum];
+        }
+    }]];
+    
+    [self presentViewController:alert animated:YES completion:^{
+        
+    }];
+    return;
 }
 
 -(void)gameAction:(int)index
@@ -185,7 +236,7 @@
         [self changeDayOrNightBack];
         curActUserNum=0;
     }
-    if([self didEndGame]){
+    if(![self didEndGame]){
         if(![_dayOrNight boolValue])
         {
             [self nightAct:index];
@@ -203,16 +254,72 @@
                 
             }
             else{
-                
+                [self dayAct:1];
             }
         }
     }
     else
     {
         //游戏结束提示
+        for(int i=0;i<_cellArr.count;++i)
+            [[[_cellArr objectAtIndex:i]Img_headImg]setHidden:YES];
+        [self reloadInputViews];
+        [self showGameEnd];
     }
 }
+-(void)showGameEnd
+{
+    NSString* str;
+    if(winPart==-1)
+        str=@"狼人胜利！";
+    else if(winPart==1)
+        str=@"好人获胜！";
+    else if (winPart==3)
+        str=@"第三方获胜！";
+    UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"游戏结束" message:str preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self pressStop:nil];
+    }]];
+    [self presentViewController:alert animated:YES completion:^{
+    }];
+    [self outputActOnView:[NSString stringWithFormat:@"\n%@",str] :4];
+    NSUserDefaults* ud=[NSUserDefaults standardUserDefaults];
+    NSDate *date = [NSDate date];
+    NSTimeZone *zone = [NSTimeZone systemTimeZone];
+    NSInteger interval = [zone secondsFromGMTForDate: date];
+    NSDate *localeDate = [date  dateByAddingTimeInterval: interval];
+    if([ud objectForKey:@"historyDate"]==nil||[ud objectForKey:@"historyArr"]==nil||[ud objectForKey:@"historyCharactor"]==nil)
+    {
+        NSMutableArray* arr=[NSMutableArray arrayWithCapacity:1];
+        NSMutableArray* arr1=[NSMutableArray arrayWithCapacity:1];
+        NSString* str=@"";
 
+        for(int i=0;i<_characterArr.count;++i)
+        {
+            if([[[_characterArr objectAtIndex:i] userNum] intValue]==100)
+                break;
+            str=[str stringByAppendingFormat:@"[%2d]号 [%@]  ",i+1,[[_characterArr objectAtIndex:i] character]];
+            if(i%2==1)
+                str=[str stringByAppendingString:@"\n"];
+        }
+        str=[str stringByAppendingString:[_attributedStr string]];
+        [arr addObject:str];
+        [arr1 addObject:localeDate];
+        
+        [ud setObject:arr forKey:@"historyArr"];
+        [ud setObject:arr1 forKey:@"historyDate"];
+        [ud synchronize ];
+    }
+    else{
+        NSMutableArray* arr=[[ud mutableArrayValueForKey:@"historyArr"] mutableCopy];
+        NSMutableArray* arr1=[[ud mutableArrayValueForKey:@"historyDate"] mutableCopy];
+        [arr1 addObject:[NSDate date]];
+        [arr addObject:[_attributedStr string]];
+        [ud setObject:arr forKey:@"historyArr"];
+        [ud setObject:arr1 forKey:@"historyDate"];
+        [ud synchronize ];
+    }
+}
 //输出技能提示
 -(void)showActHint:(int)gameId
 {
@@ -300,7 +407,7 @@
 {
     if([[[_characterArr objectAtIndex:index] userNum] intValue]==100)
         return;
-    if([[[_characterArr objectAtIndex:index] gameState] intValue]>=SURVIVE||![_dayOrNight boolValue])
+    if([[[_characterArr objectAtIndex:index] gameState] intValue]&SURVIVE||![_dayOrNight boolValue])
     {
         [[_cellArr objectAtIndex:index] Img_headImg].hidden=![[_cellArr objectAtIndex:index] Img_headImg].hidden;
     }
@@ -318,10 +425,6 @@
     [self makeActList:str Type:type Num:1];
     [_RCell_showAction.Text_showAct setAttributedText:_attributedStr];
     [_RCell_showAction.Text_showAct scrollRangeToVisible:NSMakeRange(_attributedStr.length, 1)];
-  
-//    [self.RCell_showAction reloadInputViews];
-//    
-//    [self reloadInputViews ];
  
 }
 
@@ -344,6 +447,9 @@
 
 -(void)userAction :(int)index :(BOOL)isSelected :(int)selectedNum
 {
+    if([_dayOrNight boolValue])
+        return;
+    isEndTap=NO;
     switch ([[[_characterArr objectAtIndex:index]gameIdentity] intValue]) {
         case 5:
         {
@@ -354,7 +460,7 @@
         case 22:
         case 0:
         {
-            if([[[_characterArr objectAtIndex:selectedNum] gameState] intValue]<SURVIVE)
+            if(!([[[_characterArr objectAtIndex:selectedNum] gameState] intValue]&SURVIVE))
             {
                 [MBProgressHUD showError:@"你不能杀死出局目标!!!"];
                 [[[_cellArr objectAtIndex:selectedNum] Img_selected] setHidden:YES];
@@ -365,22 +471,28 @@
                 [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     curDeadNum=selectedNum;
                     NSString* str=[NSString stringWithFormat:@"\n[狼人] 杀死了 %d 号",selectedNum+1];
-                    
+                    isEndTap=YES;
                     [self outputActOnView :str :2];
-                    [[_characterArr objectAtIndex:curDeadNum] setGameState:[NSNumber numberWithInt:DEAD_BY_WERWOLF]];
-                    [self deadOut:curDeadNum];
+                    NSLog(@"bedefend=%d state=%d",beDefend,[[[_characterArr objectAtIndex:curDeadNum] gameState]intValue ]);
+                    if(!([[[_characterArr objectAtIndex:curDeadNum] gameState]intValue ]&beDefend))
+                    {
+                        [[_characterArr objectAtIndex:curDeadNum] setGameState:[NSNumber numberWithInt:DEAD_BY_WERWOLF]];
+                        [self deadOut:curDeadNum];
+                    }
                     for(int i=0;i<werwolfNum;++i)
                         [self changeCardState:[[[_actOrder objectAtIndex:curActUserNum+i]userNum] intValue]];
                     curActUserNum+= werwolfNum;
                     [self gameAction:curActUserNum];
                 }]];
                 [alert addAction:[UIAlertAction actionWithTitle:@"空刀" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    isEndTap=YES;
                     NSString* str=[NSString stringWithFormat:@"\n[狼人] 空刀了 "];
                     [self outputActOnView :str :2];
                     for(int i=0;i<werwolfNum;++i)
                         [self changeCardState:[[[_actOrder objectAtIndex:curActUserNum+i]userNum] intValue]];
                     curActUserNum+= werwolfNum;
                     [self gameAction:curActUserNum];
+                    
                 }]];
                 
                 [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -394,7 +506,7 @@
             break;
         case 3:
         {
-            if([[[_characterArr objectAtIndex:selectedNum] gameState] intValue]<SURVIVE)
+            if(!([[[_characterArr objectAtIndex:selectedNum] gameState] intValue]&SURVIVE))
             {
                 [MBProgressHUD showError:@"你不能检验出局目标!!!"];
                 [[[_cellArr objectAtIndex:selectedNum] Img_selected] setHidden:YES];
@@ -404,7 +516,8 @@
                 UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"选择检验对象" message:@"确认选择吗？" preferredStyle:UIAlertControllerStyleAlert];
                 [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     NSString* str;
-                    if([[[_characterArr objectAtIndex:selectedNum] part] intValue]<0)
+                    isEndTap=YES;
+                    if([[[_characterArr objectAtIndex:selectedNum] part] intValue]&wolf)
                         str=[NSString stringWithFormat:@"\n[预言家] 检验了 %d 号是 [ 狼人 ]",selectedNum+1];
                     else
                         str=[NSString stringWithFormat:@"\n[预言家] 检验了 %d 号是 [ 好人 ]",selectedNum+1];
@@ -416,10 +529,9 @@
                         [self changeCardState:index];
                         [self gameAction:++curActUserNum];
                     });
-                   
-                    return;
                 }]];
                 [alert addAction:[UIAlertAction actionWithTitle:@"空验" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    isEndTap=YES;
                     NSString* str=[NSString stringWithFormat:@"\n[预言家] 空验了 "];
                     [self outputActOnView :str :2];
                     [self changeCardState:index];
@@ -439,28 +551,30 @@
             break;
         case 4:
         {
-            if([[[_characterArr objectAtIndex:selectedNum] gameState] intValue]<SURVIVE)
-            {
-                [MBProgressHUD showError:@"你不能守护出局目标!!!"];
-                [[[_cellArr objectAtIndex:selectedNum] Img_selected] setHidden:YES];
-            }
             int count=(int)[[_characterArr objectAtIndex:index] skillOb].count;
             if(count!=0&&[[[[_characterArr objectAtIndex:index] skillOb] objectAtIndex:count-1] intValue]==selectedNum)
             {
                 [MBProgressHUD showError:@"你不能连续2天守护同一目标!!!"];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [MBProgressHUD hideHUD];
+                });
                 [[[_cellArr objectAtIndex:selectedNum] Img_selected] setHidden:YES];
+                return;
             }
             if(isSelected)
             {
                 UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"选择守护对象" message:@"确认选择吗？" preferredStyle:UIAlertControllerStyleAlert];
                 [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    isEndTap=YES;
                     NSString* str=[NSString stringWithFormat:@"\n[守卫] 守护了 %d 号 ",selectedNum+1];
                     [self outputActOnView :str :2];
                     [[[_characterArr objectAtIndex:index] skillOb] addObject:[NSNumber numberWithInt:selectedNum]];
+                    [[_characterArr objectAtIndex:selectedNum] setGameState:[NSNumber numberWithInt:[[[_characterArr objectAtIndex:index] gameState] intValue]|beDefend]];
                     [self changeCardState:index];
                    [self gameAction:++curActUserNum];
                 }]];
                 [alert addAction:[UIAlertAction actionWithTitle:@"空守" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    isEndTap=YES;
                     NSString* str=[NSString stringWithFormat:@"\n[守卫] 空守了 "];
                     [self outputActOnView :str :2];
                     [self changeCardState:index];
@@ -479,7 +593,7 @@
             break;
         case 1:
         {
-            if([[[_characterArr objectAtIndex:selectedNum] gameState] intValue]<SURVIVE)
+            if(!([[[_characterArr objectAtIndex:selectedNum] gameState] intValue]&SURVIVE))
             {
                 [MBProgressHUD showError:@"你不能毒死出局目标!!!"];
                 [[[_cellArr objectAtIndex:selectedNum] Img_selected] setHidden:YES];
@@ -488,18 +602,20 @@
             {
                 UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"选择毒死对象" message:@"确认选择吗？" preferredStyle:UIAlertControllerStyleAlert];
                 [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    isEndTap=YES;
                     NSString* str=[NSString stringWithFormat:@"\n[女巫] 毒死了 %d 号",selectedNum+1];
                     [[_characterArr objectAtIndex:selectedNum] setGameState:[NSNumber numberWithInt:DEAD_BY_WITCH]];
                     [self deadOut:selectedNum];
                     [[_characterArr objectAtIndex:index] setSkill:[NSNumber numberWithInt:[[[_characterArr objectAtIndex:index] Skill] intValue]-bane]];
                     [self outputActOnView :str :2];
-                        [self changeCardState:[[[_actOrder objectAtIndex:index]userNum] intValue]];
+                    [self changeCardState:index];
                     [self gameAction:++curActUserNum];
                 }]];
                 [alert addAction:[UIAlertAction actionWithTitle:@"空药" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    isEndTap=YES;
                     NSString* str=[NSString stringWithFormat:@"\n[女巫] 没有用药 "];
                     [self outputActOnView :str :2];
-                    [self changeCardState:[[[_actOrder objectAtIndex:index]userNum] intValue]];
+                    [self changeCardState:index];
                     [self gameAction:++curActUserNum];
                 }]];
                 
@@ -535,38 +651,59 @@
                 int idx1=[[[[_characterArr objectAtIndex:index] skillOb] objectAtIndex:0] intValue] ,idx2=[[[[_characterArr objectAtIndex:index] skillOb] objectAtIndex:1] intValue] ;
                 UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"选择情侣" message:@"确认选择吗？" preferredStyle:UIAlertControllerStyleAlert];
                 [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [[_characterArr objectAtIndex:idx1] setGameState:[NSNumber numberWithInt: lovers ]];
-                    [[_characterArr objectAtIndex:idx2 ]setGameState:[NSNumber numberWithInt: lovers ]];
+                    isEndTap=YES;
+                    [[_characterArr objectAtIndex:idx1] setGameState:[NSNumber numberWithInt: [[[_characterArr objectAtIndex:idx1] gameState] intValue]|lovers ]];
+                    [[_characterArr objectAtIndex:idx2 ]setGameState:[NSNumber numberWithInt: [[[_characterArr objectAtIndex:idx2] gameState] intValue]|lovers ]];
                     NSString* str=[NSString stringWithFormat:@"\n[丘比特] 选择了 %d 号 ,%d 号 为情侣",idx1+1,idx2+1];
                     [self outputActOnView :str :2];
                     [[_characterArr objectAtIndex:index] setGamePriority:[NSNumber numberWithInt:7]];
-
+                    [_actOrder removeObjectAtIndex:0];
                     [self changeCardState:idx1];
                     [self changeCardState:idx2];
-                    [self reloadInputViews];
                     str=[NSString stringWithFormat:@"\n[情侣] 确认身份" ];
-                    
+                    //人狼 分阵营
+                    if(([[[_characterArr objectAtIndex:idx1] part] intValue]==-1&&[[[_characterArr objectAtIndex:idx2] part] intValue]!=-1))
+                    {
+                        --wolfPartNum;
+                        if([[[_characterArr objectAtIndex:idx2] part] intValue]==4)
+                            --deityNum;
+                        else if([[[_characterArr objectAtIndex:idx2] part] intValue]==2)
+                            --civilianNum;
+                        --deityNum;
+                        thirdPartNum+=3;
+                        [[_characterArr objectAtIndex:index] setPart:[NSNumber numberWithInt:[[[_characterArr objectAtIndex:index] part] intValue]|8]];
+                        [[_characterArr objectAtIndex:idx1] setPart:[NSNumber numberWithInt:[[[_characterArr objectAtIndex:idx1] part] intValue]|8]];
+                        [[_characterArr objectAtIndex:idx2] setPart:[NSNumber numberWithInt:[[[_characterArr objectAtIndex:idx1] part] intValue]|8]];
+                        
+                    }
+                    if(([[[_characterArr objectAtIndex:idx2] part] intValue]==-1&&[[[_characterArr objectAtIndex:idx1] part] intValue]!=-1))
+                    {
+                        --wolfPartNum;
+                        if([[[_characterArr objectAtIndex:idx1] part] intValue]==2)
+                            --deityNum;
+                        else if([[[_characterArr objectAtIndex:idx1] part] intValue]==1)
+                            --civilianNum;
+                        --deityNum;
+                        thirdPartNum+=3;
+                        [[_characterArr objectAtIndex:index] setPart:[NSNumber numberWithInt:3]];
+                        [[_characterArr objectAtIndex:idx1] setPart:[NSNumber numberWithInt:3]];
+                        [[_characterArr objectAtIndex:idx2] setPart:[NSNumber numberWithInt:3]];
+                    }
                     [self outputActOnView :str :2];
                     [self showActHint:20];
                    
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2000* NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [self changeCardState:idx1];
                         [self changeCardState:idx2];
-                        [self reloadInputViews];
-                        [[[_cellArr objectAtIndex:idx1] Img_selected] setHidden:YES];
-                        [[[_cellArr objectAtIndex:idx2] Img_selected] setHidden:YES];
                         [self changeCardState:index];
-                        [self gameAction:++curActUserNum];
+                        [self gameAction:curActUserNum];
                     });
                     
                 }]];
                 [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    
                 }]];
                 [self presentViewController:alert animated:YES completion:^{
-                    
                 }];
-
             }
         }
             break;
@@ -586,13 +723,16 @@
             break;
     }
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if([[[_characterArr objectAtIndex:selectedNum] gameState] intValue]>=SURVIVE){
+        if([[[_characterArr objectAtIndex:selectedNum] gameState] intValue]&SURVIVE)
+        {
             [[[_cellArr objectAtIndex:selectedNum] Img_selected] setHidden:YES];
         }
 
     });
-    if([[[_actOrder objectAtIndex:curActUserNum] gameIdentity] intValue]!=6)
+    if(isEndTap){
+        isEndTap=NO;
         [self setUserEnterEnable: NO];
+    }
     return ;
 }
 -(void)makeActList:(NSString*)str Type:(int)type Num:(int)num
@@ -682,6 +822,7 @@
             [[[_cellArr objectAtIndex:index] Img_selected] setImage:[UIImage imageNamed:@"userState_wolf"]];
              [[[_cellArr objectAtIndex:index] Img_selected] setHidden:NO];
             [[_cellArr objectAtIndex:index] setUserInteractionEnabled:NO];
+          
         }
             break;
         case DEAD_BY_WITCH:
@@ -699,11 +840,19 @@
             [[_cellArr objectAtIndex:index] setUserInteractionEnabled:NO];
         }
             break;
-        case OUT_BY_CIVILIAN:
+        case OUT_BY_CIVILIAN://投票出局
         {
+            if([[[_characterArr objectAtIndex:index] gameIdentity] intValue]==15)
+            {
+                [[[_cellArr objectAtIndex:index] Img_charactor] setHidden:NO];
+                NSString* str=[NSString stringWithFormat:@"\n[白痴] 发动技能 继续留在场上，但无法投票"];
+                [self outputActOnView :str :2];
+                return;
+            }
             [[[_cellArr objectAtIndex:index] Img_selected] setImage:[UIImage imageNamed:@"userState_exiled"]];
             [[[_cellArr objectAtIndex:index] Img_selected] setHidden:NO];
             [[_cellArr objectAtIndex:index] setUserInteractionEnabled:NO];
+            
         }
             break;
         case DEAD_NOT_DEFINE:
@@ -711,6 +860,7 @@
             [[[_cellArr objectAtIndex:index] Img_selected] setImage:[UIImage imageNamed:@"userState_boom"]];
             [[[_cellArr objectAtIndex:index] Img_selected] setHidden:NO];
             [[_cellArr objectAtIndex:index] setUserInteractionEnabled:NO];
+            
         }
             break;
         case DEAD_BY_HUNTER:
@@ -718,6 +868,7 @@
             [[[_cellArr objectAtIndex:index] Img_selected] setImage:[UIImage imageNamed:@"userState_shoted"]];
             [[[_cellArr objectAtIndex:index] Img_selected] setHidden:NO];
             [[_cellArr objectAtIndex:index] setUserInteractionEnabled:NO];
+            
         }
             break;
         case DEAD_BY_BOOM:
@@ -732,12 +883,43 @@
             [[[_cellArr objectAtIndex:index] Img_selected] setImage:[UIImage imageNamed:@"userState_DeadForLove"]];
             [[[_cellArr objectAtIndex:index] Img_selected] setHidden:NO];
             [[_cellArr objectAtIndex:index] setUserInteractionEnabled:NO];
+            
         }
             break;
         default:
             break;
     }
-    //阵营人数 变更
+    //人数变化
+    if([[[_characterArr objectAtIndex:index] part] intValue]&wolf)
+        --wolfPartNum;
+    else if([[[_characterArr objectAtIndex:index] part] intValue]&neutrality)
+        --neutralityPart;
+    else if([[[_characterArr objectAtIndex:index] part] intValue]&civilian)
+        --civilianNum;
+    else if([[[_characterArr objectAtIndex:index] part] intValue]&deity)
+        --deityNum;
+    else{
+        --thirdPartNum;
+    }
+
+    if(([[[_characterArr objectAtIndex:index] gameIdentity] intValue]==22||[[[_characterArr objectAtIndex:index] gameIdentity] intValue]==14)&&([[[_characterArr objectAtIndex:index] gameState] intValue]&DEAD_BY_WITCH)==0)
+    {
+        
+        if([[[_characterArr objectAtIndex:index] gameIdentity] intValue]==14)
+            isDeadSkill=2;//猎人发动技能
+    }
+    //判断是否殉情
+    if([[[_characterArr objectAtIndex:index]gameState] intValue]&lovers)
+    {
+        for(int i=0;i<_characterArr.count;++i)
+        {
+            if([[[_characterArr objectAtIndex:index]gameState] intValue]&lovers&&[[[_characterArr objectAtIndex:index]gameState] intValue]&SURVIVE)
+            {
+                [[_characterArr objectAtIndex:i] setGameState:[NSNumber numberWithInt:DEAD_FOR_LOVE]];
+                [self deadOut:i];
+            }
+        }
+    }
 }
 //判断游戏是否结束
 -(bool)didEndGame
@@ -764,7 +946,7 @@
             winPart=-1;
             return YES;
         }
-        else if(wolfPartNum==0)
+        else if(wolfPartNum<=0)
         {
             winPart=1;
             return YES;
@@ -785,16 +967,26 @@
 }
 -(void)dividePart
 {
-    for(int i=0;i<_actOrder.count;++i)
+    wolfPartNum=0;
+    werwolfNum=0;
+    neutralityPart=0;
+    civilianNum=0;
+    deityNum=0;
+    int count;
+    if([_isHaveBobber boolValue])
+        count=(int)_characterArr.count-1;
+    else
+        count=(int)_characterArr.count;
+    for(int i=0;i<count;++i)
     {
-        if([[[_actOrder objectAtIndex:i] part] intValue]==-1)
+        if([[[_characterArr objectAtIndex:i] part] intValue]==wolf)
         {
             wolfPartNum++;
             werwolfNum++;
         }
-        else if([[[_actOrder objectAtIndex:i] part] intValue]==0)
+        else if([[[_characterArr objectAtIndex:i] part] intValue]==neutrality)
             neutralityPart++;
-        else if([[[_actOrder objectAtIndex:i] part] intValue]==1)
+        else if([[[_characterArr objectAtIndex:i] part] intValue]==civilian)
         {
             civilianNum++;
         }
@@ -813,7 +1005,7 @@
     //白狼王 发动技能
     if([[[_characterArr objectAtIndex:index] gameIdentity] intValue]==22)
     {
-        UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"狼人自爆" message:@"确定自爆吗？" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"白狼王自爆" message:@"确定发动技能吗？" preferredStyle:UIAlertControllerStyleAlert];
         [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             NSString* str=[NSString stringWithFormat:@"\n%d 号玩家白狼王自爆并发动技能",index+1];
             [self outputActOnView :str :4];
@@ -821,82 +1013,165 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
             });
-            [self.view setUserInteractionEnabled:YES];
+            [[_characterArr objectAtIndex:index] setGameState:[NSNumber numberWithInt: DEAD_BY_BOOM]];
+            
+            [self deadOut:index];
+            //[self gameAction:curActUserNum];
+            isDeadSkill=1;//白狼发动技能
+            [self setUserEnterEnable:YES];
         }]];
         
         [alert addAction:[UIAlertAction actionWithTitle:@"放弃" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self deadOut:index];
+            [self changeDayOrNightBack];
+            [self gameAction:curActUserNum];
         }]];
         [self presentViewController:alert animated:YES completion:^{
             
         }];
 
     }
-    [[_characterArr objectAtIndex:index] setGameState:[NSNumber numberWithInt: DEAD_BY_BOOM]];
+    else{
+        [[_characterArr objectAtIndex:index] setGameState:[NSNumber numberWithInt: DEAD_BY_BOOM]];
+        [self deadOut:index];
 
-    [self deadOut:index];
+        [self changeDayOrNightBack];
+        [self gameAction:curActUserNum];
+    }
+
 }
 
 #pragma mark ---UICollectionView DataSource
 //选中cell
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    if([[[_characterArr objectAtIndex:(int)indexPath.row] gameState] intValue]>=SURVIVE){
+    if(isDeadSkill>0)
+    {
+        UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"发动技能" message:@"确认发动技能？" preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[[_cellArr objectAtIndex:indexPath.row] Img_selected]setHidden:YES];
+            NSString* str=[NSString stringWithFormat:@"\n%d 号玩家被杀死",(int)indexPath.row+1];
+            [self outputActOnView :str :4];
+            [self deadOut:(int)indexPath.row];
+            if(sheriffNum==(int)indexPath.row)
+            {
+                _isSelectSheriff=[NSNumber numberWithInt:1];
+                [MBProgressHUD showMessage:@"请移交警徽"];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [MBProgressHUD hideHUD];
+                });
+                [[[_cellArr objectAtIndex:sheriffNum]Img_sheriff] setHidden:YES];
+                return;
+            }
+            [self changeDayOrNightBack];
+            if([_gameTime intValue]==1)
+            {
+                [self dayAct:2];
+            }
+            [self gameAction:curActUserNum];
+            [self setUserEnterEnable:NO];
+            
+        }]];
+            [alert addAction:[UIAlertAction actionWithTitle:@"放弃" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [[[_cellArr objectAtIndex:indexPath.row] Img_selected]setHidden:YES];
+                NSString* str=[NSString stringWithFormat:@"\n%d 号玩家放弃发动技能",(int)indexPath.row+1];
+                [self outputActOnView :str :4];
+                isDeadSkill=0;
+            }]];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [[[_cellArr objectAtIndex:indexPath.row] Img_selected]setHidden:YES];
+        }]];
+        [self presentViewController:alert animated:YES completion:^{
+            
+        }];
+        return;
+
+    }
+    if([[[_characterArr objectAtIndex:(int)indexPath.row] gameState] intValue]&SURVIVE){
+        [[[_cellArr objectAtIndex:indexPath.row] Img_selected]setHidden:NO];
         if([_isSelectSheriff intValue]==1)
         {
             UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"选择警长" message:@"确认选择警长？" preferredStyle:UIAlertControllerStyleAlert];
             [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [[[_cellArr objectAtIndex:indexPath.row] Img_selected]setHidden:YES];
                 NSString* str=[NSString stringWithFormat:@"\n%d 号玩家当选警长",(int)indexPath.row+1];
                 [self outputActOnView :str :4];
                 _isSelectSheriff=[NSNumber numberWithInt:2];
+                sheriffNum=(int)indexPath.row;
+                [[[_cellArr objectAtIndex:sheriffNum]Img_sheriff] setHidden:NO];
                 [self setUserEnterEnable:NO];
+                [self gameAction:1];
             }]];
-            if([[[_characterArr objectAtIndex:indexPath.row] part] intValue]&-1)
+            if(([[[_characterArr objectAtIndex:indexPath.row] part] intValue]&wolf))
             {
                 [alert addAction:[UIAlertAction actionWithTitle:@"自爆" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                     [[[_cellArr objectAtIndex:indexPath.row] Img_selected]setHidden:YES];
                     NSString* str=[NSString stringWithFormat:@"\n%d 号玩家自爆吞掉警徽",(int)indexPath.row+1];
                     [self outputActOnView :str :4];
                     _isSelectSheriff=[NSNumber numberWithInt:-1];
                     [self wolfBoom:(int)indexPath.row];
+                    [[_cellArr objectAtIndex:(int)indexPath.row]setUserInteractionEnabled:NO];
                 }]];
-                
             }
 
             [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
+                 [[[_cellArr objectAtIndex:indexPath.row] Img_selected]setHidden:YES];
             }]];
             [self presentViewController:alert animated:YES completion:^{
                 
             }];
             return;
         }
-        if([_dayOrNight boolValue]&&[[[_characterArr objectAtIndex:indexPath.row] part] intValue]&-1)
+        if([_dayOrNight boolValue])
         {
-            UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"狼人自爆" message:@"确定自爆吗？" preferredStyle:UIAlertControllerStyleAlert];
-            [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            UIAlertController* alert=[UIAlertController alertControllerWithTitle:@"选择玩家" message:@"选中玩家干什么？" preferredStyle:UIAlertControllerStyleAlert];
+                [alert addAction:[UIAlertAction actionWithTitle:@"公投出局" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [[[_cellArr objectAtIndex:indexPath.row] Img_selected]setHidden:YES];
+                    NSString* str=[NSString stringWithFormat:@"\n%d 号玩家被公投出局",(int)indexPath.row+1];
+                    [self outputActOnView :str :4];
+                    [[_characterArr objectAtIndex:(int)indexPath.row] setGameState:[NSNumber numberWithInt:OUT_BY_CIVILIAN]] ;
+                    [self deadOut:(int)indexPath.row];
+                    [[_cellArr objectAtIndex:(int)indexPath.row]setUserInteractionEnabled:NO];
+                    
+                    [self dayAct:2];
+                    [self setUserEnterEnable:NO];
+                }]];
+            
+        if([[[_characterArr objectAtIndex:indexPath.row] part] intValue]&wolf)
+        {
+            [alert addAction:[UIAlertAction actionWithTitle:@"自爆" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                 [[[_cellArr objectAtIndex:indexPath.row] Img_selected]setHidden:YES];
                 NSString* str=[NSString stringWithFormat:@"\n%d 号玩家自爆",(int)indexPath.row+1];
                 [self outputActOnView :str :4];
+                [[_cellArr objectAtIndex:(int)indexPath.row]setUserInteractionEnabled:NO];
+                [self setUserEnterEnable:NO];
                 [self wolfBoom:(int)indexPath.row];
-                [self.view setUserInteractionEnabled:NO];
             }]];
-            
-            [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }
+        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                 [[[_cellArr objectAtIndex:indexPath.row] Img_selected]setHidden:YES];
             }]];
             [self presentViewController:alert animated:YES completion:^{
                 
             }];
             return;
         }
-        [[[_cellArr objectAtIndex:indexPath.row] Img_selected]setHidden:NO];
-        [self userAction:[[[_actOrder objectAtIndex:curActUserNum] userNum] intValue]:YES:(int)indexPath.row];
+        else{
+            [[[_cellArr objectAtIndex:indexPath.row] Img_selected]setHidden:NO];
+            
+            [self userAction:[[[_actOrder objectAtIndex:curActUserNum] userNum] intValue]:YES:(int)indexPath.row];
+        }
     }
 }
 
 ////取消选中cell
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    if([[[_characterArr objectAtIndex:(int)indexPath.row] gameState] intValue]>=SURVIVE){
-        [[[_cellArr objectAtIndex:indexPath.row] Img_selected]setHidden:YES];
-        [self userAction:[[[_actOrder objectAtIndex:curActUserNum] userNum] intValue]:NO:(int)indexPath.row];
-    }
+//    if([[[_characterArr objectAtIndex:(int)indexPath.row] gameState] intValue]&SURVIVE&&[_Coll_ShowUser isMultipleTouchEnabled]){
+//        [[[_cellArr objectAtIndex:indexPath.row] Img_selected]setHidden:YES];
+//        [self userAction:[[[_actOrder objectAtIndex:curActUserNum] userNum] intValue]:NO:(int)indexPath.row];
+//    }
 }
 
 //定义展示的Section的个数

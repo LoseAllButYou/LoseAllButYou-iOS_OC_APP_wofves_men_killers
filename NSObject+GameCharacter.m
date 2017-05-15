@@ -20,7 +20,7 @@
     _gameState=[NSNumber numberWithInt:SURVIVE];
     _Skill=[NSNumber numberWithInt:vote];
     _skillOb=[NSMutableArray arrayWithCapacity:1];
-    _part=[NSNumber numberWithInt:2];//-1 狼 0 中立 1 平民 2神 3 第三方
+    _part=[NSNumber numberWithInt:deity];//-1 狼 1中立 2平民 4神 8第三方
 }
 
 -(void)autoSet
@@ -28,14 +28,14 @@
     switch ([_gameIdentity intValue]) {
         case 0:
             _Skill=[NSNumber numberWithInt:killHumen|destruction];
-             _part=[NSNumber numberWithInt:-1];
+             _part=[NSNumber numberWithInt:wolf];
             break;
         case 1:
             _Skill=[NSNumber numberWithInt:bane|antidote|vote];
             break;
         case  2:
             _Skill=[NSNumber numberWithInt:vote];
-            _part=[NSNumber numberWithInt:0];
+            _part=[NSNumber numberWithInt:neutrality];
             break;
         case  3:
             _Skill=[NSNumber numberWithInt:verify|vote];
@@ -56,14 +56,15 @@
             _Skill=[NSNumber numberWithInt: roar|vote];
             break;
         case  9:_Skill=[NSNumber numberWithInt:vote];
-            _part=[NSNumber numberWithInt:-1];
+            _part=[NSNumber numberWithInt:wolf];
             break;
         case  10:
             _Skill=[NSNumber numberWithInt:vote];
+            _part=[NSNumber numberWithInt:civilian];
             break;
         case  11:
             _Skill=[NSNumber numberWithInt:vote];
-            _part=[NSNumber numberWithInt:1];
+            _part=[NSNumber numberWithInt:civilian];
             break;
         case  12:
             _Skill=[NSNumber numberWithInt:vote];
@@ -89,7 +90,7 @@
         case  19:
             _Skill=[NSNumber numberWithInt:choiceNextVoter|vote];
             
-            _part=[NSNumber numberWithInt:0];
+            _part=[NSNumber numberWithInt:neutrality];
             break;
         case  20:
             _Skill=[NSNumber numberWithInt:doubleHP|vote];
@@ -99,11 +100,11 @@
             break;
         case   22:
             _Skill=[NSNumber numberWithInt:destruction|killHumen];
-             _part=[NSNumber numberWithInt:-1];
+             _part=[NSNumber numberWithInt:wolf];
             break;
         case   23:
             _Skill=[NSNumber numberWithInt:choiceIdol];
-            _part=[NSNumber numberWithInt:1];
+            _part=[NSNumber numberWithInt:civilian];
             break;
         default:
             break;

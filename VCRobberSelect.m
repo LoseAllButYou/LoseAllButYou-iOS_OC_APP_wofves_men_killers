@@ -41,15 +41,15 @@
     if(sender==nil)
     {
          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [_begain. characterArr setObject:_begain. character2 atIndexedSubscript:[_begain.robberNum intValue]];
+        [_begain. characterArr setObject:_begain. character1 atIndexedSubscript:[_begain.robberNum intValue]];
         VBeginCell *cell = _begain.cellArr[[_begain.robberNum integerValue]];
-        [cell.Img_charactor setImage:[UIImage imageNamed:_begain.character2.imgName]];
+        [cell.Img_charactor setImage:[UIImage imageNamed:_begain.character1.imgName]];
         
-        [_begain.characterArr exchangeObjectAtIndex:[_begain.characterArr count]-1 withObjectAtIndex:[_begain.robberNum intValue]];
-        [_begain.characterArr removeObjectAtIndex:[_begain.characterArr count]-1];
+        [_begain.characterArr exchangeObjectAtIndex:[_begain.characterArr count]-2 withObjectAtIndex:[_begain.robberNum intValue]];
+        [_begain.characterArr removeObjectAtIndex:[_begain.characterArr count]-2];
         [_begain outputActOnView :[NSString stringWithFormat:@"\n有狼人角色，强制盗贼选择狼人！！！"]:4];
-        [_begain outputActOnView :[NSString stringWithFormat:@"\n盗贼 选择了  %@", _begain.character2.character]:3];
-        [_begain outputActOnView :[NSString stringWithFormat:@"\n盗贼 埋掉了  %@", _begain.character1.character] :3];
+        [_begain outputActOnView :[NSString stringWithFormat:@"\n盗贼 选择了  %@", _begain.character1.character]:3];
+        [_begain outputActOnView :[NSString stringWithFormat:@"\n盗贼 埋掉了  %@", _begain.character2.character] :3];
         [self dismissViewControllerAnimated:YES completion:^{
         }];
          
@@ -122,6 +122,7 @@
 -(void)viewDidDisappear:(BOOL)animated
 {
     [[_begain.characterArr objectAtIndex:[_begain .robberNum intValue] ] setUserNum:[_begain robberNum]];
+    [_begain dividePart];
     [_begain setIsHaveBobber:[NSNumber numberWithBool:NO]];
     [_begain setActOrder: [[_begain characterArr] mutableCopy]];
     [_begain sortArray:_begain.actOrder orderWithKey:@"gamePriority" ascending:YES];

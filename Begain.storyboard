@@ -70,6 +70,10 @@
                                                     <rect key="frame" x="11" y="20" width="91" height="71"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Sheriff" translatesAutoresizingMaskIntoConstraints="NO" id="Udo-ol-LVI">
+                                                    <rect key="frame" x="0.0" y="0.0" width="33" height="41"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <gestureRecognizers/>
@@ -78,6 +82,7 @@
                                             <outlet property="Img_headImg" destination="F8f-YA-pKn" id="ZMW-lO-ZNX"/>
                                             <outlet property="Img_numBack" destination="BaT-x5-6tW" id="sSd-ld-vdL"/>
                                             <outlet property="Img_selected" destination="Fix-gB-tyP" id="FJ8-Up-K3R"/>
+                                            <outlet property="Img_sheriff" destination="Udo-ol-LVI" id="zO5-bK-Xab"/>
                                             <outlet property="Label_num" destination="xhO-Bz-V9K" id="Lcx-f3-Kwz"/>
                                         </connections>
                                     </collectionViewCell>
@@ -241,6 +246,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Sheriff" width="300" height="300"/>
         <image name="night_back" width="664" height="1000"/>
         <image name="num_back" width="128" height="120"/>
         <image name="selected" width="300" height="293"/>

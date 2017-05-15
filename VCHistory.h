@@ -9,5 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @interface VCHistory : UIViewController
-
+{
+    int historyNum;
+    int selectedNum;
+    
+}
+@property(strong,nonatomic) NSUserDefaults* ud;
+@property(strong,nonatomic) NSMutableArray* historyArr;
+@property(strong,nonatomic) NSMutableArray* historyDate;
+@property(strong,nonatomic) NSMutableArray* cellArr;
 @end

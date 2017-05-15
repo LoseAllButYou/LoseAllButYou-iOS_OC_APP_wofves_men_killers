@@ -182,7 +182,7 @@
          
         // if ([nextVC isKindOfClass:[VCMain class]]) {
          
-         nextVC.loginName=[NSString alloc];
+         //nextVC.loginName=[NSString alloc];
              nextVC.loginName=[NSString stringWithFormat:@"%@",_Text_loginName.text];
        // }
          

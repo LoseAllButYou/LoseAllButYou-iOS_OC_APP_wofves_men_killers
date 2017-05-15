@@ -14,5 +14,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *Img_numBack;
 @property (strong, nonatomic) IBOutlet UIImageView *Img_headImg;
 @property (strong, readwrite) IBOutlet UIImageView *Img_charactor;
+@property (weak, nonatomic) IBOutlet UIImageView *Img_sheriff;
 
 @end

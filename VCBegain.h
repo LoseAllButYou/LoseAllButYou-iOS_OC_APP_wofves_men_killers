@@ -26,7 +26,11 @@
     int curActUserNum;
     int beActedUserNum;
     int curDeadNum;
+    int sheriffNum;
+    int isDeadSkill;//死亡发动技能
+    bool isEndTap;
 }
+
 @property (weak, nonatomic) IBOutlet UINavigationItem *Title_Info;
 @property (weak, nonatomic) IBOutlet UICollectionView *Coll_ShowUser;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *Btn_changDayNight;
@@ -48,4 +52,5 @@
 -(void)outputActOnView :(NSString*)str :(int)type;
 -(void)gameAction:(int)index;
 -(void)changeCardState:(int)index;
+-(void)dividePart;
 @end
