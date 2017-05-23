@@ -20,12 +20,12 @@ typedef NS_ENUM(int,part)  {
 //游戏状态
 typedef NS_ENUM(int,State)  {
     //死亡方式
-    DEAD_BY_WERWOLF=0,
+    DEAD_NOT_DEFINE=0,
     DEAD_BY_WITCH=1,
     DEAD_BY_HUNTER=1<<1,
     DEAD_BY_WERWOLF_KING=1<<2,
     OUT_BY_CIVILIAN=1<<3,
-    DEAD_NOT_DEFINE=1<<4,
+    DEAD_BY_WERWOLF=1<<4,
     DEAD_BY_BOOM=1<<5,
     DEAD_FOR_LOVE=1<<6,
     //存活状态

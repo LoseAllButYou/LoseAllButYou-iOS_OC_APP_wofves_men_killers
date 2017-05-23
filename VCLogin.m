@@ -149,12 +149,7 @@
 -(void)textChange
 {
      _Btn_login.enabled=(self.Text_passWord.text.length&&self.Text_loginName.text.length&&isCAPTCHAEqual);
-//     if(isFirst)
-//     {
-//          _Text_loginName.text=nil;
-//          isFirst=NO;
-//     }
-    // _Btn_login.enabled=YES;
+
 }
 
 
@@ -179,12 +174,7 @@
      {
          UINavigationController *nav = segue.destinationViewController;
          VCMain* nextVC = (VCMain *)nav.topViewController;
-         
-        // if ([nextVC isKindOfClass:[VCMain class]]) {
-         
-         //nextVC.loginName=[NSString alloc];
-             nextVC.loginName=[NSString stringWithFormat:@"%@",_Text_loginName.text];
-       // }
+         nextVC.loginName=[NSString stringWithFormat:@"%@",_Text_loginName.text];
          
      }
      

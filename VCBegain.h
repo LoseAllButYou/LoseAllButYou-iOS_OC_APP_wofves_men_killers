@@ -29,6 +29,7 @@
     int sheriffNum;
     int isDeadSkill;//死亡发动技能
     bool isEndTap;
+    bool firstSheriff;//第一次竞选警长
 }
 
 @property (weak, nonatomic) IBOutlet UINavigationItem *Title_Info;
