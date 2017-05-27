@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "AppDelegate.h"
 @interface VCRegist : UIViewController
-
+@property (weak, nonatomic)  AppDelegate* app;
 @end

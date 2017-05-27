@@ -9,19 +9,19 @@
 #import "VCLogin.h"
 #import "VCMain.h"
 #import "MBProgressHUD+MJ.h"
+
+
 //#import "VCMain.m"
 @interface VCLogin ()
-@property (weak, nonatomic) IBOutlet UITextField *Text_loginName;
-@property (weak, nonatomic) IBOutlet UITextField *Text_passWord;
+
 @property (weak, nonatomic) IBOutlet UITextField *Text_CAPTCHA;
 @property (weak, nonatomic) IBOutlet UIImageView *Img_CAPTCHA;
 @property (weak, nonatomic) IBOutlet UISwitch *Swch_saveInfo;
 @property (weak, nonatomic) IBOutlet UIButton *Btn_login;
-@property (weak, nonatomic) IBOutlet UIButton *Btn_regist;
 @property (weak, nonatomic) IBOutlet UILabel *Text_imgCAPTCHA;
 @property (weak, nonatomic) IBOutlet UIImageView *Img_warning;
 @property (weak, nonatomic) IBOutlet UILabel *Text_waring;
-//@property (weak, nonatomic) NSNumber* isLogout;
+
 
 @end
 
@@ -36,7 +36,11 @@
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textCAPTCHAEChange) name:UITextFieldTextDidChangeNotification object:_Text_CAPTCHA];
      isCAPTCHAEqual=NO;
      isFirst=YES;
-     //连接数据库  未定义
+    _app=[[UIApplication sharedApplication] delegate];
+   
+      _socket=_app.socket;
+    [NSThread sleepForTimeInterval:2.0];
+    //[self createClientTcpSocket];
      srand((unsigned)time(NULL));
      int num1=rand()%10;
      int num2=rand()%10;
@@ -49,12 +53,10 @@
     [self.view addGestureRecognizer:tap1];
      
 }
-
 -(void)autoLogin
 {
     if([[NSUserDefaults standardUserDefaults]boolForKey:@"isAutoLogin"])
     {
-        //获取网络数据库验证
         [MBProgressHUD showMessage:@"自动登录中！请大爷耐心等待！"];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             //移除提示框遮盖
@@ -67,27 +69,76 @@
 }
 
 - (IBAction)pressRegist:(id)sender {
-     //[self performSegueWithIdentifier:@"registVC" sender:nil];
+    NSLog(@"123123123");
+     [self performSegueWithIdentifier:@"regist" sender:nil];
+    
 }
-- (IBAction)pressLogin:(id)sender {
-         if([self.Text_passWord.text isEqualToString: @"123" ] &&[self.Text_loginName.text isEqualToString: @"123"])
-     {
-          //下载开源MBProgressHUD 库 便捷提示框
-         
-          //获取网络数据库验证
-          [MBProgressHUD showMessage:@"努力加载中！请大爷耐心等待！"];
-          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-               //移除提示框遮盖
-               [MBProgressHUD hideHUD];
-               [self performSegueWithIdentifier:@"mainVC" sender:nil];
-          });
-     }
-     else
-     {
-          [MBProgressHUD showError:@"用户名或密码错误！请重新输出!!!"];
-          return ;
-     }
+//获取网络数据库验证
+-(void)loginCheck
+{
+//    if(![_app.socket isConnected])
+//    {
+//        if(![_app.socket connectToHost:_app.socketHost onPort:_app.socketPort error:Nil])
+//        {
+//            return ;
+//        }
+//    }
+    NSString *s = @"";
+    s=[s stringByAppendingString:[NSString stringWithFormat:@"%@\n%@",_Text_loginName.text,_Text_passWord.text]];
+    int cmd=1;
+    NSMutableData *data =[NSMutableData dataWithBytes:&cmd length:4];
+      [data appendData:[s dataUsingEncoding:NSUTF8StringEncoding]];
+    // 开始发送
+    [_app.socket setDelegate:self];
+    [_app.socket setDelegateQueue:dispatch_get_main_queue()];
+    // 发送消息 这里不需要知道对象的ip地址和端口
+    [_socket writeData:data withTimeout:2 tag:100];
+    [_socket readDataWithTimeout:5  tag:200];
 
+}
+
+- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
+    NSLog(@"消息发送成功");
+}
+- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
+    NSString *ip = [sock connectedHost];
+    uint16_t port = [sock connectedPort];
+    NSString *s = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"接收到服务器返回的数据 tcp [%@:%d] %@", ip, port, s);
+
+    int cmd=-1;
+    [[data subdataWithRange:NSMakeRange(0, 4)] getBytes:&cmd length:4];
+    if(cmd==0)
+    {
+        [MBProgressHUD showMessage:@"用户名或密码错误" toView:self.view];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    }
+    else if(cmd==1)
+    {
+        [MBProgressHUD showMessage:@"登录成功"toView:self.view ];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+             [MBProgressHUD hideHUDForView:self.view animated:YES];
+            _name=[[NSString alloc]initWithData:[data subdataWithRange:NSMakeRange(4, data.length-4)] encoding:NSUTF8StringEncoding];
+
+             [self performSegueWithIdentifier:@"mainVC" sender:nil];
+        });
+
+    }
+    else{
+        [MBProgressHUD showSuccess:[NSString stringWithFormat:@"%@",[data subdataWithRange:NSMakeRange(4, data.length-4)]]toView:self.view ];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view];
+        });
+        
+    }
+
+}
+
+- (IBAction)pressLogin:(id)sender {
+    [self loginCheck ];
 }
 -(void)viewTapped:(UITapGestureRecognizer*)tap1
 {
@@ -174,9 +225,10 @@
      {
          UINavigationController *nav = segue.destinationViewController;
          VCMain* nextVC = (VCMain *)nav.topViewController;
-         nextVC.loginName=[NSString stringWithFormat:@"%@",_Text_loginName.text];
+         nextVC.loginName=[NSString stringWithFormat:@"%@",_name];
          
      }
+    if ([segue.identifier isEqualToString:@"regist"]){}
      
 }
 

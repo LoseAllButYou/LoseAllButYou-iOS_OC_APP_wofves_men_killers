@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "MBProgressHUD+MJ.h"
 @interface AppDelegate ()
 
 @end
@@ -20,11 +20,24 @@
      //self.window=[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
      //self.window.rootViewController=[[loginNavVC alloc]init];
      //[self.window makeKeyAndVisible];
-     
+     _socketHost=@"192.168.2.100";
+    _socketPort=8080;
      [NSThread sleepForTimeInterval:2.0];
+    [self createClientTcpSocket];
      return YES;
 }
+- (void) createClientTcpSocket {
 
+    // 1. 创建一个 socket用来和服务端进行通讯
+     dispatch_queue_t dQueue = dispatch_queue_create("socket", NULL);
+    _socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue() socketQueue:dQueue ];
+    // 2. 连接服务器端. 只有连接成功后才能相互通讯 如果60s连接不上就出错
+    if(![_socket connectToHost:_socketHost onPort:_socketPort error:nil])
+    {
+        NSLog(@"lianjie失败");
+    }
+    // 连接必须服务器在线
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
      // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

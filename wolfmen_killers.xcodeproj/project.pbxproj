@@ -20,7 +20,6 @@
 		1919241E1EA1EA6900F8B759 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1919241D1EA1EA6900F8B759 /* Assets.xcassets */; };
 		1919242A1EA217FB00F8B759 /* VCFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = 191924291EA217FB00F8B759 /* VCFriend.m */; };
 		1919242D1EA220F900F8B759 /* VCPrepare.m in Sources */ = {isa = PBXBuildFile; fileRef = 1919242C1EA220F900F8B759 /* VCPrepare.m */; };
-		191924301EA25D3100F8B759 /* gameElementDB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1919242E1EA25D3100F8B759 /* gameElementDB.xcdatamodeld */; };
 		1919243A1EA3624500F8B759 /* VCHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 191924391EA3624500F8B759 /* VCHistory.m */; };
 		1919243C1EA3627200F8B759 /* history.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1919243B1EA3627200F8B759 /* history.storyboard */; };
 		1919243E1EA362DF00F8B759 /* friend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1919243D1EA362DF00F8B759 /* friend.storyboard */; };
@@ -52,6 +51,7 @@
 		FE680AE81EBD9ACF00327DC7 /* VCCharacterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FE680AE71EBD9ACF00327DC7 /* VCCharacterInfo.m */; };
 		FEA0495F1EC85E57001B1FFA /* VHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA0495E1EC85E57001B1FFA /* VHistoryCell.m */; };
 		FEA049621EC86E7C001B1FFA /* VCShowHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA049611EC86E7C001B1FFA /* VCShowHistory.m */; };
+		FEA049651ED93F3E001B1FFA /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA049641ED93F3E001B1FFA /* GCDAsyncSocket.m */; };
 		FEFA8C681EB7597C004A73BB /* VCRobberSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = FEFA8C671EB7597C004A73BB /* VCRobberSelect.m */; };
 		FEFBCFC61EB4C9B7001E95CD /* VCMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */; };
 /* End PBXBuildFile section */
@@ -81,7 +81,6 @@
 		191924291EA217FB00F8B759 /* VCFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCFriend.m; sourceTree = "<group>"; };
 		1919242B1EA220F900F8B759 /* VCPrepare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPrepare.h; sourceTree = "<group>"; };
 		1919242C1EA220F900F8B759 /* VCPrepare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPrepare.m; sourceTree = "<group>"; };
-		1919242F1EA25D3100F8B759 /* gameElementDB.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = gameElementDB.xcdatamodel; sourceTree = "<group>"; };
 		191924331EA3597A00F8B759 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		191924381EA3624500F8B759 /* VCHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCHistory.h; sourceTree = "<group>"; };
 		191924391EA3624500F8B759 /* VCHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCHistory.m; sourceTree = "<group>"; };
@@ -117,7 +116,6 @@
 		19F5D01F1E9A64D400B15A67 /* CIDoorwaySegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIDoorwaySegue.m; sourceTree = "<group>"; };
 		19FE7B021EA4EB4F00ACA6E0 /* VCWeb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCWeb.h; sourceTree = "<group>"; };
 		19FE7B031EA4EB4F00ACA6E0 /* VCWeb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCWeb.m; sourceTree = "<group>"; };
-		19FE7B051EA4F49C00ACA6E0 /* wolfmen_killers.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = wolfmen_killers.entitlements; path = wolfmen_killers/wolfmen_killers.entitlements; sourceTree = "<group>"; };
 		19FE7B081EA4F4A000ACA6E0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		FE0C69081EAF8525000B228C /* PlayerSelectCharacter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PlayerSelectCharacter.storyboard; sourceTree = "<group>"; };
 		FE0C690A1EAF8875000B228C /* VCPlayerSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCPlayerSelect.h; sourceTree = "<group>"; };
@@ -137,6 +135,8 @@
 		FEA0495E1EC85E57001B1FFA /* VHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VHistoryCell.m; sourceTree = "<group>"; };
 		FEA049601EC86E7C001B1FFA /* VCShowHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCShowHistory.h; sourceTree = "<group>"; };
 		FEA049611EC86E7C001B1FFA /* VCShowHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCShowHistory.m; sourceTree = "<group>"; };
+		FEA049631ED93F3E001B1FFA /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		FEA049641ED93F3E001B1FFA /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		FEFA8C661EB7597C004A73BB /* VCRobberSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCRobberSelect.h; sourceTree = "<group>"; };
 		FEFA8C671EB7597C004A73BB /* VCRobberSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCRobberSelect.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -226,9 +226,9 @@
 		191924311EA25D6B00F8B759 /* coreData */ = {
 			isa = PBXGroup;
 			children = (
+				191924181E9E64F500F8B759 /* icon.png */,
 				19F2F7B21E98C56000936FCF /* Info.plist */,
 				190BD24A1EA60A200085EB44 /* wolfmen_killer_DB.db */,
-				1919242E1EA25D3100F8B759 /* gameElementDB.xcdatamodeld */,
 			);
 			name = coreData;
 			sourceTree = "<group>";
@@ -261,17 +261,16 @@
 		19F2F7951E98C56000936FCF = {
 			isa = PBXGroup;
 			children = (
+				FEA049661ED93F4C001B1FFA /* socket */,
 				190BD22F1EA5C4E10085EB44 /* FMDB */,
-				19FE7B0C1EA4FC2A00ACA6E0 /* plist */,
 				191924311EA25D6B00F8B759 /* coreData */,
-				191924181E9E64F500F8B759 /* icon.png */,
 				19F5D01D1E9A645B00B15A67 /* Animation */,
 				19F5D0141E9A454600B15A67 /* MBHud库 */,
 				1953DA3E1E9CEA950097D40F /* storyboard */,
 				190051031E98D5AB00D5415A /* 界面 */,
 				19F2F7A01E98C56000936FCF /* wolfmen_killers */,
-				19F2F79F1E98C56000936FCF /* Products */,
 				191924321EA3597A00F8B759 /* Frameworks */,
+				19F2F79F1E98C56000936FCF /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -286,9 +285,9 @@
 		19F2F7A01E98C56000936FCF /* wolfmen_killers */ = {
 			isa = PBXGroup;
 			children = (
+				1919241D1EA1EA6900F8B759 /* Assets.xcassets */,
 				19F2F7A41E98C56000936FCF /* AppDelegate.h */,
 				19F2F7A51E98C56000936FCF /* AppDelegate.m */,
-				1919241D1EA1EA6900F8B759 /* Assets.xcassets */,
 				19F2F7A11E98C56000936FCF /* Supporting Files */,
 			);
 			path = wolfmen_killers;
@@ -322,12 +321,13 @@
 			name = Animation;
 			sourceTree = "<group>";
 		};
-		19FE7B0C1EA4FC2A00ACA6E0 /* plist */ = {
+		FEA049661ED93F4C001B1FFA /* socket */ = {
 			isa = PBXGroup;
 			children = (
-				19FE7B051EA4F49C00ACA6E0 /* wolfmen_killers.entitlements */,
+				FEA049631ED93F3E001B1FFA /* GCDAsyncSocket.h */,
+				FEA049641ED93F3E001B1FFA /* GCDAsyncSocket.m */,
 			);
-			name = plist;
+			name = socket;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,6 +425,7 @@
 				1900510C1E98E21F00D5415A /* VCBegain.m in Sources */,
 				FE5612471EB0D8E300968914 /* VBeginCell.m in Sources */,
 				FE5612521EB45F3700968914 /* VRShowAct.m in Sources */,
+				FEA049651ED93F3E001B1FFA /* GCDAsyncSocket.m in Sources */,
 				19F2F7A61E98C56000936FCF /* AppDelegate.m in Sources */,
 				190BD23E1EA5C4FF0085EB44 /* FMDatabaseQueue.m in Sources */,
 				190BD23B1EA5C4FF0085EB44 /* FMDatabase.m in Sources */,
@@ -434,7 +435,6 @@
 				FE680AE81EBD9ACF00327DC7 /* VCCharacterInfo.m in Sources */,
 				19F5D01A1E9A464100B15A67 /* MBProgressHUD+MJ.m in Sources */,
 				FEA0495F1EC85E57001B1FFA /* VHistoryCell.m in Sources */,
-				191924301EA25D3100F8B759 /* gameElementDB.xcdatamodeld in Sources */,
 				1919242A1EA217FB00F8B759 /* VCFriend.m in Sources */,
 				FE0C690C1EAF8875000B228C /* VCPlayerSelect.m in Sources */,
 				19F2F7A31E98C56000936FCF /* main.m in Sources */,
@@ -627,20 +627,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		1919242E1EA25D3100F8B759 /* gameElementDB.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				1919242F1EA25D3100F8B759 /* gameElementDB.xcdatamodel */,
-			);
-			currentVersion = 1919242F1EA25D3100F8B759 /* gameElementDB.xcdatamodel */;
-			name = gameElementDB.xcdatamodeld;
-			path = coreData/gameElementDB.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 19F2F7961E98C56000936FCF /* Project object */;
 }
