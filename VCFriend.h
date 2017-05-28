@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface VCFriend : UIViewController
-
+{
+    int friendId[1024];
+    int curCellNum;
+}
+@property (weak, nonatomic) IBOutlet UITableView *table_friendList;
+@property(strong,nonatomic)AppDelegate* app;
+@property(strong,nonatomic)GCDAsyncSocket* socket;
 @end

@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "wolfmen_killers/VCRegist.m"
-            timestampString = "517590436.649807"
+            filePath = "VCFriend.m"
+            timestampString = "517654975.520326"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-socket:didReadData:withTag:"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "-saveFriendInfo:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "wolfmen_killers/VCRegist.m"
-            timestampString = "517590436.649807"
+            filePath = "VCFriend.m"
+            timestampString = "517655143.675005"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "-registCheck"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

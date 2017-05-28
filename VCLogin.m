@@ -39,13 +39,17 @@
     _app=[[UIApplication sharedApplication] delegate];
    
       _socket=_app.socket;
-    [NSThread sleepForTimeInterval:2.0];
-    //[self createClientTcpSocket];
+    //[NSThread sleepForTimeInterval:2.0];
      srand((unsigned)time(NULL));
      int num1=rand()%10;
      int num2=rand()%10;
      int num3=rand()%10;
      int num4=rand()%10;
+//    if([[NSUserDefaults standardUserDefaults]boolForKey:@"save" ])
+//    {
+//        _Text_loginName.text=[[NSUserDefaults standardUserDefaults]objectForKey:@"userName" ];
+//        _Text_passWord.text=[[NSUserDefaults standardUserDefaults]objectForKey:@"passWord" ];
+//    }
      _Text_imgCAPTCHA.text=[NSString stringWithFormat:@"%d%d%d%d",num1,num2,num3,num4];
      _Text_imgCAPTCHA.tag=num1*1000+num2*100+num3*10+num4;
         UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTapped:)];
@@ -57,11 +61,12 @@
 {
     if([[NSUserDefaults standardUserDefaults]boolForKey:@"isAutoLogin"])
     {
+        
         [MBProgressHUD showMessage:@"自动登录中！请大爷耐心等待！"];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             //移除提示框遮盖
             [MBProgressHUD hideHUD];
-            [self performSegueWithIdentifier:@"mainVC" sender:nil];
+            [self loginCheck];
         });
         
     }
@@ -117,6 +122,7 @@
     }
     else if(cmd==1)
     {
+        _app.userName=[NSString stringWithString:_Text_loginName.text];
         [MBProgressHUD showMessage:@"登录成功"toView:self.view ];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
@@ -149,6 +155,7 @@
 - (IBAction)selectSave:(id)sender {
     //存储用户数据到本地 暂时只存一个
     NSUserDefaults* ud=[NSUserDefaults standardUserDefaults];
+    [ud setBool:YES forKey:@"save"];
     [ud setObject:[_Text_loginName text] forKey:@"userName"];
     [ud setObject:[_Text_passWord text] forKey:@"passWord"];
 }
@@ -157,7 +164,7 @@
         [ud setBool: _Swch_isAutoLogin.isOn forKey:@"isAutoLogin"];
         if(![_Swch_saveInfo isOn]){
             [_Swch_saveInfo setOn:YES];
-            [self selectSave:_Swch_saveInfo];
+            [self selectSave:nil];
         }
   
 }
@@ -235,7 +242,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     NSUserDefaults* ud=[NSUserDefaults standardUserDefaults];
-    if([ud valueForKey:@"isAutoLogin"])
+    if([ud valueForKey:@"isAutoLogin"]&&[ud valueForKey:@"save"])
     {
         _Text_loginName.text=[ud    objectForKey:@"userName"];
         _Text_passWord.text=[ud objectForKey:@"passWord"];
@@ -247,6 +254,15 @@
         else{
             [_Swch_isAutoLogin setOn:NO];
         }
+        return;
+    }
+    if([ud valueForKey:@"save"])
+    {
+        if([ud boolForKey: @"save"]){
+            _Text_loginName.text=[ud    objectForKey:@"userName"];
+            _Text_passWord.text=[ud objectForKey:@"passWord"];
+        }
+        return;
     }
 
 }

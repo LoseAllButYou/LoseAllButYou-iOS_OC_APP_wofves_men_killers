@@ -48,6 +48,7 @@
 		FE5612521EB45F3700968914 /* VRShowAct.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5612511EB45F3700968914 /* VRShowAct.m */; };
 		FE5612551EB4B34900968914 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE7B081EA4F4A000ACA6E0 /* AudioToolbox.framework */; };
 		FE5612561EB4B35200968914 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 191924331EA3597A00F8B759 /* libsqlite3.tbd */; };
+		FE6537321EDA8D4300971440 /* VFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6537311EDA8D4300971440 /* VFriendCell.m */; };
 		FE680AE81EBD9ACF00327DC7 /* VCCharacterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FE680AE71EBD9ACF00327DC7 /* VCCharacterInfo.m */; };
 		FEA0495F1EC85E57001B1FFA /* VHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA0495E1EC85E57001B1FFA /* VHistoryCell.m */; };
 		FEA049621EC86E7C001B1FFA /* VCShowHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA049611EC86E7C001B1FFA /* VCShowHistory.m */; };
@@ -129,6 +130,8 @@
 		FE5612461EB0D8E300968914 /* VBeginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VBeginCell.m; sourceTree = "<group>"; };
 		FE5612501EB45F3700968914 /* VRShowAct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VRShowAct.h; sourceTree = "<group>"; };
 		FE5612511EB45F3700968914 /* VRShowAct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRShowAct.m; sourceTree = "<group>"; };
+		FE6537301EDA8D4300971440 /* VFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VFriendCell.h; sourceTree = "<group>"; };
+		FE6537311EDA8D4300971440 /* VFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VFriendCell.m; sourceTree = "<group>"; };
 		FE680AE61EBD9ACF00327DC7 /* VCCharacterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCharacterInfo.h; sourceTree = "<group>"; };
 		FE680AE71EBD9ACF00327DC7 /* VCCharacterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCharacterInfo.m; sourceTree = "<group>"; };
 		FEA0495D1EC85E57001B1FFA /* VHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHistoryCell.h; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 				191924391EA3624500F8B759 /* VCHistory.m */,
 				1919242B1EA220F900F8B759 /* VCPrepare.h */,
 				1919242C1EA220F900F8B759 /* VCPrepare.m */,
+				FE6537301EDA8D4300971440 /* VFriendCell.h */,
+				FE6537311EDA8D4300971440 /* VFriendCell.m */,
 				191924281EA217FB00F8B759 /* VCFriend.h */,
 				191924291EA217FB00F8B759 /* VCFriend.m */,
 				19F5D00E1E9A432C00B15A67 /* VCMain.h */,
@@ -420,6 +425,7 @@
 				192CBD7C1EA65047002E48F7 /* VCCharactor.m in Sources */,
 				19F5CFFE1E99244B00B15A67 /* VCRegist.m in Sources */,
 				1919243A1EA3624500F8B759 /* VCHistory.m in Sources */,
+				FE6537321EDA8D4300971440 /* VFriendCell.m in Sources */,
 				190BD23D1EA5C4FF0085EB44 /* FMDatabasePool.m in Sources */,
 				FE50708F1EB4D89500C4BC11 /* NSObject+GameCharacter.m in Sources */,
 				1900510C1E98E21F00D5415A /* VCBegain.m in Sources */,
