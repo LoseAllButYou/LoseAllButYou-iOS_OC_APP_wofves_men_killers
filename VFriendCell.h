@@ -11,5 +11,6 @@
 @interface VFriendCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *Text_friend;
 @property (weak, nonatomic) IBOutlet UIImageView *Img_headImg;
+@property (weak, nonatomic) IBOutlet UIButton *Btn_insertFriend;
 
 @end

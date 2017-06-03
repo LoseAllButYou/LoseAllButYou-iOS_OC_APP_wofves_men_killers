@@ -1397,6 +1397,15 @@
         VCCharacterInfo* info = segue.destinationViewController ;
         info  .modalPresentationStyle = UIModalPresentationPopover;
         info .popoverPresentationController.delegate = self;
+        NSString* str=[NSString stringWithFormat:@""];
+        for(int i=0;i<_characterArr.count;++i)
+        {
+            if([[[_characterArr objectAtIndex:i] userNum] intValue]==100)
+                break;
+            str=[str stringByAppendingFormat:@"[%2d]号  [%@]  ",i+1,[[_characterArr objectAtIndex:i] character]];
+                str=[str stringByAppendingString:@"\n"];
+        }
+        info.str=[NSString stringWithString: str];
     }
 }
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller

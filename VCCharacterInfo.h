@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface VCCharacterInfo : UIViewController
-
+@property (strong, nonatomic) IBOutlet UITextView *Text_character;
+@property (strong, nonatomic) NSString* str;
 @end

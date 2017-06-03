@@ -20,7 +20,7 @@
      //self.window=[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
      //self.window.rootViewController=[[loginNavVC alloc]init];
      //[self.window makeKeyAndVisible];
-     _socketHost=@"192.168.2.100";
+     _socketHost=@"192.168.2.101";
     _socketPort=8080;
      [NSThread sleepForTimeInterval:2.0];
     [self createClientTcpSocket];

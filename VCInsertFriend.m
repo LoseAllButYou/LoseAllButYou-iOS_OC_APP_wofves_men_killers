@@ -1,53 +1,52 @@
 //
-//  VCFriend.m
+//  VCInsertFriend.m
 //  wolfmen_killers
 //
-//  Created by 裴培华 on 17/4/15.
+//  Created by wrongmean on 2017/6/3.
 //  Copyright © 2017年 裴培华. All rights reserved.
 //
 
-#import "VCFriend.h"
-#import "VCMain.h"
-#import "MBProgressHUD+MJ.h"
+#import "VCInsertFriend.h"
 #import "VFriendCell.h"
+#import "MBProgressHUD+MJ.h"
 
-@interface VCFriend ()
-
-@property(strong,nonatomic)NSMutableArray* friendName;
+@interface VCInsertFriend ()
+@property (weak, nonatomic) IBOutlet UITableView *Table_search;
+@property (weak, nonatomic) IBOutlet UISearchBar *Search_name;
+@property(strong,nonatomic)NSMutableArray* userName;
 @property(strong,nonatomic)NSMutableArray* cellArr;
 @end
 
-@implementation VCFriend
+@implementation VCInsertFriend
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _app=[[UIApplication sharedApplication] delegate];
     _cellArr=[NSMutableArray arrayWithCapacity:1];
-    _friendName=[NSMutableArray arrayWithCapacity:1];
-    _socket=_app.socket;
+    _userName=[NSMutableArray arrayWithCapacity:1];
     [_app.socket setDelegate:self];
 }
--(void)viewWillAppear:(BOOL)animated
-{
-    [self getFriendList];
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
--(void)getFriendList
+
+//已经结束编辑的回调
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;  
 {
-    [_app.socket setDelegate:self];
-    if(_friendName.count!=0)
-    {
-        [_cellArr removeAllObjects];
-        [_friendName removeAllObjects];
-        curCellNum=0;
-    }
-    int cmd=3;//3 获取有好友列表
+    curCellNum=0;
+    [_userName removeAllObjects];
+    [_Table_search reloadData];
+    NSLog(@"send msg");
+    int cmd=4;//4 搜索好友列表
     NSMutableData *data =[NSMutableData dataWithBytes:&cmd length:4];
-    [data appendData:[_app.userName dataUsingEncoding:NSUTF8StringEncoding]];
+    [data appendData:[searchBar.text dataUsingEncoding:NSUTF8StringEncoding]];
     
     // 发送消息 这里不需要知道对象的ip地址和端口
     [_app.socket writeData:data withTimeout:2 tag:100];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [_app.socket readDataWithTimeout:2  tag:200];
 }
 
@@ -66,13 +65,12 @@
             readBuf[k]=0;
             k=0;
             if(j==0){
-                friendId[index]= atoi(readBuf);
-                printf("%d\n",friendId[index]);
+                userId[index]= atoi(readBuf);
+                printf("readbuf=%s\n",readBuf);
                 ++index;
-                friendNum++;
             }
             else{
-                [_friendName addObject:[NSString stringWithUTF8String:readBuf]];
+                [_userName addObject:[NSString stringWithUTF8String:readBuf]];
             }
             ++j;
         }
@@ -84,33 +82,31 @@
         ++i;
     }
     readBuf[k]=0;
-    [_friendName addObject:[NSString stringWithUTF8String:readBuf]];
-    [_table_friendList reloadData];
+    [_userName addObject:[NSString stringWithUTF8String:readBuf]];
+    [_Table_search reloadData];
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
+    [MBProgressHUD hideHUDForView:self.view];
     NSLog(@"消息发送成功");
 }
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-    [MBProgressHUD hideHUDForView:self.view];
-
     if(tag==200){
         int cmd=-1;
         [[data subdataWithRange:NSMakeRange(0, 4)] getBytes:&cmd length:4];
         if(cmd==0)
         {
-            [MBProgressHUD showMessage:@"正在刷新好友列表"toView:self.view ];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [MBProgressHUD showMessage:@"未找到该用户"toView:self.view ];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                //            _name=[[NSString alloc]initWithData:[data subdataWithRange:NSMakeRange(4, data.length-4)] encoding:NSUTF8StringEncoding];
-                [self saveFriendInfo:[data subdataWithRange:NSMakeRange(4,data.length-4)]];
+               
             });
             
         }
         else if(cmd==1)
         {
-            
+            [self saveFriendInfo:[data subdataWithRange:NSMakeRange(4,data.length-4)]];
         }
         else{
             [MBProgressHUD showSuccess:[NSString stringWithFormat:@"%@",[data subdataWithRange:NSMakeRange(4, data.length-4)]]toView:self.view ];
@@ -125,54 +121,65 @@
         [[data subdataWithRange:NSMakeRange(0, 4)] getBytes:&cmd length:4];
         if(cmd==0)
         {
-            [MBProgressHUD showMessage:@"删除成功"toView:self.view ];
+            [MBProgressHUD showMessage:@"添加成功"toView:self.view ];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
             });
             
         }
-        else{
-            [MBProgressHUD showSuccess:[NSString stringWithFormat:@"%@",[data subdataWithRange:NSMakeRange(4, data.length-4)]]toView:self.view ];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [MBProgressHUD hideHUDForView:self.view];
+        else
+        {
+            [MBProgressHUD showMessage:@"添加失败"toView:self.view ];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
             });
-            
+
         }
 
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 #pragma mark 返回每组行数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return  _friendName.count;
+    return  _userName.count;
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *ident = @"cell";
-    if(_friendName.count==0)
+    if(_userName.count==0)
         return nil;
     if(curCellNum==_cellArr.count&&curCellNum!=0)
     {
         return _cellArr[indexPath.row];
     }
     VFriendCell* cell=(VFriendCell*)[tableView dequeueReusableCellWithIdentifier:ident];
-    cell.Text_friend.text=[NSString stringWithString:_friendName[indexPath.row]];
+    cell.Text_friend.text=[NSString stringWithString:_userName[indexPath.row]];
     [_cellArr addObject:cell];
     return cell;
+}
+- (IBAction)pressInsert:(id)sender {
+    //发送添加好友
+    int cmd=5;//5 添加好友
+    NSMutableData *data =[NSMutableData dataWithBytes:&cmd length:4];
+    [data appendData:[[NSString stringWithFormat:@"%d\n%d",[_app.userId intValue],userId[selectNum] ]dataUsingEncoding: NSUTF8StringEncoding]];
+    
+    // 发送消息 这里不需要知道对象的ip地址和端口
+    [_app.socket writeData:data withTimeout:2 tag:100];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [_app.socket readDataWithTimeout:2  tag:300];
+
 }
 
 //选中某行
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-   // [self performSegueWithIdentifier:@"showHistory" sender:nil];
+    [[_cellArr[indexPath.row] Btn_insertFriend] setHidden:NO];
+    selectNum=(int)indexPath.row;
 }
 //编辑状态
 -(UITableViewCellEditingStyle)tableView:(UITableView*)tableView editingStyleForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
@@ -180,40 +187,12 @@
     return UITableViewCellEditingStyleDelete;
 }
 
--(void)deleteFriend:(int)index
-{
-    int cmd=6;//6 删除好友	
-    NSMutableData *data =[NSMutableData dataWithBytes:&cmd length:4];
-    NSLog(@"send msg= %@",[NSString stringWithFormat:@"%d\n%d",[_app.userId intValue],friendId[index] ]);
-    [data appendData:[[NSString stringWithFormat:@"%d\n%d",[_app.userId intValue],friendId[index] ]dataUsingEncoding: NSUTF8StringEncoding]];
-    
-    // 发送消息 这里不需要知道对象的ip地址和端口
-    [_app.socket writeData:data withTimeout:2 tag:100];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [_app.socket readDataWithTimeout:2  tag:300];
-}
-
 //编辑状态 操作
 -(void)tableView:(UITableView*)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(nonnull NSIndexPath *)indexPath
 {
-    [_cellArr removeObjectAtIndex:indexPath.row];
-
-    int i=0;
-    for(i=(int)indexPath.row;i<friendNum;++i)
-    {
-        if(friendId[i]==-1)
-            ++i;
-        else{
-            break;
-        }
-    }
-    [_friendName removeObjectAtIndex:indexPath.row];
-    [self deleteFriend:i];
-    friendId[i]=-1;
-    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                     withRowAnimation:UITableViewRowAnimationAutomatic];
-    
+    [self reloadInputViews];
 }
+
 
 /*
 #pragma mark - Navigation
@@ -225,6 +204,4 @@
 }
 */
 
-- (IBAction)pressStop:(id)sender {
-}
 @end

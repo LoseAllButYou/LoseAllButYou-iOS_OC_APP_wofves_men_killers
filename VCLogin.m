@@ -81,13 +81,13 @@
 //获取网络数据库验证
 -(void)loginCheck
 {
-//    if(![_app.socket isConnected])
-//    {
-//        if(![_app.socket connectToHost:_app.socketHost onPort:_app.socketPort error:Nil])
-//        {
-//            return ;
-//        }
-//    }
+    if(![_app.socket isConnected])
+    {
+        if(![_app.socket connectToHost:_app.socketHost onPort:_app.socketPort error:Nil])
+        {
+            return ;
+        }
+    }
     NSString *s = @"";
     s=[s stringByAppendingString:[NSString stringWithFormat:@"%@\n%@",_Text_loginName.text,_Text_passWord.text]];
     int cmd=1;
@@ -105,6 +105,28 @@
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
     NSLog(@"消息发送成功");
 }
+
+-(void)saveInfo :(NSData* )data
+{
+    NSString *s=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    int i=0,j=0;
+    const char* str=[s UTF8String];
+    char readBuf[128]={0};
+    while(str[i])
+    {
+        if(str[i]=='\n')
+        {
+            readBuf[j]=0;
+            j=0;
+            _app.userId=[NSNumber numberWithInt:atoi(readBuf)];
+            ++i;
+        }
+        readBuf[j++]=str[i++];
+    }
+    readBuf[j]=0;
+    _name=[NSString stringWithUTF8String:readBuf];
+}
+
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
     NSString *ip = [sock connectedHost];
     uint16_t port = [sock connectedPort];
@@ -127,7 +149,7 @@
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
              [MBProgressHUD hideHUDForView:self.view animated:YES];
-            _name=[[NSString alloc]initWithData:[data subdataWithRange:NSMakeRange(4, data.length-4)] encoding:NSUTF8StringEncoding];
+            [self saveInfo:[data subdataWithRange:NSMakeRange(4, data.length-4) ]];
 
              [self performSegueWithIdentifier:@"mainVC" sender:nil];
         });

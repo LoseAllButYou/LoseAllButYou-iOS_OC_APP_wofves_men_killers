@@ -46,9 +46,9 @@
 		FE5612441EB0C8A100968914 /* Begain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE5612431EB0C8A100968914 /* Begain.storyboard */; };
 		FE5612471EB0D8E300968914 /* VBeginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5612461EB0D8E300968914 /* VBeginCell.m */; };
 		FE5612521EB45F3700968914 /* VRShowAct.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5612511EB45F3700968914 /* VRShowAct.m */; };
-		FE5612551EB4B34900968914 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19FE7B081EA4F4A000ACA6E0 /* AudioToolbox.framework */; };
 		FE5612561EB4B35200968914 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 191924331EA3597A00F8B759 /* libsqlite3.tbd */; };
 		FE6537321EDA8D4300971440 /* VFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6537311EDA8D4300971440 /* VFriendCell.m */; };
+		FE6537351EE282AB00971440 /* VCInsertFriend.m in Sources */ = {isa = PBXBuildFile; fileRef = FE6537341EE282AB00971440 /* VCInsertFriend.m */; };
 		FE680AE81EBD9ACF00327DC7 /* VCCharacterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = FE680AE71EBD9ACF00327DC7 /* VCCharacterInfo.m */; };
 		FEA0495F1EC85E57001B1FFA /* VHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA0495E1EC85E57001B1FFA /* VHistoryCell.m */; };
 		FEA049621EC86E7C001B1FFA /* VCShowHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = FEA049611EC86E7C001B1FFA /* VCShowHistory.m */; };
@@ -123,6 +123,7 @@
 		FE0C690B1EAF8875000B228C /* VCPlayerSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCPlayerSelect.m; sourceTree = "<group>"; };
 		FE0C690D1EAF89D6000B228C /* VSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSelectCell.h; sourceTree = "<group>"; };
 		FE0C690E1EAF89D6000B228C /* VSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSelectCell.m; sourceTree = "<group>"; };
+		FE2DD6BD1EE2A57700E54A08 /* wolfmen_killers.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = wolfmen_killers.entitlements; path = wolfmen_killers/wolfmen_killers.entitlements; sourceTree = "<group>"; };
 		FE50708D1EB4D89500C4BC11 /* NSObject+GameCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+GameCharacter.h"; sourceTree = "<group>"; };
 		FE50708E1EB4D89500C4BC11 /* NSObject+GameCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+GameCharacter.m"; sourceTree = "<group>"; };
 		FE5612431EB0C8A100968914 /* Begain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Begain.storyboard; sourceTree = "<group>"; };
@@ -132,6 +133,8 @@
 		FE5612511EB45F3700968914 /* VRShowAct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VRShowAct.m; sourceTree = "<group>"; };
 		FE6537301EDA8D4300971440 /* VFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VFriendCell.h; sourceTree = "<group>"; };
 		FE6537311EDA8D4300971440 /* VFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VFriendCell.m; sourceTree = "<group>"; };
+		FE6537331EE282AB00971440 /* VCInsertFriend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCInsertFriend.h; sourceTree = "<group>"; };
+		FE6537341EE282AB00971440 /* VCInsertFriend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCInsertFriend.m; sourceTree = "<group>"; };
 		FE680AE61EBD9ACF00327DC7 /* VCCharacterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCCharacterInfo.h; sourceTree = "<group>"; };
 		FE680AE71EBD9ACF00327DC7 /* VCCharacterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCCharacterInfo.m; sourceTree = "<group>"; };
 		FEA0495D1EC85E57001B1FFA /* VHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VHistoryCell.h; sourceTree = "<group>"; };
@@ -150,7 +153,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE5612561EB4B35200968914 /* libsqlite3.tbd in Frameworks */,
-				FE5612551EB4B34900968914 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +192,8 @@
 				1919242C1EA220F900F8B759 /* VCPrepare.m */,
 				FE6537301EDA8D4300971440 /* VFriendCell.h */,
 				FE6537311EDA8D4300971440 /* VFriendCell.m */,
+				FE6537331EE282AB00971440 /* VCInsertFriend.h */,
+				FE6537341EE282AB00971440 /* VCInsertFriend.m */,
 				191924281EA217FB00F8B759 /* VCFriend.h */,
 				191924291EA217FB00F8B759 /* VCFriend.m */,
 				19F5D00E1E9A432C00B15A67 /* VCMain.h */,
@@ -329,6 +333,7 @@
 		FEA049661ED93F4C001B1FFA /* socket */ = {
 			isa = PBXGroup;
 			children = (
+				FE2DD6BD1EE2A57700E54A08 /* wolfmen_killers.entitlements */,
 				FEA049631ED93F3E001B1FFA /* GCDAsyncSocket.h */,
 				FEA049641ED93F3E001B1FFA /* GCDAsyncSocket.m */,
 			);
@@ -426,6 +431,7 @@
 				19F5CFFE1E99244B00B15A67 /* VCRegist.m in Sources */,
 				1919243A1EA3624500F8B759 /* VCHistory.m in Sources */,
 				FE6537321EDA8D4300971440 /* VFriendCell.m in Sources */,
+				FE6537351EE282AB00971440 /* VCInsertFriend.m in Sources */,
 				190BD23D1EA5C4FF0085EB44 /* FMDatabasePool.m in Sources */,
 				FE50708F1EB4D89500C4BC11 /* NSObject+GameCharacter.m in Sources */,
 				1900510C1E98E21F00D5415A /* VCBegain.m in Sources */,
@@ -498,7 +504,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 3762MX53AP;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -518,6 +524,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "0662021b-8658-4140-bfb2-ba80fa3de011";
 				PROVISIONING_PROFILE_SPECIFIER = NONE;
 				SDKROOT = iphoneos10.3;
 				SWIFT_VERSION = 3.0;
@@ -549,7 +556,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 3762MX53AP;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -563,6 +570,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "0662021b-8658-4140-bfb2-ba80fa3de011";
 				PROVISIONING_PROFILE_SPECIFIER = NONE;
 				SDKROOT = iphoneos10.3;
 				SWIFT_VERSION = 3.0;
@@ -584,6 +592,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "o1.wolfmen-killers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = "iphoneos 10.0";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -605,6 +614,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "o1.wolfmen-killers";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = "iphoneos 10.0";
 				TARGETED_DEVICE_FAMILY = 1;
