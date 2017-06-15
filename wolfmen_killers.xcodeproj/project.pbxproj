@@ -42,6 +42,11 @@
 		FE0C69091EAF8525000B228C /* PlayerSelectCharacter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE0C69081EAF8525000B228C /* PlayerSelectCharacter.storyboard */; };
 		FE0C690C1EAF8875000B228C /* VCPlayerSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0C690B1EAF8875000B228C /* VCPlayerSelect.m */; };
 		FE0C690F1EAF89D6000B228C /* VSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE0C690E1EAF89D6000B228C /* VSelectCell.m */; };
+		FE2DD6C01EE513B700E54A08 /* VCChat.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2DD6BF1EE513B700E54A08 /* VCChat.m */; };
+		FE2DD6C31EE515D400E54A08 /* VChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2DD6C21EE515D400E54A08 /* VChatCell.m */; };
+		FE2DD6C61EE51E4300E54A08 /* NSObject+messageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FE2DD6C51EE51E4300E54A08 /* NSObject+messageFrame.m */; };
+		FE2DD6C81EE530F100E54A08 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE2DD6C71EE530F100E54A08 /* Chat.storyboard */; };
+		FE36DD431EEA656E003A0227 /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FE36DD421EEA656E003A0227 /* music.mp3 */; };
 		FE50708F1EB4D89500C4BC11 /* NSObject+GameCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = FE50708E1EB4D89500C4BC11 /* NSObject+GameCharacter.m */; };
 		FE5612441EB0C8A100968914 /* Begain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE5612431EB0C8A100968914 /* Begain.storyboard */; };
 		FE5612471EB0D8E300968914 /* VBeginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FE5612461EB0D8E300968914 /* VBeginCell.m */; };
@@ -124,6 +129,14 @@
 		FE0C690D1EAF89D6000B228C /* VSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VSelectCell.h; sourceTree = "<group>"; };
 		FE0C690E1EAF89D6000B228C /* VSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VSelectCell.m; sourceTree = "<group>"; };
 		FE2DD6BD1EE2A57700E54A08 /* wolfmen_killers.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; name = wolfmen_killers.entitlements; path = wolfmen_killers/wolfmen_killers.entitlements; sourceTree = "<group>"; };
+		FE2DD6BE1EE513B700E54A08 /* VCChat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VCChat.h; path = wolfmen_killers/VCChat.h; sourceTree = "<group>"; };
+		FE2DD6BF1EE513B700E54A08 /* VCChat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VCChat.m; path = wolfmen_killers/VCChat.m; sourceTree = "<group>"; };
+		FE2DD6C11EE515D400E54A08 /* VChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VChatCell.h; sourceTree = "<group>"; };
+		FE2DD6C21EE515D400E54A08 /* VChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VChatCell.m; sourceTree = "<group>"; };
+		FE2DD6C41EE51E4300E54A08 /* NSObject+messageFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+messageFrame.h"; sourceTree = "<group>"; };
+		FE2DD6C51EE51E4300E54A08 /* NSObject+messageFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+messageFrame.m"; sourceTree = "<group>"; };
+		FE2DD6C71EE530F100E54A08 /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		FE36DD421EEA656E003A0227 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 		FE50708D1EB4D89500C4BC11 /* NSObject+GameCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+GameCharacter.h"; sourceTree = "<group>"; };
 		FE50708E1EB4D89500C4BC11 /* NSObject+GameCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+GameCharacter.m"; sourceTree = "<group>"; };
 		FE5612431EB0C8A100968914 /* Begain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Begain.storyboard; sourceTree = "<group>"; };
@@ -194,6 +207,10 @@
 				FE6537311EDA8D4300971440 /* VFriendCell.m */,
 				FE6537331EE282AB00971440 /* VCInsertFriend.h */,
 				FE6537341EE282AB00971440 /* VCInsertFriend.m */,
+				FE2DD6C11EE515D400E54A08 /* VChatCell.h */,
+				FE2DD6C21EE515D400E54A08 /* VChatCell.m */,
+				FE2DD6BE1EE513B700E54A08 /* VCChat.h */,
+				FE2DD6BF1EE513B700E54A08 /* VCChat.m */,
 				191924281EA217FB00F8B759 /* VCFriend.h */,
 				191924291EA217FB00F8B759 /* VCFriend.m */,
 				19F5D00E1E9A432C00B15A67 /* VCMain.h */,
@@ -228,6 +245,9 @@
 				190BD2381EA5C4FF0085EB44 /* FMDB.h */,
 				190BD2391EA5C4FF0085EB44 /* FMResultSet.h */,
 				190BD23A1EA5C4FF0085EB44 /* FMResultSet.m */,
+				FE2DD6C41EE51E4300E54A08 /* NSObject+messageFrame.h */,
+				FE2DD6C51EE51E4300E54A08 /* NSObject+messageFrame.m */,
+				FE36DD421EEA656E003A0227 /* music.mp3 */,
 			);
 			name = FMDB;
 			sourceTree = "<group>";
@@ -258,6 +278,7 @@
 				1953DA3C1E9CE74A0097D40F /* VCMain.storyboard */,
 				1919243F1EA3636D00F8B759 /* help.storyboard */,
 				1919243D1EA362DF00F8B759 /* friend.storyboard */,
+				FE2DD6C71EE530F100E54A08 /* Chat.storyboard */,
 				1919243B1EA3627200F8B759 /* history.storyboard */,
 				19F2F7AF1E98C56000936FCF /* LaunchScreen.storyboard */,
 				1953DA421E9CF91D0097D40F /* Prepare.storyboard */,
@@ -408,6 +429,7 @@
 				1919243E1EA362DF00F8B759 /* friend.storyboard in Resources */,
 				1953DA431E9CF91D0097D40F /* Prepare.storyboard in Resources */,
 				190BD24B1EA60A200085EB44 /* wolfmen_killer_DB.db in Resources */,
+				FE2DD6C81EE530F100E54A08 /* Chat.storyboard in Resources */,
 				191924191E9E64F500F8B759 /* icon.png in Resources */,
 				1919243C1EA3627200F8B759 /* history.storyboard in Resources */,
 				191924401EA3636D00F8B759 /* help.storyboard in Resources */,
@@ -415,6 +437,7 @@
 				1919241E1EA1EA6900F8B759 /* Assets.xcassets in Resources */,
 				FE0C69091EAF8525000B228C /* PlayerSelectCharacter.storyboard in Resources */,
 				FEFBCFC61EB4C9B7001E95CD /* VCMain.storyboard in Resources */,
+				FE36DD431EEA656E003A0227 /* music.mp3 in Resources */,
 				FE5612441EB0C8A100968914 /* Begain.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -442,6 +465,7 @@
 				190BD23E1EA5C4FF0085EB44 /* FMDatabaseQueue.m in Sources */,
 				190BD23B1EA5C4FF0085EB44 /* FMDatabase.m in Sources */,
 				190BD23C1EA5C4FF0085EB44 /* FMDatabaseAdditions.m in Sources */,
+				FE2DD6C01EE513B700E54A08 /* VCChat.m in Sources */,
 				19F5D0101E9A432C00B15A67 /* VCMain.m in Sources */,
 				190BD23F1EA5C4FF0085EB44 /* FMResultSet.m in Sources */,
 				FE680AE81EBD9ACF00327DC7 /* VCCharacterInfo.m in Sources */,
@@ -454,9 +478,11 @@
 				1919241C1E9FB2F200F8B759 /* VCUserInfo.m in Sources */,
 				FEFA8C681EB7597C004A73BB /* VCRobberSelect.m in Sources */,
 				190BD2451EA5E7320085EB44 /* NSObject+DBPart.m in Sources */,
+				FE2DD6C61EE51E4300E54A08 /* NSObject+messageFrame.m in Sources */,
 				191924431EA3638A00F8B759 /* VCHelp.m in Sources */,
 				FE0C690F1EAF89D6000B228C /* VSelectCell.m in Sources */,
 				19F5CFFB1E991C4F00B15A67 /* VCLogin.m in Sources */,
+				FE2DD6C31EE515D400E54A08 /* VChatCell.m in Sources */,
 				19F5D0191E9A464100B15A67 /* MBProgressHUD.m in Sources */,
 				1919242D1EA220F900F8B759 /* VCPrepare.m in Sources */,
 				19F5D0201E9A64D400B15A67 /* CIDoorwaySegue.m in Sources */,

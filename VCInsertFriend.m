@@ -37,14 +37,24 @@
 //已经结束编辑的回调
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar;  
 {
+    if(![_app.socket isConnected])
+    {
+        if(![_app.socket connectToHost:_app.socketHost onPort:_app.socketPort error:Nil])
+        {
+            return ;
+        }
+    }
     curCellNum=0;
     [_userName removeAllObjects];
     [_Table_search reloadData];
     NSLog(@"send msg");
-    int cmd=4;//4 搜索好友列表
-    NSMutableData *data =[NSMutableData dataWithBytes:&cmd length:4];
-    [data appendData:[searchBar.text dataUsingEncoding:NSUTF8StringEncoding]];
-    
+    int cmd=4,len=0;//4 搜索好友列表
+    NSMutableData *data =[NSMutableData dataWithBytes:&len length:4];
+    [data appendData:[NSData dataWithBytes:&cmd length:4]];
+    [data appendData:[searchBar.text  dataUsingEncoding:NSUTF8StringEncoding]];
+    len=(int)data.length;
+    [data replaceBytesInRange:NSMakeRange(0, 4) withBytes:&len length:4];
+
     // 发送消息 这里不需要知道对象的ip地址和端口
     [_app.socket writeData:data withTimeout:2 tag:100];
     [_app.socket readDataWithTimeout:2  tag:200];
@@ -93,7 +103,7 @@
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
     if(tag==200){
         int cmd=-1;
-        [[data subdataWithRange:NSMakeRange(0, 4)] getBytes:&cmd length:4];
+        [[data subdataWithRange:NSMakeRange(8, 4)] getBytes:&cmd length:4];
         if(cmd==0)
         {
             [MBProgressHUD showMessage:@"未找到该用户"toView:self.view ];
@@ -106,19 +116,20 @@
         }
         else if(cmd==1)
         {
-            [self saveFriendInfo:[data subdataWithRange:NSMakeRange(4,data.length-4)]];
+            [_app.socket readDataWithTimeout:2  tag:400];
+            
         }
         else{
-            [MBProgressHUD showSuccess:[NSString stringWithFormat:@"%@",[data subdataWithRange:NSMakeRange(4, data.length-4)]]toView:self.view ];
+            [MBProgressHUD showSuccess:[NSString stringWithFormat:@"未知错误"]toView:self.view ];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view];
             });
             
         }
     }
-    else{
+    else if(tag==300){
         int cmd=-1;
-        [[data subdataWithRange:NSMakeRange(0, 4)] getBytes:&cmd length:4];
+        [[data subdataWithRange:NSMakeRange(8, 4)] getBytes:&cmd length:4];
         if(cmd==0)
         {
             [MBProgressHUD showMessage:@"添加成功"toView:self.view ];
@@ -137,6 +148,8 @@
         }
 
     }
+    else
+        [self saveFriendInfo:data];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

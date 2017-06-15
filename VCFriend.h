@@ -14,6 +14,7 @@
     int friendId[1024];
     int curCellNum;
     int friendNum;
+    int selectNum;
 }
 @property (weak, nonatomic) IBOutlet UITableView *table_friendList;
 @property(strong,nonatomic)AppDelegate* app;

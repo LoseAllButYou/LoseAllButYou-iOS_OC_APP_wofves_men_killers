@@ -41,20 +41,37 @@
         _Text_confirmPswd.text=nil;
         return;
     }
+    if([_Text_name.text isEqualToString:@""]||[[_Text_pswd text] isEqualToString:@""]||[[_Text_confirmPswd text] isEqualToString:@""]||[_Text_userName.text isEqualToString:@""])
+    {
+        [MBProgressHUD showError:@"所填项目不能为空"];
+
+        return;
+    }
     [self registCheck];
  
 }
 -(void)registCheck
 {
+    if(![_app.socket isConnected])
+    {
+        if(![_app.socket connectToHost:_app.socketHost onPort:_app.socketPort error:Nil])
+        {
+            return ;
+        }
+    }
+
     NSString *s = @"";
     s=[NSString stringWithFormat:@"%@\n%@\n%@",_Text_userName.text,_Text_pswd.text,_Text_name.text];
-    int cmd=2;
-    NSMutableData *data =[NSMutableData dataWithBytes:&cmd length:4];
-     [data appendData:[s dataUsingEncoding:NSUTF8StringEncoding]];
+    int cmd=2,len=0;
+    NSMutableData *data =[NSMutableData dataWithBytes:&len length:4];
+    [data appendData:[NSData dataWithBytes:&cmd length:4]];
+    [data appendData:[s dataUsingEncoding:NSUTF8StringEncoding]];
+    len=(int)data.length;
+    [data replaceBytesInRange:NSMakeRange(0, 4) withBytes:&len length:4];
 
     // 发送消息 这里不需要知道对象的ip地址和端口
-    [_app.socket writeData:data withTimeout:2 tag:100];
-     [_app.socket readDataWithTimeout:2  tag:200];
+    [_app.socket writeData:data withTimeout:5 tag:100];
+     [_app.socket readDataWithTimeout:-1  tag:200];
 }
 
 #pragma mark - 消息发送成功 代理函数
@@ -62,13 +79,9 @@
     NSLog(@"消息发送成功");
 }
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-    NSString *ip = [sock connectedHost];
-    uint16_t port = [sock connectedPort];
-    NSString *s = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"接收到服务器返回的数据 tcp [%@:%d] %@", ip, port, s);
     
     int cmd=-1;
-    [[data subdataWithRange:NSMakeRange(0, 4)] getBytes:&cmd length:4];
+    [[data subdataWithRange:NSMakeRange(8,4)] getBytes:&cmd length:4];
     if(cmd==0)
     {
         [MBProgressHUD showMessage:@"用户名已存在" toView:self.view];
@@ -87,7 +100,7 @@
         
     }
     else{
-        [MBProgressHUD showMessage:[NSString stringWithFormat:@"%@",[data subdataWithRange:NSMakeRange(4, data.length-4)]] toView:self.view];
+        [MBProgressHUD showMessage:[NSString stringWithFormat:@"%@",[data subdataWithRange:NSMakeRange(8, data.length-8)]] toView:self.view];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view];
         });

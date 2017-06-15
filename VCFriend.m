@@ -10,7 +10,7 @@
 #import "VCMain.h"
 #import "MBProgressHUD+MJ.h"
 #import "VFriendCell.h"
-
+#import "VCChat.h"
 @interface VCFriend ()
 
 @property(strong,nonatomic)NSMutableArray* friendName;
@@ -35,16 +35,28 @@
 -(void)getFriendList
 {
     [_app.socket setDelegate:self];
+    if(![_app.socket isConnected])
+    {
+        if(![_app.socket connectToHost:_app.socketHost onPort:_app.socketPort error:Nil])
+        {
+            return ;
+        }
+    }
+
+    
     if(_friendName.count!=0)
     {
         [_cellArr removeAllObjects];
         [_friendName removeAllObjects];
         curCellNum=0;
     }
-    int cmd=3;//3 获取有好友列表
-    NSMutableData *data =[NSMutableData dataWithBytes:&cmd length:4];
+    int cmd=3,len=0;//3 获取有好友列表
+    NSMutableData *data =[NSMutableData dataWithBytes:&len length:4];
+    [data appendData:[NSData dataWithBytes:&cmd length:4]];
     [data appendData:[_app.userName dataUsingEncoding:NSUTF8StringEncoding]];
-    
+    len=(int)data.length;
+    [data replaceBytesInRange:NSMakeRange(0, 4) withBytes:&len length:4];
+
     // 发送消息 这里不需要知道对象的ip地址和端口
     [_app.socket writeData:data withTimeout:2 tag:100];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -93,36 +105,29 @@
 }
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
     [MBProgressHUD hideHUDForView:self.view];
-
+    if(data.length<8)
+    {
+        //好友消息
+        return;
+    }
     if(tag==200){
         int cmd=-1;
-        [[data subdataWithRange:NSMakeRange(0, 4)] getBytes:&cmd length:4];
+        [[data subdataWithRange:NSMakeRange(8, 4)] getBytes:&cmd length:4];
         if(cmd==0)
         {
-            [MBProgressHUD showMessage:@"正在刷新好友列表"toView:self.view ];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-                //            _name=[[NSString alloc]initWithData:[data subdataWithRange:NSMakeRange(4, data.length-4)] encoding:NSUTF8StringEncoding];
-                [self saveFriendInfo:[data subdataWithRange:NSMakeRange(4,data.length-4)]];
-            });
-            
-        }
-        else if(cmd==1)
-        {
-            
+             [_app.socket readDataWithTimeout:2  tag:400];
         }
         else{
-            [MBProgressHUD showSuccess:[NSString stringWithFormat:@"%@",[data subdataWithRange:NSMakeRange(4, data.length-4)]]toView:self.view ];
+            [MBProgressHUD showSuccess:[NSString stringWithFormat:@"%@",[data subdataWithRange:NSMakeRange(8, data.length-8)]]toView:self.view ];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view];
             });
             
         }
     }
-    else{
+    else if(tag==300){
         int cmd=-1;
-        [[data subdataWithRange:NSMakeRange(0, 4)] getBytes:&cmd length:4];
+        [[data subdataWithRange:NSMakeRange(8, 4)] getBytes:&cmd length:4];
         if(cmd==0)
         {
             [MBProgressHUD showMessage:@"删除成功"toView:self.view ];
@@ -132,12 +137,22 @@
             
         }
         else{
-            [MBProgressHUD showSuccess:[NSString stringWithFormat:@"%@",[data subdataWithRange:NSMakeRange(4, data.length-4)]]toView:self.view ];
+            [MBProgressHUD showSuccess:[NSString stringWithFormat:@"%@",[data subdataWithRange:NSMakeRange(8, data.length-8)]]toView:self.view ];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUDForView:self.view];
             });
             
         }
+
+    }
+    else{
+        [MBProgressHUD showMessage:@"正在刷新好友列表"toView:self.view ];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            //            _name=[[NSString alloc]initWithData:[data subdataWithRange:NSMakeRange(4, data.length-4)] encoding:NSUTF8StringEncoding];
+            [self saveFriendInfo:[data subdataWithRange:NSMakeRange(0,data.length)]];
+        });
 
     }
 }
@@ -172,7 +187,8 @@
 
 //选中某行
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-   // [self performSegueWithIdentifier:@"showHistory" sender:nil];
+    selectNum=(int)indexPath.row;
+    [self performSegueWithIdentifier:@"chat" sender:nil];
 }
 //编辑状态
 -(UITableViewCellEditingStyle)tableView:(UITableView*)tableView editingStyleForRowAtIndexPath:(nonnull NSIndexPath *)indexPath
@@ -182,11 +198,12 @@
 
 -(void)deleteFriend:(int)index
 {
-    int cmd=6;//6 删除好友	
-    NSMutableData *data =[NSMutableData dataWithBytes:&cmd length:4];
-    NSLog(@"send msg= %@",[NSString stringWithFormat:@"%d\n%d",[_app.userId intValue],friendId[index] ]);
+    int cmd=6,len=0;//6 删除好友
+    NSMutableData *data =[NSMutableData dataWithBytes:&len length:4];
+    [data appendData:[NSData dataWithBytes:&cmd length:4]];
     [data appendData:[[NSString stringWithFormat:@"%d\n%d",[_app.userId intValue],friendId[index] ]dataUsingEncoding: NSUTF8StringEncoding]];
-    
+    len=(int)data.length;
+    [data replaceBytesInRange:NSMakeRange(0, 4) withBytes:&len length:4];
     // 发送消息 这里不需要知道对象的ip地址和端口
     [_app.socket writeData:data withTimeout:2 tag:100];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -215,15 +232,21 @@
     
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqual:@"chat"])
+    {
+        VCChat* chat =[segue destinationViewController];
+        chat->friendID=friendId[selectNum];
+        chat.friendName=[_friendName objectAtIndex:selectNum];
+    }
 }
-*/
+
 
 - (IBAction)pressStop:(id)sender {
 }

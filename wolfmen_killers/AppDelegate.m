@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MBProgressHUD+MJ.h"
+#import <AVFoundation/AVFoundation.h>
 @interface AppDelegate ()
 
 @end
@@ -17,14 +18,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
      // Override point for customization after application launch.
-     //self.window=[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-     //self.window.rootViewController=[[loginNavVC alloc]init];
-     //[self.window makeKeyAndVisible];
-     _socketHost=@"192.168.2.101";
+    _msgBuf=[NSMutableArray arrayWithCapacity:1];
+    ishaveMsg=NO;
+    // _socketHost=@"192.168.2.104";
+    _socketHost=@"123.207.58.25";
     _socketPort=8080;
      [NSThread sleepForTimeInterval:2.0];
     [self createClientTcpSocket];
-     return YES;
+    
+    return YES;
 }
 - (void) createClientTcpSocket {
 

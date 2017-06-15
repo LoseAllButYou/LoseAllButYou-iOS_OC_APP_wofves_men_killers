@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VCBegain.m"
-            timestampString = "517210798.406099"
+            filePath = "wolfmen_killers/VCChat.m"
+            timestampString = "518922142.015389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
-            landmarkName = "-gameAction:"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "-socket:didReadData:withTag:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VCBegain.m"
-            timestampString = "517217414.184009"
+            filePath = "wolfmen_killers/VCChat.m"
+            timestampString = "518922142.015389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
-            landmarkName = "-showGameEnd"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "-recvMsg:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VCFriend.m"
-            timestampString = "518186165.428237"
+            filePath = "wolfmen_killers/VCChat.m"
+            timestampString = "518922142.015389"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "-tableView:commitEditingStyle:forRowAtIndexPath:"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "-sendMsg:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VCBegain.m"
-            timestampString = "518185484.71972"
+            filePath = "VCLogin.m"
+            timestampString = "518922551.637964"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1408"
-            endingLineNumber = "1408"
-            landmarkName = "-prepareForSegue:sender:"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "-loginCheck"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VCFriend.m"
-            timestampString = "518186022.315331"
+            filePath = "VCLogin.m"
+            timestampString = "518922601.347901"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "-loginCheck"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,13 +89,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VCFriend.m"
-            timestampString = "518186165.428237"
+            filePath = "wolfmen_killers/VCRegist.m"
+            timestampString = "518923553.363737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "-getFriendList"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "-pressRegister:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "wolfmen_killers/VCRegist.m"
+            timestampString = "518934666.043705"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "-registCheck"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

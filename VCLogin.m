@@ -90,14 +90,17 @@
     }
     NSString *s = @"";
     s=[s stringByAppendingString:[NSString stringWithFormat:@"%@\n%@",_Text_loginName.text,_Text_passWord.text]];
-    int cmd=1;
-    NSMutableData *data =[NSMutableData dataWithBytes:&cmd length:4];
+    int cmd=1,len=0;
+    NSMutableData *data =[NSMutableData dataWithBytes:&len length:4];
+     [data appendData:[NSData dataWithBytes:&cmd length:4]];
       [data appendData:[s dataUsingEncoding:NSUTF8StringEncoding]];
+    len=(int)data.length;
+    [data replaceBytesInRange:NSMakeRange(0, 4) withBytes:&len length:4];
     // 开始发送
     [_app.socket setDelegate:self];
     [_app.socket setDelegateQueue:dispatch_get_main_queue()];
     // 发送消息 这里不需要知道对象的ip地址和端口
-    [_socket writeData:data withTimeout:2 tag:100];
+    [_socket writeData:data withTimeout:5 tag:100];
     [_socket readDataWithTimeout:5  tag:200];
 
 }
@@ -128,41 +131,40 @@
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
-    NSString *ip = [sock connectedHost];
-    uint16_t port = [sock connectedPort];
-    NSString *s = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSLog(@"接收到服务器返回的数据 tcp [%@:%d] %@", ip, port, s);
-
-    int cmd=-1;
-    [[data subdataWithRange:NSMakeRange(0, 4)] getBytes:&cmd length:4];
-    if(cmd==0)
-    {
-        [MBProgressHUD showMessage:@"用户名或密码错误" toView:self.view];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        });
+    if(tag==200){
+        int cmd=-1;
+        [[data subdataWithRange:NSMakeRange(8, 4)] getBytes:&cmd length:4];
+        if(cmd==0)
+        {
+            [MBProgressHUD showMessage:@"用户名或密码错误" toView:self.view];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        }
+        else if(cmd==1)
+        {
+           [_socket readDataWithTimeout:5  tag:300];
+        }
+        else{
+            [MBProgressHUD showSuccess:[NSString stringWithFormat:@"%@",[data subdataWithRange:NSMakeRange(8, data.length-8)]]toView:self.view ];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view];
+            });
+        }
     }
-    else if(cmd==1)
-    {
+    else{
         _app.userName=[NSString stringWithString:_Text_loginName.text];
         [MBProgressHUD showMessage:@"登录成功"toView:self.view ];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2* NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
-             [MBProgressHUD hideHUDForView:self.view animated:YES];
-            [self saveInfo:[data subdataWithRange:NSMakeRange(4, data.length-4) ]];
-
-             [self performSegueWithIdentifier:@"mainVC" sender:nil];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            
+            [self saveInfo:[data subdataWithRange:NSMakeRange(0, data.length) ]];
+            
+            [self performSegueWithIdentifier:@"mainVC" sender:nil];
         });
 
     }
-    else{
-        [MBProgressHUD showSuccess:[NSString stringWithFormat:@"%@",[data subdataWithRange:NSMakeRange(4, data.length-4)]]toView:self.view ];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [MBProgressHUD hideHUDForView:self.view];
-        });
-        
-    }
-
 }
 
 - (IBAction)pressLogin:(id)sender {

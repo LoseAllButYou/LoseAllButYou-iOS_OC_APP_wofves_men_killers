@@ -46,5 +46,9 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>Required background modes </key>
+	<string>App plays audio or streams audio/video using AirPlay</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>app需要访问你的麦克风</string>
 </dict>
 </plist>
